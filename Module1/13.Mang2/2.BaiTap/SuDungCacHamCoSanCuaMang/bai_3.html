@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    //tạo biến lưu dữ liệu nhập vào
+    let char = window.prompt("Nhập dãy chữ: ");
+    //chuyển biến sang chuỗi string
+    let str = char.toString();
+    //tạo mảng để lưu chuỗi sau khi được xử lí hoa và thường;
+    let arr = [str[0]];
+    //Biến định dạng kiểu chữ hoa, từ A in hoa đến Z in hoa.
+    //Có thể vào link này tìm hiểu: https://vietjack.com/javascript/regular_expression_va_regexp_trong_javascript.jsp
+    let panter = /[A-Z]/;
+    //tạo vòng lặp để dếm kí tự trong chuỗi trong str
+    for (let i = 0; i < str.length; i++){
+        //Nếu định dạng chữ sai (panter === false) thì định dạng lại chữ đó thành chữ in hoa
+        if (!panter.test(str[i])){
+            arr.push(str[i].toUpperCase());
+        //Nếu định dạng chữ sai (panter === true) thì định dạng lại chữ đó thành chữ thường
+        }else if (panter.test(str[i])) {
+            arr.push(str[i].toLowerCase());
+        //Nếu ko có trong định dạng (như dấu cách, phẩy, chấm) thì in vào
+        }else {
+            arr.push(str[i]);
+        }
+    }
+    //khi nhập kí tự đầu kiên để xử lý, nó là kí tự chưa chuyển đổi nên dùng shift() để xóa kí tự đầu tiên
+    arr.shift();
+    //Nối tất cả chuỗi và hiển thị ra
+    console.log(arr.join());
+</script>
+</body>
+</html>

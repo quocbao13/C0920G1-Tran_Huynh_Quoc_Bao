@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+    let num = window.prompt("Nhập dãy số");
+    let str = num.toString();
+    let Arr = [str[0]];
+    for (let i = 1; i < str.length; i++){
+        if (str[i - 1] % 2 === 0 && str[i] % 2 === 0 ){
+            Arr.push("-", str[i]);
+        } else {
+            Arr.push(str[i]);
+        }
+    }
+    console.log(Arr.join());
+</script>
+</body>
+</html>

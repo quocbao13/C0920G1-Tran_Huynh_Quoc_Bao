@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(doC) {
+            this.doC = doC;
+        }
+        toDoF(){
+            let doF;
+            doF = this.doC*1.8 + 32;
+            return doF;
+        }
+        toKenvin(){
+            let kenvin;
+            kenvin = this.doC + 273;
+            return kenvin;
+        }
+    }
+    let temperature = new Temperature(25);
+    alert(temperature.toDoF());
+    alert(temperature.toKenvin());
+</script>
+</body>
+</html>

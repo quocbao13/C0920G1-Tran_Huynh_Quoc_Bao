@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <style>
+        body{
+            background: aqua;
+        }
+        .box{
+            background: white;
+            width: 600px;
+            height: 230px;
+            margin: 0 auto;
+        }
+        .box h2{
+            display: block;
+            width: 95%;
+            background: blue;
+            color: white;
+            margin: 10px 2.5%;
+            float: left;
+            text-align: center;
+            padding: 5px 0;
+        }
+        .box .control{
+            width: 100%;
+            float: left;
+            margin-top: 10px;
+        }
+        .box .control label{
+            width: 30%;
+            float: left;
+            margin-left: 2%;
+            text-align: right;
+        }
+        .box .control .dien{
+            width: 60%;
+            float: left;
+            margin-left: 2%;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>ĐĂNG KÝ</h2>
+    <form action="http://demo.codegym.vn/6/registration_form/register.php" method="post">
+        <!--        Nhập họ tên-->
+        <div class="control">
+            <label>Họ và Tên</label>
+            <input class="dien" type="text">
+        </div>
+        <!--        Nhập email-->
+        <div class="control">
+            <label>Email</label>
+            <input class="dien" type="text">
+        </div>
+        <div class="control">
+            <label>Số điện thoại</label>
+            <input class="dien" type="text">
+        </div>
+        <!--        Lụa chọn sở thích-->
+        <div class="control">
+            <label>Giới tính</label>
+            <div class="dien chon">
+                <input type="radio" name="gioitinh"> Nam
+                <input type="radio" name="gioitinh"> Nữ
+            </div>
+        </div>
+        <div class="control" style="text-align: center">
+            <input type="submit" value="Đăng ký">
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

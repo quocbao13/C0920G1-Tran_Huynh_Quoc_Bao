@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball Game</title>
+    <script src="GameBoard.js"></script>
+    <script src="Bar.js"></script>
+    <script src="Ball.js"></script>
+</head>
+<body onload="docReady()">
+<canvas id="myCanvas" style="border:1px solid #c3c3c3; margin-left: 650px; background: #5f6062"></canvas>
+<script>
+    let bar = new Bar();
+    //nhập chiều dài thanh bar
+    bar.setWidth(50);
+    //nhập tọa đô thanh bar
+    bar.setCoordinateX(125);
+    let ball = new Ball(150,125,5);
+    //hiển thị màn hình chơi
+    function displayGameBoard() {
+        let gameBoard = new GameBoard(300,400);
+        document.getElementById("myCanvas").width = gameBoard.getLength();
+        document.getElementById("myCanvas").height = gameBoard.getWidth();
+    }
+    //hiển thị thanh bar
+    function displayBar() {
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        ctx.clearRect(0,0, document.getElementById("myCanvas").width, document.getElementById("myCanvas").height);
+        ctx.fillStyle = "blue";
+        ctx.fillRect(bar.getCoordinateX(),300,bar.getWidth(),6);
+    }
+    //di chuyển thanh sang trái hoặc phải
+    function turnBar(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+        }
+    }
+    //di chuyển thanh sang trái
+    function moveLeft() {
+        if (bar.getCoordinateX() > 0){
+            console.log("a");
+            let x = bar.getCoordinateX();
+            x = x - 10;
+            bar.setCoordinateX(x);
+            displayBar();
+        }
+    }
+    //di chuyển thanh sang phải
+    function moveRight() {
+        if (bar.getCoordinateX() < (document.getElementById("myCanvas").width - bar.getWidth())){
+            console.log("a");
+            let x = bar.getCoordinateX();
+            x = x + 10;
+            bar.setCoordinateX(x);
+            displayBar();
+        }
+
+    }
+    //tạo màn hình để thanh bar di chuyển
+    function docReady() {
+        window.addEventListener('keydown', turnBar);
+    }
+    //hiển thị ball
+    let checkX = true;
+    let checkY = false;
+    function displayBall() {
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        ctx.clearRect(0,0, document.getElementById("myCanvas").width, document.getElementById("myCanvas").height);
+        ctx.beginPath();
+        ctx.fillStyle = "red";
+        ctx.arc(ball.getCoordinateX(), ball.getCoordinateO(), ball.getRadius(), 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = "blue";
+        ctx.fillRect(bar.getCoordinateX(),300,bar.getWidth(),6);
+
+    }
+    //di chuyển ball
+    function moveBall() {
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        if (ball.getCoordinateO() < (document.getElementById("myCanvas").height - ball.getRadius()) && !checkY){
+            let o = ball.getCoordinateO();
+            o += 5;
+            ball.setCoordinateO(o);
+            displayBall();  
+            ctx.fillStyle = "blue";
+            ctx.fillRect(bar.getCoordinateX(),300,bar.getWidth(),6);
+        }
+        setTimeout(moveBall, 40);
+    }
+    displayGameBoard();
+    displayBar();
+    displayBall();
+    moveBall();
+</script>
+</body>
+</html>

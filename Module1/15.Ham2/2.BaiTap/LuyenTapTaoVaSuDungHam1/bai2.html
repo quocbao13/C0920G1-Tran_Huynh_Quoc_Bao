@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<input type="text" id="nhap" oninput="sum(this.value)">
+<p id="dauRa"></p>
+<script>
+    function sum(num) {
+        let result = parseInt(num);
+        document.getElementById("dauRa").innerHTML = result + 1;
+    }
+</script>
+</body>
+</html>

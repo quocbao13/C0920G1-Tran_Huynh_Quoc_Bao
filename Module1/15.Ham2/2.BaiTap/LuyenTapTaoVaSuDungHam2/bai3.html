@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt("Nhập số nguyên bất kì để tính giai thừa"));
+    function giaiThua(num) {
+        if (num === 1){
+            return 1;
+        }
+        return num * giaiThua(num - 1);
+    }
+    alert("Giai thừa của " + a + " là " + giaiThua(a));
+</script>
+</body>
+</html>

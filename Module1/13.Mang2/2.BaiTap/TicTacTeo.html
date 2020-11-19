@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+<div id="display"></div>
+<script>
+    let arr = new Array();
+    let displayTable;
+    let checkXO = true;
+    function init() {
+        for (let i = 0; i < 10; i++){
+            arr[i] = new Array();
+            for (let j = 0; j < 10; j++){
+                arr[i][j] = "&nbsp&nbsp";
+            }
+        }
+    }
+    function displayCaro() {
+        displayTable = "<table border='1' style='border-collapse: collapse;' width='500px' height='500px' align='center'>";
+        for (let i = 0; i < 10; i++){
+            displayTable += "<tr>";
+            for (let j = 0; j < 10; j++){
+                displayTable += "<th width='10%' height='10%' onclick='playXO("+i+","+j+")'>"+ arr[i][j] +"</th>";
+            }
+            displayTable += "</tr>";
+        }
+        displayTable += "</table>";
+        document.getElementById("display").innerHTML = displayTable;
+    }
+    function playXO(x,y) {
+        if (arr[x][y] === "X" || arr[x][y] ==="O"){
+            alert("Ô này đã được đánh. Mời bạn đánh ô khác!!!");
+        }else {
+            if (checkXO){
+                arr[x][y] = "X";
+                checkXO = false;
+            }else {
+                arr[x][y] = "O";
+                checkXO = true;
+            }
+        }
+        displayCaro();
+    }
+    function checkWinner(temp) {
+        for (let i = 0; i < 10; i++){
+            for (let j = 0; j < 8; j++){
+                if (arr[i][j] === temp && arr[i][j + 1] === temp && arr[i][j + 2] === temp){
+                    alert(temp + " win");
+                    init();
+                    displayCaro();
+                }
+            }
+        }
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (array[i][j] === temp && array[i + 1][j] === temp && array[i + 2][j] === temp) {
+                    alert(temp + " win");
+                    init();
+                    displayCaro();
+                }
+            }
+            for (let j = 0; j < 8; j++) {
+                if (array[i][j] === temp && array[i + 1][j + 1] === temp && array[i + 2][j + 2] === temp) {
+                    alert(temp + " win");
+                    init();
+                    displayCaro();
+                }
+            }
+            for (let j = 2; j < 10; j++) {
+                if (array[i][j] === temp && array[i + 1][j - 1] === temp && array[i + 2][j - 2] === temp) {
+                    alert(temp + " win");
+                    init();
+                    displayCaro();
+                }
+            }
+        }
+    }
+    init();
+    displayCaro();
+</script>
+</body>
+</html>

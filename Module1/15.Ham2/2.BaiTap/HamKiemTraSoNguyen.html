@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên</title>
+</head>
+<body>
+<input type="text" placeholder="Nhập từ 1 đến 10000"
+    oninput="isPrime(this.value)"
+    onchange="isPrime(this.value)">
+<p id="traVe"></p>
+
+<script>
+    function isPrime(number) {
+        let count = 0;
+        number = parseInt(number);
+        if (number > 10000) {
+            document.getElementById("traVe").innerHTML = "Quá lơn!!! Nhập số nhỏ hơn 10000";
+        }else {
+            for (let i = 2; i <= number; i++){
+                if (number % i === 0){
+                    count += 1;
+                }
+            }
+            if (count === 1){
+                document.getElementById("traVe").innerHTML = number + " là số nguyên tố!";
+            }else {
+                document.getElementById("traVe").innerHTML = number + " không là số nguyên tố!";
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

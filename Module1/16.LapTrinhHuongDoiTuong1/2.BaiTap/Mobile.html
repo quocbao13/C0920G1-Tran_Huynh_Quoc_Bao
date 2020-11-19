@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="button" value="turnOn" onclick="mobile.turnMobile()" id="onOff">
+    <input type="button" value="charge" onclick="mobile.pinMobile()" id="charge">
+    <input type="button" value="Show" onclick="mobile.showMessageMobile()" id="showSms">
+    <div id="myAndroid" style="display: none">
+        <p id="pinMobile">50%</p>
+        <input type="text" id="messaging"><input type="button" value="AddSms" onclick="mobile.messageMobileFrom()">
+    </div>
+</div>
+<script>
+    class Mobile{
+        constructor(pin, name, statusMobile) {
+            this.pin = pin;
+            this.messaging = [];
+            this.messageForm = [];
+            this.messageTo = [];
+            this.statusMobile = statusMobile;
+            this.name = name;
+            this.name = "bao";
+        }
+        isStatus() {
+            if (this.statusMobile) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        lowBatery(){
+            this.pin = parseInt(document.getElementById("pinMobile").innerText);
+            this.pin--;
+            document.getElementById("pinMobile").innerText = this.pin + "%";
+        }
+        turnMobile(){
+            if (!this.isStatus()){
+                this.statusMobile = true;
+            }else {
+                this.statusMobile = false;
+            }
+            if (this.statusMobile){
+                document.getElementById("onOff").value = "turnOff";
+                document.getElementById("myAndroid").style.display = "block";
+            }else {
+                document.getElementById("onOff").value = "turnOn";
+                document.getElementById("myAndroid").style.display = "none";
+            }
+            this.lowBatery();
+        }
+        pinMobile(){
+            this.pin = parseInt(document.getElementById("pinMobile").innerText);
+            while (this.pin < 100){
+                this.pin += 0.0001;
+                document.getElementById("pinMobile").innerText = parseInt(this.pin) + "%";
+            }
+        }
+        messageMobile(){
+            if (this.pin <= 5){
+                alert("Low Batery. You must charge");
+            }else {
+                let sms = document.getElementById("messaging").value;
+                this.messaging.push(sms);
+                this.lowBatery();
+                document.getElementById("messaging").value = "";
+            }
+        }
+        messageMobileFrom(mobile){
+            if (this.pin <= 5){
+                alert("Low Batery. You must charge");
+            }else {
+                if (this.messaging.length === 0){
+                    this.messageMobile();
+                    this.messageForm.push("Người gửi: " + this.name + ". " + this.messaging[0]);
+                    // tin nhắn được gửi sẽ được push vào vùng tin nhắn đã gửi của điện thoại gửi tin nhắn.
+                    mobile.messageTo.push(this.messaging[0]);
+                    //Sau đó xóa tin nhắn đã gửi ở vùng tin nhắn soạn thảo
+                    this.messaging.splice(0, 1);
+                }else {
+                    //tương tự như trên nhưng trước khi gửi sẽ cho phép người dùng lựa chọn tin nhắn ở vùng nhớ đang soạn thảo để gửi đi
+                    let temp = "";
+                    for (let i = 0; i < this.messaging.length; i++) {
+                        temp += i + ": " + this.messaging[i] + "\n";
+                    }
+                    let index = parseInt(prompt(temp + "\n" + "Yêu cầu bạn chọn tin nhắn để gửi!"));
+                    mobile.messageForm.push("Người gửi: " + this.name + ". " + this.messaging[index]);
+                    this.messageTo.push(this.messaging[index]);
+                    this.messaging.splice(index, 1);
+                }
+                this.pin--;
+            }
+        }
+        showMessageMobile(){
+            if (this.pin <= 5){
+                alert("Low Batery. You must charge");
+            }else {
+                let temp = [];
+                let tempSms = "";
+                // hiển thị ra danh sách số mobile đã gửi tin nhắn đến điện thoại này?
+                // Cho vòng lặp đầu tiên để duyệt tất cả các phần tử có trong vùng nhớ hộp thư đến
+                for (let i = 0; i < this.messageForm.length; i++) {
+                    let check=false;
+                    // VÒng lặp thứ 2 sẽ duyệt chuỗi tin nhắn trong hộp thư đến
+                    for (let j = 0; j < this.messageForm[i].length; j++) {
+                        // Nếu nó gặp được kí tự : thì sẽ chạy các câu lệnh ở trong if
+                        if (this.messageForm[i].charAt(j) === ":") {
+                            let tempNguoiGui = "";
+                            // Cho vòng lặp thứ 3 từ phần tử sau kí tự : để lấy ra được cái tên điện thoại gửi sms đến.
+                            for (let k = j + 1; k < this.messageForm[i].length; k++) {
+                                // Nếu nó gặp được kí tự . thì sẽ chạy các câu lệnh ở trong if
+                                if (this.messageForm[i].charAt(k) === ".") {
+                                    //push tên người gửi vào mảng temp
+                                    temp.push(tempNguoiGui);
+                                    check=true;
+                                    break;
+                                } else {
+                                    // nếu ko thỏa if thì ta sẽ cộng thêm vào chuỗi temNguoiGui
+                                    tempNguoiGui += this.messageForm[i].charAt(k);
+                                }
+                            }
+                            // Kiểm tra biến check có biến true. Nếu như là true thì break vòng lặp 2 để kiểm tra tin nhắn tiếp theo trong vùng nhớ hộp thư đến
+                            if(check) {
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Hiển thị danh sách các tin nhắn được gửi tới từ điện thoại nào?
+                for (let i = 0; i < temp.length; i++) {
+                    tempSms += i + ": " + temp[i] + "\n";
+                }
+                //Cho phép người dùng chọn tin nhắn muốn xem trong vùng nhớ hộp thư đến
+                let index = parseInt(prompt(tempSms+"\nChọn tin nhắn mà bạn muốn xem: "));
+                alert(this.messageForm[index]);
+                this.pin--;
+            }
+        }
+
+    }
+    let mobile = new Mobile();
+</script>
+</body>
+</html>

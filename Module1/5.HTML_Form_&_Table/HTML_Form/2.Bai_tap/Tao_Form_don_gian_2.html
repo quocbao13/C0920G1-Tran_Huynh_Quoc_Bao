@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form2</title>
+    <style>
+        .box{
+            background: yellow;
+            width: 600px;
+            height: 340px;
+            margin: 0 auto;
+        }
+        .box h2{
+            display: block;
+            width: 95%;
+            background: red;
+            color: white;
+            margin: 10px 2.5%;
+            float: left;
+        }
+        .box .control{
+            width: 100%;
+            float: left;
+            margin-top: 10px;
+        }
+        .box .control label{
+            width: 20%;
+            float: left;
+            margin-left: 2%;
+        }
+        .box .control .dien{
+            width: 60%;
+            float: left;
+            margin-left: 2%;
+        }
+        .box .control .chon{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>ĐĂNG KÝ HỌC VIÊN</h2>
+    <form>
+        <!--        Nhập họ tên-->
+        <div class="control">
+            <label>Họ và Tên</label>
+            <input class="dien" type="text">
+        </div>
+        <!--        Nhập email-->
+        <div class="control">
+            <label>Ngày sinh</label>
+            <input class="dien" type="date">
+        </div>
+        <div class="control">
+            <label>Giới tính</label>
+            <div class="dien" >
+                <input type="radio" name="gioitinh"> Nam
+                <input type="radio" name="gioitinh"> Nu
+            </div>
+
+        </div>
+        <div class="control">
+            <label>Địa chỉ</label>
+            <textarea class="dien"></textarea>
+        </div>
+        <div class="control">
+            <label>Lớp</label>
+            <select style="margin-left: 2%">
+                <option>Chọn lớp</option>
+                <option>A1</option>
+                <option>A2</option>
+            </select>
+        </div>
+        <div class="control">
+            <label>Email</label>
+            <input class="dien" type="text">
+        </div>
+        <div class="control">
+            <label>Điện thoại</label>
+            <input class="dien" type="text">
+        </div>
+        <div class="control" style="text-align: center">
+            <input type="submit" value="Đăng kí">
+            <input type="reset" value="Nhập lại">
+        </div>
+    </form>
+</div>
+</body>
+</html>

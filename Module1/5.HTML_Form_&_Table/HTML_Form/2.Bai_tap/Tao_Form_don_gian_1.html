@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form1</title>
+    <style>
+        body{
+            background: aqua;
+        }
+        .box{
+            background: white;
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        .box h2{
+            display: block;
+            width: 95%;
+            background: red;
+            color: white;
+            margin: 10px 2.5%;
+            float: left;
+            text-align: center;
+        }
+        .box .control{
+            width: 100%;
+            float: left;
+            margin-top: 10px;
+        }
+        .box .control label{
+            width: 30%;
+            float: left;
+            margin-left: 2%;
+            text-align: right;
+        }
+        .box .control .dien{
+            width: 60%;
+            float: left;
+            margin-left: 2%;
+        }
+        .box .control .chon{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>SỞ THÍCH CỦA BẠN</h2>
+    <form>
+<!--        Nhập họ tên-->
+        <div class="control">
+            <label>Họ và Tên</label>
+            <input class="dien" type="text">
+        </div>
+<!--        Nhập email-->
+        <div class="control">
+            <label>Email</label>
+            <input class="dien" type="text">
+        </div>
+<!--        Lụa chọn sở thích-->
+        <div class="control">
+            <label>Sở thích</label>
+            <div class="dien chon">
+                <input type="checkbox"> Thể Thao
+                <input type="checkbox" style="margin-left: 6px"> Âm Nhạc
+                <input type="checkbox" style="margin-left: 12px"> Đọc Sách <br/>
+                <input type="checkbox"> Lướt Web
+                <input type="checkbox"> Chơi game
+                <input type="checkbox"> Điện Ảnh <br/>
+                <input type="checkbox"> Du Lịch
+            </div>
+        </div>
+        <div class="control" style="text-align: center">
+            <input type="submit" value="Gửi Thông Tin">
+            <input type="reset" value="Nhập lại">
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

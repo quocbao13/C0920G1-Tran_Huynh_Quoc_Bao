@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="Customer.js"></script>
+<script>
+    let regexEmail =/\S+@\S+\.\S+/;
+    let regexBirthday = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+    let regexCmnd = /^[\d]{8}$/;
+    let regexNum = /^[\d]+$/;
+    let listCustomer = [];
+    function displayMainMenu() {
+        let choose = parseInt(prompt("1. Add new customer."
+                + "\n2. Display information customer."
+                + "\n3. Display total pay customer."
+                + "\n4. Edit Information customer."
+                + "\n5. Delete customer." + "\n6. Exit."));
+        switch (choose) {
+            case 1:{
+                addNewCustomer();
+                break;
+            }
+            case 2:{
+                displayCustomer();
+                break;
+            }
+            case 3:{
+                displayTotalPays();
+                break;
+            }
+            case 4:{
+                editCustomer();
+                break;
+            }
+            case 5:{
+                deleteCustomer();
+                break;
+            }
+            default:{
+                alert("Not have this number");
+                displayMainMenu();
+                break;
+            }
+        }
+    }
+    function displayCustomer() {
+        let temp = "";
+        for (let i = 0; i < listCustomer.length; i++){
+            temp += (i+1) + ". Name: " + listCustomer[i].name + "\n";
+        }
+        temp += "Choose only one number";
+        let chooseDisplay = parseInt(prompt(temp));
+        chooseDisplay = chooseDisplay - 1;
+        if (chooseDisplay >= 0 && chooseDisplay < listCustomer.length) {
+            alert("Name: " + listCustomer[chooseDisplay].getName()
+                + "\nCmnd: " + listCustomer[chooseDisplay].getCmnd()
+                + "\nBirthday: " + listCustomer[chooseDisplay].getBirthday()
+                + "\nEmail: " + listCustomer[chooseDisplay].getEmail()
+                + "\nAddress: " + listCustomer[chooseDisplay].getAddress()
+                + "\nType customer: " + listCustomer[chooseDisplay].getTypeCustomer()
+                + "\nDiscount: " + listCustomer[chooseDisplay].getDiscount()
+                + "\nQuantity Include: " + listCustomer[chooseDisplay].getQuantityIncluded()
+                + "\nType room: " + listCustomer[chooseDisplay].getTypeRoom()
+                + "\nRent day: " + listCustomer[chooseDisplay].getRentDay()
+                + "\nType service: " + listCustomer[chooseDisplay].getTypeService());
+            displayMainMenu();
+        }else {
+            alert("Not have this number.");
+            displayMainMenu();
+        }
+    }
+    function displayTotalPays() {
+        let temp = "";
+        for (let i = 0; i < listCustomer.length; i++){
+            temp += (i+1) + ". Name: " + listCustomer[i].name + "\n";
+        }
+        temp += "Choose only one number";
+        let chooseDisplay = parseInt(prompt(temp));
+        chooseDisplay = chooseDisplay - 1;
+        if (chooseDisplay >= 0 && chooseDisplay < listCustomer.length) {
+            alert("Total pays of you: " + listCustomer[chooseDisplay].totalPays());
+            displayMainMenu();
+        }else {
+            alert("Not have this number.");
+            displayMainMenu();
+        }
+    }
+    function editCustomer() {
+        let cus = new Customer();
+        let temp = "";
+        for (let i = 0; i < listCustomer.length; i++){
+            temp += (i+1) + ". Name: " + listCustomer[i].name + "\n";
+        }
+        temp += "\nChoose only one number";
+        let chooseDisplay = parseInt(prompt(temp));
+        chooseDisplay = chooseDisplay - 1;
+        if (chooseDisplay >= 0 && chooseDisplay < listCustomer.length) {
+            let checkValid = false;
+            let name = prompt("Input new name: ", listCustomer[chooseDisplay].getName());
+            let cmnd;
+            do {
+                cmnd = prompt("Input new cmnd: ", listCustomer[chooseDisplay].getCmnd());
+                if (regexCmnd.test(cmnd)){
+                    checkValid = true;
+                }else {
+                    alert("CMND is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let birthday;
+            do {
+                birthday = prompt("Input new birthday: ", listCustomer[chooseDisplay].getBirthday());
+                if (regexBirthday.test(birthday)){
+                    checkValid = true;
+                }else {
+                    alert("Birthday is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let email;
+            do {
+                email = prompt("Input new email: ", listCustomer[chooseDisplay].getEmail());
+                if (regexEmail.test(email)){
+                    checkValid = true;
+                }else {
+                    alert("Email is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let address = prompt("Input new address: ", listCustomer[chooseDisplay].getAddress());
+            let typeCustomer = prompt("Input new type customer: ", listCustomer[chooseDisplay].getTypeCustomer());
+            let discount;
+            do {
+                discount = prompt("Input new discount: ", listCustomer[chooseDisplay].getDiscount());
+                if (regexNum.test(discount)){
+                    checkValid = true;
+                }else {
+                    alert("Discount is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let quantityIncluded;
+            do {
+                quantityIncluded = prompt("Input new quantity included: ", listCustomer[chooseDisplay].getQuantityIncluded());
+                if (regexNum.test(quantityIncluded)){
+                    checkValid = true;
+                }else {
+                    alert("Quantity Included is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let typeRoom = prompt("Input new type room: ", listCustomer[chooseDisplay].getTypeRoom());
+            let rentDay;
+            do {
+                rentDay = prompt("Input new rent day: ", listCustomer[chooseDisplay].getRentDay());
+                if (regexNum.test(rentDay)){
+                    checkValid = true;
+                }else {
+                    alert("Rent day is not Format.");
+                }
+            }while (!checkValid);
+            checkValid = false;
+            let typeService = prompt("Input new type service: ", listCustomer[chooseDisplay].getTypeService());
+            cus.setName(name);
+            cus.setCmnd(cmnd);
+            cus.setBirthday(birthday);
+            cus.setEmail(email);
+            cus.setAddress(address);
+            cus.setTypeCustomer(typeCustomer);
+            cus.setDiscount(discount);
+            cus.setQuantityIncluded(quantityIncluded);
+            cus.setTypeRoom(typeRoom);
+            cus.setRentDay(rentDay);
+            cus.setTypeService(typeService);
+            listCustomer[chooseDisplay] = cus;
+            displayMainMenu();
+        }else {
+            alert("Not have this number.");
+            displayMainMenu();
+        }
+    }
+    function deleteCustomer() {
+        let temp = "";
+        for (let i = 0; i < listCustomer.length; i++){
+            temp += (i+1) + ". Name: " + listCustomer[i].name + "\n";
+        }
+        temp += "\nChoose only one number";
+        let chooseDisplay = parseInt(prompt(temp));
+        chooseDisplay = chooseDisplay - 1;
+        if (chooseDisplay >= 0 && chooseDisplay < listCustomer.length) {
+            if (confirm("Are you sure to delete name:  " + listCustomer[chooseDisplay].getName() +"?")){
+                listCustomer.splice(chooseDisplay,1);
+                displayMainMenu();
+            }else {
+                deleteCustomer();
+            }
+        }else {
+            alert("Not have this number.");
+            displayMainMenu();
+        }
+    }
+    function addNewCustomer() {
+        let checkValid = false;
+        let cus = new Customer();
+        let name = prompt("Input name: ");
+        let cmnd;
+        do {
+            cmnd = prompt("Input cmnd: ");
+            if (regexCmnd.test(cmnd)){
+                checkValid = true;
+            }else {
+                alert("CMND is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+        let birthday;
+        do {
+            birthday = prompt("Input birthday: ");
+            if (regexBirthday.test(birthday)){
+                checkValid = true;
+            }else {
+                alert("Birthday is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+        let email;
+        do {
+            email = prompt("Input email: ");
+            if (regexEmail.test(email)){
+                checkValid = true;
+            }else {
+                alert("Email is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+
+        let address = prompt("Input address: ");
+        let typeCustomer = prompt("Input type Customer: ");
+        let discount;
+        do {
+            discount = prompt("Input discount: ");
+            if (regexNum.test(discount)){
+                checkValid = true;
+            }else {
+                alert("Discount is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+        let quantityIncluded;
+        do {
+            quantityIncluded = prompt("Input quantity included: ");
+            if (regexNum.test(quantityIncluded)){
+                checkValid = true;
+            }else {
+                alert("Quantity Included is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+
+        let typeRoom = prompt("Input type room: ");
+        let rentDay;
+        do {
+            rentDay = prompt("Input rent day: ");
+            if (regexNum.test(rentDay)){
+                checkValid = true;
+            }else {
+                alert("Rent day is not Format.");
+            }
+        }while (!checkValid);
+        checkValid = false;
+
+        let typeService = prompt("Input type service: ");
+        cus.name = name;
+        cus.cmnd = cmnd;
+        cus.birthday = birthday;
+        cus.email = email;
+        cus.address = address;
+        cus.typeCustomer = typeCustomer;
+        cus.discount = discount;
+        cus.quantityIncluded = quantityIncluded;
+        cus.typeRoom = typeRoom;
+        cus.rentDay = rentDay;
+        cus.typeService = typeService;
+        listCustomer.push(cus);
+        alert("Added Customer");
+        displayMainMenu();
+    }
+    displayMainMenu();
+
+</script>
+</body>
+</html>

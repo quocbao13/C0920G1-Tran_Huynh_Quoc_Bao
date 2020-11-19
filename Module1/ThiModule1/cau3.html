@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    while (true){
+        let a = parseInt(prompt("Nhập đồ dài mảng số nguyên bạn muốn (nhỏ hơn hoặc bằng 50)."));
+        if (a >= 0 && a <= 50){
+            let k = parseInt(prompt("Nhập số nguyên dương k:"));
+            let arr = [];
+            for (let  i = 0; i < a; i++){
+                arr[i] = i + 1;
+            }
+            let count = 0;
+            for (let  i = 0; i < arr.length; i++){
+                for (let j = i+1; j < arr.length; j++){
+                    if (arr[i] + arr[j] === k){
+                        document.write("(" + arr[i] + "," + arr[j] + "),");
+                        count++;
+                    }
+                }
+            }
+            alert("Số lượng cặp số có trong mảng thỏa mãn yêu cầu là: " + count);
+        }else {
+            alert("Bạn nhập bị sai");
+        }
+    }
+</script>
+</body>
+</html>

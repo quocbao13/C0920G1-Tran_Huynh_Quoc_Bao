@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        do {
+            let n = prompt("Nhập điểm ");
+        let a = n/5;
+        let b = (parseInt(a) + 1) *5;
+        if (n < 48 && n >= 0){
+            alert("Bạn đã trượt.");
+        }else if (n < 0 && n > 100){
+            alert("Bạn nhập sai điểm.");
+        }else if (n >= 48 && n <= 100){
+            if (b - n < 3 && b - n >=0){
+                n = b;
+                alert(b+ " điểm. Điểm của bạn được làm tròn. Bạn đã đậu.");
+            }else if (b - n >=3){
+                alert(n +" điểm. Bạn đã đậu");
+            }
+        }
+        }while (true);
+
+</script>
+</body>
+</html>

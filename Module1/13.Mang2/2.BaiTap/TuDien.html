@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<input type="text" id="dauVao"><input type="button" onclick="dich()" value="translate">
+<p id="dauRa"></p>
+    <script>
+        let arr1 = ["chó","mèo","cửa sổ","nhà","chuột"];
+        let arr2 = ["dog","cat","window","house","mouse"];
+        let dauVao = document.getElementById("dauVao");
+        let dauRa = document.getElementById("dauRa");
+
+        function dich() {
+            for (let i = 0; i < arr1.length; i++){
+                for (let j = 0; j < arr2.length; j++){
+                    if (arr1[i] === dauVao.value && i === j){
+                        dauRa.innerText = arr2[j];
+                        break;
+                    }else if (arr2[j] === dauVao.value && j === i){
+                        dauRa.innerText = arr1[i];
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính nâng cao</title>
+    <style>
+        td{
+            width: 70px;
+        }
+        input{
+            width: 100%;
+        }
+        .mau{
+            background: #5f6062;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<form  name=”calculator”>
+    <table align="center">
+        <tr>
+            <th colspan="7"><p id="showOld" style="text-align: right; font-size: 10px"></p></th>
+        </tr>
+        <tr>
+            <th colspan="7"><input id="show" value="0" name="show" type="text" style="text-align: right" disabled></th>
+        </tr>
+        <tr>
+            <td><input id="inv" type="button" value="Inv" onclick="display('Inv')"></td>
+            <td><input id="deg" type="button" value="Deg" onclick="display('Deg')"></td>
+            <td><input id="luyThua" type="button" value="x!" onclick="display('Deg')"></td>
+            <td><input id="moNgoac" type="button" value="(" onclick="display('(')"></td>
+            <td><input id="dongNgoac" type="button" value=")" onclick="display(')')"></td>
+            <td><input id="c" type="button" value="C"></td>
+            <td><input id="x" type="button" value="X" onclick="xoa1()"></td>
+        </tr>
+        <tr>
+            <td><input id="in" type="button" value="In" onclick="display('In')"></td>
+            <td><input id="sin" type="button" value="sin" onclick="display('sin')"></td>
+            <td><input id="phanTram" type="button" value="%" onclick="display('%')"></td>
+            <td><input id="seven" type="button" value="7" class="mau" onclick="display('7')"></td>
+            <td><input id="eight" type="button" value="8" class="mau" onclick="display('8')"></td>
+            <td><input id="night" type="button" value="9" class="mau" onclick="display('9')"></td>
+            <td><input id="chia" type="button" value="/" onclick="display('/')"></td>
+        </tr>
+        <tr>
+            <td><input id="log" type="button" value="log" onclick="display('log')"></td>
+            <td><input id="cos" type="button" value="cos" onclick="display('cos')"></td>
+            <td><input id="sqrt" type="button" value="sqrt" onclick="display('sqrt')"></td>
+            <td><input id="four" type="button" value="4" class="mau" onclick="display('4')"></td>
+            <td><input id="five" type="button" value="5" class="mau" onclick="display('5')"></td>
+            <td><input id="six" type="button" value="6" class="mau" onclick="display('6')"></td>
+            <td><input id="nhan" type="button" value="*" onclick="display('*')"></td>
+        </tr>
+        <tr>
+            <td><input id="mu" type="button" value="^" onclick="display('^')"></td>
+            <td><input id="tan" type="button" value="tan" onclick="display('tan')"></td>
+            <td><input id="timMau" type="button" value="1/x" onclick="display('1/x')"></td>
+            <td><input id="one" name="one" type="button" value="1" class="mau" onclick="display('1')"></td>
+            <td><input id="two" type="button" value="2" class="mau" onclick="display('2')"></td>
+            <td><input id="three" type="button" value="3" class="mau" onclick="display('3')"></td>
+            <td><input id="tru" type="button" value="-" onclick="display('-')"></td>
+        </tr>
+        <tr>
+            <td><input id="exp" type="button" value="Exp" onclick="display('Exp')"></td>
+            <td><input id="pi" type="button" value="PI" onclick="display('3.14')"></td>
+            <td><input id="e" type="button" value="e" onclick="display('e')"></td>
+            <td><input id="aut" type="button" value="0" class="mau" onclick="display('0')"></td>
+            <td><input id="cham" type="button" value="." onclick="display('.')"></td>
+            <td><input id="bang" type="button" value="="  onclick="display('=')" style="background: blue;color: white"></td>
+            <td><input id="cong" type="button" value="+" onclick="display('+')"></td>
+        </tr>
+    </table>
+</form>
+
+<script src="ungDungMTNangCao.js"></script>
+
+</body>
+</html>

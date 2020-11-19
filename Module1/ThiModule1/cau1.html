@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau1</title>
+</head>
+<body>
+<script>
+    let x = 0;
+    let arr = [];
+    while (x < 20) {
+        let a = prompt("Nhập dãy 20 số nguyên. \nNhập số nguyên thứ "+(x+1)+": ");
+        arr[x] = parseInt(a);
+        x++;
+    }
+
+    let sum = 0;
+    for (let i = 0; i <20; i++){
+        if (arr[i] % 3 === 0 && arr[i] % 5 === 0){
+            sum += arr[i];
+        }
+    }
+    document.write(sum);
+
+
+
+</script>
+</body>
+</html>

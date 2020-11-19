@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 9</title>
+</head>
+<body>
+<script>
+    let kt = prompt("Nhập vào 1 mảng kí tự:");
+    let arr = [];
+    for (let i = 0; i < kt.length; i++){
+        arr[i] = kt[i];
+    }
+    let kt2 = prompt("nhập vào 1 kí tự bất kì");
+    function kiemTra(arr, kt2) {
+        let count = 0;
+        for (let i = 0; i < arr.length; i++){
+            if (arr[i] === kt2){
+                count += 1;
+            }
+        }
+        if (count > 0){
+            return count;
+        }else {
+            return -1;
+        }
+    }
+    alert(kiemTra(arr, kt2));
+</script>
+</body>
+</html>

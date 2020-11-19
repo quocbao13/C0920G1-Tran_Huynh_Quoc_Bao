@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+<input type="text" oninput="timKiem(this.value)">
+<p id="outPut"></p>
+<script>
+    function timKiem(st) {
+        let arr = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+        let arr1 = ["Ursa Minor", "Tarsus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+        for (let i = 0; i < arr.length; i++){
+            if (arr[i] === st){
+                document.getElementById("outPut").innerHTML = arr1[i];
+                break;
+            }else {
+                document.getElementById("outPut").innerHTML = "Không tìm thấy ngôi sao nào";
+            }
+        }
+    }
+</script>
+</body>
+</html>

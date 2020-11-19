@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt("Nhập số bất kì. Nếu số nguyên dương thì trả về true. Ngược lại là false."));
+    function test(num) {
+        if (Number.isInteger(num)){
+            if (num >= 0){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return false;
+        }
+    }
+    alert(test(a));
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="displayS"></div>
+<div id="display"></div>
+<div id="displayCreate"></div>
+<script>
+    class KhachHang {
+        constructor(idKH, nameKH, phoneKH, addressKH, emailKH) {
+            this.idKH = idKH;
+            this.nameKH = nameKH;
+            this.phoneKH = phoneKH;
+            this.addressKH = addressKH;
+            this.emailKH = emailKH;
+        }
+        getIdKH(){
+            return this.idKH;
+        }
+        getNameKH(){
+            return this.nameKH;
+        }
+        getPhoneKH(){
+            return this.phoneKH;
+        }
+        getAddressKH(){
+            return this.addressKH;
+        }
+        getEmailKH(){
+            return this.emailKH;
+        }
+        setIdKH(idKH){
+            this.idKH =idKH;
+        }
+        setNameKH(nameKH){
+            this.nameKH =nameKH;
+        }
+        setPhoneKH(phoneKH){
+            this.phoneKH = phoneKH;
+        }
+        setAddressKH(addressKH){
+            this.addressKH = addressKH;
+        }
+        setEmailKH(emailKH){
+            this.emailKH = emailKH;
+        }
+    }
+
+    let arrKhachHang = [];
+    let khachHang = new KhachHang(1, "Hai", "01123123", "123 abc", "abc@abc.abc");
+    arrKhachHang.push(khachHang);
+    function displayKhachHang() {
+
+        let temp = "";
+        temp += "<input type='button' value='Create' onclick='displayCreateKhachHang()'>";
+        temp += "<table>";
+        temp += "<tr><th>Id</th><th>Name</th><th>Phone</th><th>Address</th><th>Email</th><th>Action</th></tr>";
+        for (let i = 0; i < arrKhachHang.length; i++){
+            temp += "<tr>" + "<td>" +arrKhachHang[i].getIdKH()+ "</td>"
+                + "<td>" +arrKhachHang[i].getNameKH()+ "</td>"
+                + "<td>" +arrKhachHang[i].getPhoneKH()+ "</td>"
+                + "<td>" +arrKhachHang[i].getAddressKH()+ "</td>"
+                + "<td>" +arrKhachHang[i].getEmailKH()+ "</td>"
+                + "<td>" +"<input type='button' value='edit' onclick='displayEditKhachHang("+i+")'>"+ "</td>"
+                + "<td>" +"<input type='button' value='delete' onclick='deleteKhachHang("+i+")'>"+ "</td>" + "</tr>";
+        }
+        temp +="</table>";
+        document.getElementById("display").innerHTML = temp;
+    }
+    function displayCreateKhachHang() {
+        let temp = "";
+        temp += "Id: <input type='text' id='id'><br>"
+            + "Name: <input type='text' id='name'><br>"
+            + "Phone: <input type='text' id='phone'><br>"
+            + "Address: <input type='text' id='address'><br>"
+            + "Email: <input type='text' id='email'><br>"
+            + "<input type='button' value='Create' onclick='createKhachHang()'>";
+        document.getElementById("displayCreate").innerHTML = temp;
+    }
+    function createKhachHang() {
+        let khachHang = new KhachHang();
+        khachHang.setIdKH(document.getElementById("id").value);
+        khachHang.setNameKH(document.getElementById("name").value);
+        khachHang.setPhoneKH(document.getElementById("phone").value);
+        khachHang.setAddressKH(document.getElementById("address").value);
+        khachHang.setEmailKH(document.getElementById("email").value);
+        arrKhachHang.push(khachHang);
+        displayKhachHang();
+        document.getElementById("displayCreate").innerHTML = "";
+    }
+    function displayEditKhachHang(index) {
+        let temp = "";
+        temp += "Id: <input type='text' id='id' value='"+arrKhachHang[index].getIdKH()+"' disabled><br>"
+            + "Name: <input type='text' id='name' value='"+arrKhachHang[index].getNameKH()+"'><br>"
+            + "Phone: <input type='text' id='phone' value='"+arrKhachHang[index].getPhoneKH()+"'><br>"
+            + "Address: <input type='text' id='address' value='"+arrKhachHang[index].getAddressKH()+"'><br>"
+            + "Email: <input type='text' id='email' value='"+arrKhachHang[index].getEmailKH()+"'><br>"
+            + "<input type='button' value='Edit' onclick='editKhachHang("+index+")'>";
+        document.getElementById("displayCreate").innerHTML = temp;
+    }
+    function editKhachHang(index) {
+        let khachHang = new KhachHang();
+        khachHang.setIdKH(document.getElementById("id").value);
+        khachHang.setNameKH(document.getElementById("name").value);
+        khachHang.setPhoneKH(document.getElementById("phone").value);
+        khachHang.setAddressKH(document.getElementById("address").value);
+        khachHang.setEmailKH(document.getElementById("email").value);
+        arrKhachHang[index] = khachHang;
+        displayKhachHang();
+        document.getElementById("displayCreate").innerHTML = "";
+    }
+    function deleteKhachHang(index) {
+        let khachHang = new KhachHang();
+        arrKhachHang.splice(index, 1);
+        displayKhachHang();
+    }
+    function displaySearch() {
+        let temp = "";
+        temp += "<input type='text' placeholder='Search' oninput='searchKH(this.value)'>";
+        document.getElementById("displayS").innerHTML = temp;
+    }
+    function searchKH(value) {
+        let temp = "";
+        temp += "<input type='button' value='Create' onclick='displayCreateKhachHang()'>";
+        temp += "<table>";
+        temp += "<tr><th>Id</th><th>Name</th><th>Phone</th><th>Address</th><th>Email</th><th>Action</th></tr>";
+        for (let i = 0; i < arrKhachHang.length; i++){
+            if (value == ""){
+                temp += "<tr>" + "<td>" +arrKhachHang[i].getIdKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getNameKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getPhoneKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getAddressKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getEmailKH()+ "</td>"
+                    + "<td>" +"<input type='button' value='edit' onclick='displayEditKhachHang("+i+")'>"+ "</td>"
+                    + "<td>" +"<input type='button' value='delete' onclick='deleteKhachHang("+i+")'>"+ "</td>" + "</tr>";
+            } else if (value == arrKhachHang[i].getNameKH()){
+                temp += "<tr>" + "<td>" +arrKhachHang[i].getIdKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getNameKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getPhoneKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getAddressKH()+ "</td>"
+                    + "<td>" +arrKhachHang[i].getEmailKH()+ "</td>"
+                    + "<td>" +"<input type='button' value='edit' onclick='displayEditKhachHang("+i+")'>"+ "</td>"
+                    + "<td>" +"<input type='button' value='delete' onclick='deleteKhachHang("+i+")'>"+ "</td>" + "</tr>";
+            }
+
+        }
+        temp +="</table>";
+        document.getElementById("display").innerHTML = temp;
+    }
+    displaySearch();
+    displayKhachHang();
+</script>
+</body>
+</html>

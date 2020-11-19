@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;"></canvas>
+<script>
+    class Rectangle{
+        constructor(length,width) {
+            this.length = length;
+            this.width = width;
+        }
+        dienTich(){
+            return this.length * this.width;
+        }
+        chuVi(){
+            return (this.width + this.length) * 2;
+        }
+        showCanvas(){
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0,0,this.width,this.length);
+        }
+    }
+    let rectangle = new Rectangle(100,200);
+    alert(rectangle.dienTich());
+    alert(rectangle.chuVi());
+    rectangle.showCanvas();
+</script>
+</body>
+</html>
