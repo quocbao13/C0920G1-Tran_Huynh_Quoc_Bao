@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWrite {
-    public static List<String[]> readFile(String filePath){
+    public List<String[]> readFile(String filePath){
         List<String[]> list = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(filePath);
@@ -22,7 +22,7 @@ public class ReadAndWrite {
         }
         return list;
     }
-    public static void writeFile(String filePath, String line){
+    public void writeFile(String filePath, String line){
         try {
             FileWriter fileWriter = new FileWriter(filePath, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

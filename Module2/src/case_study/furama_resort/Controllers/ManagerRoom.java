@@ -1,10 +1,14 @@
 package case_study.furama_resort.Controllers;
 
+import case_study.furama_resort.Commons.ReadAndWrite;
 import case_study.furama_resort.Commons.Validate;
+import case_study.furama_resort.Models.House;
 import case_study.furama_resort.Models.Room;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ManagerRoom {
@@ -14,7 +18,27 @@ public class ManagerRoom {
         return new Scanner(System.in);
     }
 
+    public List<Room> readRoomCSV() {
+        List<Room> roomList = new ArrayList<>();
+        List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/Room.csv");
+        for (String[] line : lineArr) {
+            Room room = new Room(line[0], line[1], line[2], line[3], line[4], line[5], line[6]);
+            roomList.add(room);
+        }
+        return roomList;
+    }
+
+    public void setCountId() {
+        List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/Room.csv");
+        for (String[] line : lineArr) {
+            if (countId < Integer.parseInt(line[0])) {
+                countId = Integer.parseInt(line[0]);
+            }
+        }
+    }
+
     public void addNewRoom() {
+        setCountId();
         countId++;
         Room room = new Room();
         room.setId(String.valueOf(countId));
@@ -52,22 +76,17 @@ public class ManagerRoom {
                 break;
             }
         }
-        try {
-            FileWriter file;
-            file = new FileWriter("src/case_study/furama_resort/Data/Room.csv", true);
-            file.write(room.getId() + "," + room.getName() + "," + room.getPlaceArea() + ","
-                    + room.getPrice() + "," + room.getMaxPeople() + "," + room.getRentDay() + "," + room.getFreeService() + "\n");
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String line = room.getId() + "," + room.getName() + "," + room.getPlaceArea() + ","
+                    + room.getPrice() + "," + room.getMaxPeople() + "," + room.getRentDay() + "," + room.getFreeService();
+        new ReadAndWrite().writeFile("src/case_study/furama_resort/Data/Room.csv", line);
     }
 
     public void displayRoom() {
-//        System.out.println("Room: ");
-//        for (Room v : roomList){
-//            v.showInfo();
-//        }
+        System.out.println("Room: ");
+        List<Room> roomList = readRoomCSV();
+        for (Room v : roomList){
+            v.showInfo();
+        }
     }
 
     public void displayRoomDuplicate() {

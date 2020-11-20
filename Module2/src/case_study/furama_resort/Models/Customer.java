@@ -10,7 +10,7 @@ public class Customer {
     private String emailCustomer;
     private String typeOfCustomer;
     private String addressCustomer;
-    private String services;
+    private Services services;
 
     public Customer() {
 
@@ -18,7 +18,7 @@ public class Customer {
 
     public Customer(String idCustomer, String nameCustomer, String birthDayCustomer, String genderCustomer
             , String idNumberCustomer, String phoneCustomer, String emailCustomer
-            , String typeOfCustomer, String addressCustomer, String services){
+            , String typeOfCustomer, String addressCustomer, Services services){
         this.idCustomer = idCustomer;
         this.nameCustomer = nameCustomer;
         this.birthDayCustomer = birthDayCustomer;
@@ -117,11 +117,11 @@ public class Customer {
         this.addressCustomer = addressCustomer;
     }
 
-    public String getServices() {
+    public Services getServices() {
         return services;
     }
 
-    public void setServices(String services) {
+    public void setServices(Services services) {
         this.services = services;
     }
 

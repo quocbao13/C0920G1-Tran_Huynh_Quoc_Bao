@@ -1,10 +1,14 @@
 package case_study.furama_resort.Controllers;
 
+import case_study.furama_resort.Commons.ReadAndWrite;
 import case_study.furama_resort.Commons.Validate;
 import case_study.furama_resort.Models.House;
+import case_study.furama_resort.Models.Villa;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ManagerHouse {
@@ -14,7 +18,27 @@ public class ManagerHouse {
         return new Scanner(System.in);
     }
 
+    public List<House> readHouseCSV() {
+        List<House> houseList = new ArrayList<>();
+        List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/House.csv");
+        for (String[] line : lineArr) {
+            House house = new House(line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8]);
+            houseList.add(house);
+        }
+        return houseList;
+    }
+
+    public void setCountId() {
+        List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/House.csv");
+        for (String[] line : lineArr) {
+            if (countId < Integer.parseInt(line[0])) {
+                countId = Integer.parseInt(line[0]);
+            }
+        }
+    }
+
     public void addNewHouse() {
+        setCountId();
         countId++;
         House house = new House();
         house.setId(String.valueOf(countId));
@@ -34,23 +58,18 @@ public class ManagerHouse {
         house.setDifferentUseful(getScanner().nextLine());
         System.out.println("Enter floor number house: ");
         house.setNumFloors(new Validate().regexFloor(getScanner().nextLine()));
-        try {
-            FileWriter file;
-            file = new FileWriter("src/case_study/furama_resort/Data/House.csv",true);
-            file.write(house.getId() + "," + house.getName() + "," + house.getPlaceArea() + ","
+        String line = house.getId() + "," + house.getName() + "," + house.getPlaceArea() + ","
                     + house.getPrice() + "," + house.getMaxPeople() + "," + house.getRentDay() + ","
-                    + house.getStandardRoom() + "," + house.getDifferentUseful() + "," + house.getNumFloors() + "\n");
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                    + house.getStandardRoom() + "," + house.getDifferentUseful() + "," + house.getNumFloors();
+        new ReadAndWrite().writeFile("src/case_study/furama_resort/Data/House.csv", line);
     }
 
     public void displayHouse() {
-//        System.out.println("House: ");
-//        for (House v : houseList){
-//            v.showInfo();
-//        }
+        System.out.println("House: ");
+        List<House> houseList = readHouseCSV();
+        for (House v : houseList){
+            v.showInfo();
+        }
     }
 
     public void displayHouseDuplicate() {
