@@ -1,5 +1,6 @@
 package case_study.furama_resort.Controllers;
 
+import case_study.furama_resort.Commons.Validate;
 import case_study.furama_resort.Models.Customer;
 import case_study.furama_resort.Models.House;
 import case_study.furama_resort.Models.Room;
@@ -28,8 +29,8 @@ public class MainController {
                     + "\n5. Add New Booking."
                     + "\n6. Show Information of Employee."
                     + "\n0. Exit."
-                    + "Enter number.");
-            String choseCase = getScanner().nextLine();
+                    + "\nEnter number:");
+            String choseCase = new Validate().regexFloor(getScanner().nextLine());
 
             switch (Integer.parseInt(choseCase)) {
                 case 1: {
@@ -53,6 +54,7 @@ public class MainController {
                     break;
                 }
                 case 6: {
+                    new ManagerEmployee().showEmployee();
                     break;
                 }
                 case 7: {

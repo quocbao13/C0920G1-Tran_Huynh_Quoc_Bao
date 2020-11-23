@@ -131,7 +131,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "-Name Customer: " + getNameCustomer() +
+        return "-Id: " + getIdCustomer() +
+                "\t-Name Customer: " + getNameCustomer() +
                 "\t-BirthDay Customer: " + getBirthDayCustomer() +
                 "\t-Gender Customer: " + getGenderCustomer() +
                 "\t-Id Number Customer: " + getIdNumberCustomer() +

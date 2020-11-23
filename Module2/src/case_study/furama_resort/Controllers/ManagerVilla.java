@@ -4,9 +4,7 @@ import case_study.furama_resort.Commons.ReadAndWrite;
 import case_study.furama_resort.Commons.Validate;
 import case_study.furama_resort.Models.Villa;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ManagerVilla {
     private static int countId;
@@ -28,8 +26,9 @@ public class ManagerVilla {
     public void setCountId() {
         List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/Villa.csv");
         for (String[] line : lineArr) {
-            if (countId < Integer.parseInt(line[0])) {
-                countId = Integer.parseInt(line[0]);
+            String[] eLine = line[0].split("-");
+            if (countId < Integer.parseInt(eLine[1])) {
+                countId = Integer.parseInt(eLine[1]);
             }
         }
     }
@@ -38,7 +37,11 @@ public class ManagerVilla {
         setCountId();
         countId++;
         Villa villa = new Villa();
-        villa.setId(String.valueOf(countId));
+        if (countId < 10) {
+            villa.setId("SVVL-000" + countId);
+        }else {
+            villa.setId("SVVL-00" + countId);
+        }
         System.out.println("Enter name villa: ");
         villa.setName(new Validate().regexName(getScanner().nextLine()));
         System.out.println("Enter place area villa: ");
@@ -50,9 +53,9 @@ public class ManagerVilla {
         System.out.println("Enter rent day villa: ");
         villa.setRentDay(new Validate().getScanner().nextLine());
         System.out.println("Enter standard room villa: ");
-        villa.setStandardRoom(new Validate().getScanner().nextLine());
-        System.out.println("Enter different useful villa: ");
-        villa.setDifferentUseful(new Validate().getScanner().nextLine());
+        villa.setStandardRoom(new Validate().regexName(getScanner().nextLine()));
+        System.out.println("1.Massage, 2.Karaoke, 3.Food, 4.Drink, 5.Car Rental. 6.No. Enter a useful villa: ");
+        villa.setDifferentUseful(new Validate().regexService(getScanner().nextLine()));
         System.out.println("Enter pool area villa: ");
         villa.setAreaPool(new Validate().regexArea(getScanner().nextLine()));
         System.out.println("Enter floor number villa: ");
@@ -73,17 +76,147 @@ public class ManagerVilla {
     }
 
     public void displayVillaDuplicate() {
-//        Set<String> villaSet = new HashSet<>();
-//        for (Villa v : villaList){
-//            villaSet.add(v.getName());
-//        }
-//        System.out.println("Villa not duplicate: ");
-//        for (String s : villaSet){
-//            System.out.println("- " + s);
-//        }
+        Set<String> villaSet = new TreeSet<>();
+        List<Villa> villaList = readVillaCSV();
+        for (Villa v : villaList){
+            villaSet.add(v.getName());
+        }
+        System.out.println("Villa not duplicate: ");
+        for (String s : villaSet){
+            System.out.println("- " + s);
+        }
     }
 
+    public void editVilla() {
+        List<Villa> villaList = readVillaCSV();
+        displayVilla();
+        System.out.println("Enter name villa to upload: ");
+        String nameVilla = getScanner().nextLine();
+        boolean isService = false;
+        for (Villa v: villaList) {
+            if (nameVilla.equals(v.getName())) {
+                choseUpload(v);
+                isService = true;
+                break;
+            }
+        }
+        if (!isService) {
+            System.out.println("This name isn't exist");
+        }
+        isYesNo(villaList);
+    }
 
+    private void choseUpload(Villa v) {
+        System.out.println("1. Name\n2. Place area\n3. Price\n4. Number people\n5. Rent Day\n6. Stand room"
+                + "\n7. Useful\n8. Pool area\n9. Floor number\nChose property, you want to upload: ");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                System.out.println("Enter new name villa: ");
+                v.setName(new Validate().regexName(getScanner().nextLine()));
+                break;
+            }
+            case 2: {
+                System.out.println("Enter new place area villa: ");
+                v.setPlaceArea(new Validate().regexArea(getScanner().nextLine()));
+                break;
+            }
+            case 3: {
+                System.out.println("Enter new price villa: ");
+                v.setPrice(new Validate().regexPrice(getScanner().nextLine()));
+                break;
+            }
+            case 4: {
+                System.out.println("Enter new number people villa: ");
+                v.setMaxPeople(new Validate().regexNumPeople(getScanner().nextLine()));
+                break;
+            }
+            case 5: {
+                System.out.println("Enter new rent day villa: ");
+                v.setRentDay(new Validate().getScanner().nextLine());
+                break;
+            }
+            case 6: {
+                System.out.println("Enter new standard room villa: ");
+                v.setStandardRoom(new Validate().regexName(getScanner().nextLine()));
+                break;
+            }
+            case 7: {
+                System.out.println("1.Massage, 2.Karaoke, 3.Food, 4.Drink, 5.Car Rental. 6.No. Enter a new useful villa: ");
+                v.setDifferentUseful(new Validate().regexService(getScanner().nextLine()));
+                break;
+            }
+            case 8:{
+                System.out.println("Enter new pool area villa: ");
+                v.setAreaPool(new Validate().regexArea(getScanner().nextLine()));
+                break;
+            }
+            case 9: {
+                System.out.println("Enter new floor number villa: ");
+                v.setNumFloors(new Validate().regexFloor(getScanner().nextLine()));
+                break;
+            }
+            default: {
+                System.out.println("Not exist. Chose again: ");
+                choseUpload(v);
+            }
+        }
+    }
 
+    private void isYesNo(List<Villa> villaList) {
+        System.out.println("1. Yes/Other. No\nDo you sure?");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                String line = "";
+                for (Villa villa: villaList) {
+                    line += villa.getId() + "," + villa.getName() + "," + villa.getPlaceArea() + ","
+                            + villa.getPrice() + "," + villa.getMaxPeople() + "," + villa.getRentDay() + ","
+                            + villa.getStandardRoom() + "," + villa.getDifferentUseful() + "," + villa.getAreaPool() + ","
+                            + villa.getNumFloors() + "\n";
+                }
+                new ReadAndWrite().writeFileInNewFile("src/case_study/furama_resort/Data/Villa.csv", line);
+                break;
+            }
+            default: {
+                new MainController().displayMainMenu();
+            }
+        }
+    }
 
+    public void deleteVilla() {
+        List<Villa> villaList = readVillaCSV();
+        displayVilla();
+        System.out.println("Enter name villa, you want to delete: ");
+        String nameVilla = getScanner().nextLine();
+        boolean isHas = false;
+        for (Villa v : villaList) {
+            if (nameVilla.equals(v.getName())) {
+                villaList.remove(v);
+                isHas = true;
+                break;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+        isYesNo(villaList);
+    }
+
+    public void searchVilla() {
+        List<Villa> villaList = readVillaCSV();
+        System.out.println("Enter name villa, you want to find: ");
+        String nameVilla = getScanner().nextLine();
+        boolean isHas = false;
+        for (Villa v : villaList) {
+            if (nameVilla.contains(v.getName())) {
+                v.showInfo();
+                isHas = true;
+                break;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+        System.out.println("Enter to next!");
+        getScanner().nextInt();
+    }
 }

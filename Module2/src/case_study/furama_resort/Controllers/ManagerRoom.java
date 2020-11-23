@@ -7,9 +7,7 @@ import case_study.furama_resort.Models.Room;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ManagerRoom {
     private static int countId;
@@ -31,8 +29,9 @@ public class ManagerRoom {
     public void setCountId() {
         List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/Room.csv");
         for (String[] line : lineArr) {
-            if (countId < Integer.parseInt(line[0])) {
-                countId = Integer.parseInt(line[0]);
+            String[] eLine = line[0].split("-");
+            if (countId < Integer.parseInt(eLine[1])) {
+                countId = Integer.parseInt(eLine[1]);
             }
         }
     }
@@ -41,7 +40,11 @@ public class ManagerRoom {
         setCountId();
         countId++;
         Room room = new Room();
-        room.setId(String.valueOf(countId));
+        if (countId < 10) {
+            room.setId("SVRO-000" + countId);
+        }else {
+            room.setId("SVRO-00" + countId);
+        }
         System.out.println("Enter name room: ");
         room.setName(new Validate().regexName(getScanner().nextLine()));
         System.out.println("Enter place area room: ");
@@ -72,7 +75,7 @@ public class ManagerRoom {
                 break;
             }
             case 5: {
-                room.setFreeService(new Validate().regexName("Car"));
+                room.setFreeService(new Validate().regexName("Car Rental"));
                 break;
             }
         }
@@ -90,13 +93,14 @@ public class ManagerRoom {
     }
 
     public void displayRoomDuplicate() {
-//        Set<String> RoomSet = new HashSet<>();
-//        for (Villa v : villaList){
-//            RoomSet.add(v.getName());
-//        }
-//        System.out.println("Villa not duplicate: ");
-//        for (String s : RoomSet){
-//            System.out.println("- " + s);
-//        }
+        Set<String> RoomSet = new TreeSet<>();
+        List<Room> roomList = readRoomCSV();
+        for (Room v : roomList){
+            RoomSet.add(v.getName());
+        }
+        System.out.println("Villa not duplicate: ");
+        for (String s : RoomSet){
+            System.out.println("- " + s);
+        }
     }
 }

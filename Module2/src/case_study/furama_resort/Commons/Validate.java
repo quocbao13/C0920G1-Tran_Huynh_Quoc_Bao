@@ -1,5 +1,10 @@
 package case_study.furama_resort.Commons;
 
+import case_study.furama_resort.Libs.NameException;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -10,6 +15,7 @@ public class Validate {
     public static final String REGEX_NUM_PEOPLE = "[\\d]{1,19}";
     public static final String REGEX_FLOOR = "[\\d]+";
     public static final String REGEX_NUM_SERVICE = "[1-5]";
+    public static final String REGEX_SERVICE = "(Massage)|(Karaoke)|(Food)|(Drink)|(Car Rental)|(No)";
 
     public Scanner getScanner() {
         return new Scanner(System.in);
@@ -17,12 +23,17 @@ public class Validate {
 
     public String regexName(String name) {
         while (true) {
-            if (Pattern.matches(REGEX_NAME, name)) {
-                return name;
-            } else {
-                System.out.println("Fail. Enter again: ");
+            try {
+                if (Pattern.matches(REGEX_NAME, name)) {
+                    return name;
+                } else {
+                    throw new NameException("Fail. Enter again: ");
+                }
+            }catch (NameException n){
+                System.err.println(n);
                 name = getScanner().nextLine();
             }
+
         }
     }
 
@@ -80,4 +91,21 @@ public class Validate {
             }
         }
     }
+
+    public String regexService(String name) {
+        while (true) {
+            try {
+                if (Pattern.matches(REGEX_SERVICE, name)) {
+                    return name;
+                } else {
+                    throw new NameException("Fail. Enter again: ");
+                }
+            }catch (NameException n){
+                System.err.println(n);
+                name = getScanner().nextLine();
+            }
+
+        }
+    }
+
 }

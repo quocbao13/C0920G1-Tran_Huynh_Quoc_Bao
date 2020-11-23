@@ -33,4 +33,15 @@ public class ReadAndWrite {
             e.printStackTrace();
         }
     }
+
+    public void writeFileInNewFile(String filePath, String line){
+        try {
+            FileWriter fileWriter = new FileWriter(filePath, false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(line);
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

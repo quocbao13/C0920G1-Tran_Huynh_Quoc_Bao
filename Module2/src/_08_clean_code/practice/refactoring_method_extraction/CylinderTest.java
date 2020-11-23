@@ -1,6 +1,6 @@
 package _08_clean_code.practice.refactoring_method_extraction;
+import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

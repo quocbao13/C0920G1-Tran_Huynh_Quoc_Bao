@@ -7,9 +7,7 @@ import case_study.furama_resort.Models.Villa;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ManagerHouse {
     private static int countId;
@@ -31,8 +29,9 @@ public class ManagerHouse {
     public void setCountId() {
         List<String[]> lineArr= new ReadAndWrite().readFile("src/case_study/furama_resort/Data/House.csv");
         for (String[] line : lineArr) {
-            if (countId < Integer.parseInt(line[0])) {
-                countId = Integer.parseInt(line[0]);
+            String[] eLine = line[0].split("-");
+            if (countId < Integer.parseInt(eLine[1])) {
+                countId = Integer.parseInt(eLine[1]);
             }
         }
     }
@@ -41,7 +40,11 @@ public class ManagerHouse {
         setCountId();
         countId++;
         House house = new House();
-        house.setId(String.valueOf(countId));
+        if (countId < 10) {
+            house.setId("SVHO-000" + countId);
+        }else {
+            house.setId("SVHO-00" + countId);
+        }
         System.out.println("Enter name house: ");
         house.setName(new Validate().regexName(getScanner().nextLine()));
         System.out.println("Enter place area house: ");
@@ -54,8 +57,8 @@ public class ManagerHouse {
         house.setRentDay(getScanner().nextLine());
         System.out.println("Enter standard room house: ");
         house.setStandardRoom(getScanner().nextLine());
-        System.out.println("Enter different useful house: ");
-        house.setDifferentUseful(getScanner().nextLine());
+        System.out.println("1.Massage, 2.Karaoke, 3.Food, 4.Drink, 5.Car Rental. 6.No. Enter useful house: ");
+        house.setDifferentUseful(new Validate().regexService(getScanner().nextLine()));
         System.out.println("Enter floor number house: ");
         house.setNumFloors(new Validate().regexFloor(getScanner().nextLine()));
         String line = house.getId() + "," + house.getName() + "," + house.getPlaceArea() + ","
@@ -73,13 +76,14 @@ public class ManagerHouse {
     }
 
     public void displayHouseDuplicate() {
-//        Set<String> HouseSet = new HashSet<>();
-//        for (Villa v : villaList){
-//            HouseSet.add(v.getName());
-//        }
-//        System.out.println("Villa not duplicate: ");
-//        for (String s : HouseSet){
-//            System.out.println("- " + s);
-//        }
+        Set<String> HouseSet = new TreeSet<>();
+        List<House> houseList = readHouseCSV();
+        for (House v : houseList){
+            HouseSet.add(v.getName());
+        }
+        System.out.println("Villa not duplicate: ");
+        for (String s : HouseSet){
+            System.out.println("- " + s);
+        }
     }
 }

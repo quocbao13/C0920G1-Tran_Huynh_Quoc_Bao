@@ -2,10 +2,9 @@ package case_study.furama_resort.Controllers;
 
 import case_study.furama_resort.Commons.ReadAndWrite;
 import case_study.furama_resort.Commons.Validate;
+import case_study.furama_resort.Commons.ValidateCustomer;
+import case_study.furama_resort.Libs.Sort.NameComparator;
 import case_study.furama_resort.Models.Customer;
-import case_study.furama_resort.Models.House;
-import case_study.furama_resort.Models.Room;
-import case_study.furama_resort.Models.Villa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class ManagerCustomer {
         System.out.println("Enter name customer: ");
         customer.setNameCustomer(new Validate().regexName(getScanner().nextLine()));
         System.out.println("Enter birthday customer: ");
-        customer.setBirthDayCustomer(getScanner().nextLine());
+        customer.setBirthDayCustomer(new ValidateCustomer().regexDate(getScanner().nextLine()));
         System.out.println("Enter gender customer: ");
         customer.setGenderCustomer(getScanner().nextLine());
         System.out.println("Enter id number customer: ");
@@ -53,7 +52,7 @@ public class ManagerCustomer {
         System.out.println("Enter phone customer: ");
         customer.setPhoneCustomer(getScanner().nextLine());
         System.out.println("Enter email customer: ");
-        customer.setEmailCustomer(getScanner().nextLine());
+        customer.setEmailCustomer(new ValidateCustomer().regexEmail(getScanner().nextLine()));
         System.out.println("Enter type customer: ");
         customer.setTypeOfCustomer(getScanner().nextLine());
         System.out.println("Enter address customer: ");
@@ -66,7 +65,11 @@ public class ManagerCustomer {
 
     public void showCustomer() {
         List<Customer> customerList = readCustomerCSV();
+        customerList.sort(new NameComparator());
+        int count = 0;
         for (Customer c: customerList) {
+            count++;
+            System.out.print(count + ": ");
             c.showInfo();
         }
     }

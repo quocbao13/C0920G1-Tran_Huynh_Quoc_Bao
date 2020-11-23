@@ -11,7 +11,7 @@ public class ManagerService {
                     + "\n3. Add New Room."
                     + "\n4. Back to menu."
                     + "\n5. Exit."
-                    + "Enter number.");
+                    + "\nEnter number:");
 
             String choseNum = getScanner().nextLine();
 
@@ -54,7 +54,8 @@ public class ManagerService {
                     + "\n5. Show All Name House Not Duplicate."
                     + "\n6. Show All Name Room Not Duplicate."
                     + "\n7. Back to menu."
-                    + "\n8. Exit.");
+                    + "\n8. Exit."
+                    + "\nEnter number:");
             String numChose = getScanner().nextLine();
             switch (Integer.parseInt(numChose)){
                 case 1: {
@@ -90,6 +91,43 @@ public class ManagerService {
                     break;
                 }
 
+            }
+        }
+    }
+
+    public void searchService() {
+        boolean isStop = true;
+        while (isStop) {
+            System.out.println("1. Search Villa."
+                    + "\n2. Search House."
+                    + "\n3. Search Room."
+                    + "\n4. Back to menu."
+                    + "\n5. Exit."
+                    + "\nEnter number:");
+
+            String choseNum = getScanner().nextLine();
+
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    new ManagerVilla().searchVilla();
+                    break;
+                }
+                case 2: {
+                    new ManagerHouse().addNewHouse();
+                    break;
+                }
+                case 3: {
+                    new ManagerRoom().addNewRoom();
+                    break;
+                }
+                case 4: {
+                    new MainController().displayMainMenu();
+                    break;
+                }
+                case 5: {
+                    isStop = false;
+                    break;
+                }
             }
         }
     }
