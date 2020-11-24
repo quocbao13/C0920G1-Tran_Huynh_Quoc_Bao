@@ -2,6 +2,7 @@ package luyen_tap.Controller;
 
 import case_study.furama_resort.Controllers.MainController;
 import case_study.furama_resort.Models.Villa;
+import luyen_tap.Commons.NotFoundProductException;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
 import luyen_tap.Models.Product;
@@ -83,22 +84,27 @@ public class ManagerProductImport {
         System.out.println("Enter name product, you want to delete: ");
         String nameProduct = getScanner().nextLine();
         boolean isHas = false;
-        for (ProductImport p : productImportList) {
-            if (nameProduct.equals(p.getNameProduct())) {
-                productImportList.remove(p);
-                isHas = true;
-                isYesNo(productImportList);
-                break;
+        try {
+            for (ProductImport p : productImportList) {
+                if (nameProduct.equals(p.getNameProduct())) {
+                    productImportList.remove(p);
+                    isHas = true;
+                    isYesNo(productImportList);
+                    break;
+                }
             }
-        }
-        if (!isHas) {
-            System.out.println("This name isn't exist!!");
+            if (!isHas) {
+                throw new NotFoundProductException("This name isn't exist!!");
+            }
+        } catch (NotFoundProductException e) {
+            e.printStackTrace();
+            ManagerController.displayMainMenu();
         }
     }
 
     private static void isYesNo(List<ProductImport> productImportList) {
         System.out.println("1. Yes/Other. No\nDo you sure?");
-        List<ProductExport> productExportList = new ManagerProductExport().readProductExportCSV();
+        List<ProductExport> productExportList = ManagerProductExport.readProductExportCSV();
         switch (Integer.parseInt(getScanner().nextLine())) {
             case 1: {
                 String line = "";

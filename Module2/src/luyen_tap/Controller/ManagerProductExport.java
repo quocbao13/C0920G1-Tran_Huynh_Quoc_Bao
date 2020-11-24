@@ -1,6 +1,7 @@
 package luyen_tap.Controller;
 
 import case_study.furama_resort.Controllers.MainController;
+import luyen_tap.Commons.NotFoundProductException;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
 import luyen_tap.Models.ProductExport;
@@ -79,17 +80,22 @@ public class ManagerProductExport {
         System.out.println("Enter name product, you want to delete: ");
         String nameProduct = getScanner().nextLine();
         boolean isHas = false;
-        for (ProductExport p : productExportList) {
-            if (nameProduct.equals(p.getNameProduct())) {
-                productExportList.remove(p);
-                isHas = true;
-                isYesNo(productExportList);
-                break;
+        try {
+            for (ProductExport p : productExportList) {
+                if (nameProduct.equals(p.getNameProduct())) {
+                    productExportList.remove(p);
+                    isHas = true;
+                    isYesNo(productExportList);
+                    break;
+                }
             }
+            if (!isHas) {
+                throw new NotFoundProductException("This name isn't exist!!");
+            }
+        } catch (NotFoundProductException e) {
+            e.printStackTrace();
         }
-        if (!isHas) {
-            System.out.println("This name isn't exist!!");
-        }
+
     }
 
     private static void isYesNo(List<ProductExport> productExportList) {
