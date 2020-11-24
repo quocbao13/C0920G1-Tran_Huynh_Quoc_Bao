@@ -32,7 +32,14 @@ public class ProductExport extends Product{
     }
 
     @Override
-    public void showInfo() {
+    public String toString() {
+        return super.toString() +
+                "\t-priceExport: " + priceExport +
+                "\t-addressExport: " + addressExport;
+    }
 
+    @Override
+    public void showInfo() {
+        System.out.println(this.toString());
     }
 }

@@ -186,6 +186,7 @@ public class ManagerHouse {
         for (House h : houseList) {
             if (nameHouse.equals(h.getName())) {
                 houseList.remove(h);
+                isYesNo(houseList);
                 isHas = true;
                 break;
             }
@@ -193,7 +194,6 @@ public class ManagerHouse {
         if (!isHas) {
             System.out.println("This name isn't exist!!");
         }
-        isYesNo(houseList);
     }
 
     public void searchHouse() {

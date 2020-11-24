@@ -188,13 +188,13 @@ public class ManagerVilla {
             if (nameVilla.equals(v.getName())) {
                 villaList.remove(v);
                 isHas = true;
+                isYesNo(villaList);
                 break;
             }
         }
         if (!isHas) {
             System.out.println("This name isn't exist!!");
         }
-        isYesNo(villaList);
     }
 
     public void searchVilla() {

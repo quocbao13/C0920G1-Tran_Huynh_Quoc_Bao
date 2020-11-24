@@ -36,6 +36,18 @@ public class ManagerProduct {
         do {
             System.out.println("1. Add new product import.\n2. Add new product export.\n3. Back to menu.\n0. Exit");
             choseNum = new Validate().regexRequire(getScanner().nextLine());
+            boolean isNumber= true;
+            for (int i = 0; i < choseNum.length(); i++) {
+                if (Character.isLetter(choseNum.charAt(i))) {
+                    System.out.println("Not a Number");
+                    isNumber = false;
+                    break;
+                }
+            }
+            if (!isNumber){
+                System.out.println("You enter fail. Enter to enter a different number.");
+                continue;
+            }
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
                     new ManagerProductImport().addNewProduct();
@@ -43,6 +55,40 @@ public class ManagerProduct {
                 }
                 case 2: {
                     new ManagerProductExport().addNewProduct();
+                    break;
+                }
+                case 3: {
+                    new ManagerController().displayMainMenu();
+                    break;
+                }
+            }
+        }while (Integer.parseInt(choseNum) != 0);
+    }
+
+    public void deleteProduct() {
+        String choseNum;
+        do {
+            System.out.println("1. Delete product import.\n2. Delete product export.\n3. Back to menu.\n0. Exit");
+            choseNum = new Validate().regexRequire(getScanner().nextLine());
+            boolean isNumber= true;
+            for (int i = 0; i < choseNum.length(); i++) {
+                if (Character.isLetter(choseNum.charAt(i))) {
+                    System.out.println("Not a Number");
+                    isNumber = false;
+                    break;
+                }
+            }
+            if (!isNumber){
+                System.out.println("You enter fail. Enter to enter a different number.");
+                continue;
+            }
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    new ManagerProductImport().deleteProductImport();
+                    break;
+                }
+                case 2: {
+                    new ManagerProductExport().deleteProductExport();
                     break;
                 }
                 case 3: {

@@ -189,6 +189,7 @@ public class ManagerRoom {
         for (Room r : roomList) {
             if (nameRoom.equals(r.getName())) {
                 roomList.remove(r);
+                isYesNo(roomList);
                 isHas = true;
                 break;
             }
@@ -196,7 +197,6 @@ public class ManagerRoom {
         if (!isHas) {
             System.out.println("This name isn't exist!!");
         }
-        isYesNo(roomList);
     }
 
     public void searchRoom() {

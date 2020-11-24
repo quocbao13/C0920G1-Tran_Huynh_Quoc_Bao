@@ -69,5 +69,15 @@ public abstract class Product {
         this.brand = brand;
     }
 
+    @Override
+    public String toString() {
+        return  "-id: " + id +
+                "\t-idProduct: " + idProduct +
+                "\t-nameProduct: " + nameProduct +
+                "\t-price: " + price +
+                "\t-number: " + number +
+                "\t-brand: " + brand;
+    }
+
     public abstract void showInfo();
 }

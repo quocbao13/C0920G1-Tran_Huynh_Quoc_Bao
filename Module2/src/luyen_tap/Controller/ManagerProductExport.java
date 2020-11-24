@@ -1,5 +1,6 @@
 package luyen_tap.Controller;
 
+import case_study.furama_resort.Controllers.MainController;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
 import luyen_tap.Models.ProductExport;
@@ -59,5 +60,56 @@ public class ManagerProductExport {
                 + "," + productExport.getPrice() + "," + productExport.getNumber() + "," + productExport.getBrand()
                 + "," + productExport.getPriceExport() + "," + productExport.getAddressExport();
         new ReadAndWrite().writeFile("src/luyen_tap/Datas/Products.csv", line);
+    }
+
+    public void displayProductExport() {
+        List<ProductExport> productExportList = readProductExportCSV();
+        for (ProductExport p: productExportList) {
+            p.showInfo();
+        }
+    }
+
+    public void deleteProductExport() {
+        List<ProductExport> productExportList = readProductExportCSV();
+        displayProductExport();
+        System.out.println("Enter name product, you want to delete: ");
+        String nameProduct = getScanner().nextLine();
+        boolean isHas = false;
+        for (ProductExport p : productExportList) {
+            if (nameProduct.equals(p.getNameProduct())) {
+                productExportList.remove(p);
+                isHas = true;
+                isYesNo(productExportList);
+                break;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+    }
+
+    private void isYesNo(List<ProductExport> productExportList) {
+        System.out.println("1. Yes/Other. No\nDo you sure?");
+        List<ProductImport> productImportList = new ManagerProductImport().readProductImportCSV();
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                String line = "";
+                for (ProductImport productImport: productImportList) {
+                    line += productImport.getId() + "," + productImport.getIdProduct() + "," + productImport.getNameProduct()
+                            + "," + productImport.getPrice() + "," + productImport.getNumber() + "," + productImport.getBrand()
+                            + "," + productImport.getPriceImport() + "," + productImport.getAddressImport() + "," + productImport.getTaxImport() + "\n";
+                }
+                for (ProductExport productExport: productExportList) {
+                    line += productExport.getId() + "," + productExport.getIdProduct() + "," + productExport.getNameProduct()
+                            + "," + productExport.getPrice() + "," + productExport.getNumber() + "," + productExport.getBrand()
+                            + "," + productExport.getPriceExport() + "," + productExport.getAddressExport() + "\n";
+                }
+                new ReadAndWrite().writeFileInNewFile("src/luyen_tap/Datas/Products.csv", line);
+                break;
+            }
+            default: {
+                new MainController().displayMainMenu();
+            }
+        }
     }
 }

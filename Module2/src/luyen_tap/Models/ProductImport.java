@@ -44,7 +44,15 @@ public class ProductImport extends Product{
     }
 
     @Override
-    public void showInfo() {
+    public String toString() {
+        return super.toString() +
+                "\t-priceImport: " + priceImport +
+                "\t-addressImport: " + addressImport +
+                "\t-taxImport: " + taxImport ;
+    }
 
+    @Override
+    public void showInfo() {
+        System.out.println(this.toString());
     }
 }
