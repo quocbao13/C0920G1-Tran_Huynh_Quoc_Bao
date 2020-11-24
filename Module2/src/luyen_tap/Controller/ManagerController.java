@@ -31,6 +31,9 @@ public class ManagerController {
                 case 4: {
                     ManagerProduct.searchProduct();
                 }
+                default: {
+                    System.out.println("----This number isn't exist!----");
+                }
             }
         }while (choseNum != "0");
     }

@@ -50,6 +50,9 @@ public class ManagerProduct {
                     ManagerController.displayMainMenu();
                     break;
                 }
+                default: {
+                    System.out.println("----This number isn't exist!----");
+                }
             }
         }while (choseNum != "0");
     }
