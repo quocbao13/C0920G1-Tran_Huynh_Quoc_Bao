@@ -7,11 +7,11 @@ public class Validate {
     public static final String REGEX_REQUIRE = "[\\w ]+";
     public static final String REGEX_NUM = "[\\d]+";
 
-    public Scanner getScanner() {
+    public static Scanner getScanner() {
         return new Scanner(System.in);
     }
 
-    public String regexRequire(String str) {
+    public static String regexRequire(String str) {
         while (true){
             if (Pattern.matches(REGEX_REQUIRE, str)) {
                 return str;
@@ -22,7 +22,7 @@ public class Validate {
         }
     }
 
-    public String regexNum(String str) {
+    public static String regexNum(String str) {
         while (true){
             if (Pattern.matches(REGEX_NUM, str)) {
                 return str;

@@ -13,13 +13,13 @@ import java.util.Scanner;
 
 public class ManagerProduct {
 
-    public Scanner getScanner() {
+    public static Scanner getScanner() {
         return new Scanner(System.in);
     }
 
-    public List<Product> readProductCSV() {
+    public static List<Product> readProductCSV() {
         List<Product> productList = new ArrayList<>();
-        List<String[]> lineArr= new ReadAndWrite().readFile("src/luyen_tap/Datas/Products.csv");
+        List<String[]> lineArr= ReadAndWrite.readFile("src/luyen_tap/Datas/Products.csv");
         for (String[] line : lineArr) {
             if (line.length == 9) {
                 Product product = new ProductImport(line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8]);
@@ -32,11 +32,11 @@ public class ManagerProduct {
         return productList;
     }
 
-    public void addNewProduct() {
+    public static void addNewProduct() {
         String choseNum;
         do {
             System.out.println("1. Add new product import.\n2. Add new product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = new Validate().regexRequire(getScanner().nextLine());
+            choseNum = Validate.regexRequire(getScanner().nextLine());
             boolean isNumber= true;
             for (int i = 0; i < choseNum.length(); i++) {
                 if (Character.isLetter(choseNum.charAt(i))) {
@@ -51,11 +51,11 @@ public class ManagerProduct {
             }
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
-                    new ManagerProductImport().addNewProduct();
+                    ManagerProductImport.addNewProduct();
                     break;
                 }
                 case 2: {
-                    new ManagerProductExport().addNewProduct();
+                    ManagerProductExport.addNewProduct();
                     break;
                 }
                 case 3: {
@@ -66,11 +66,11 @@ public class ManagerProduct {
         }while (choseNum != "0");
     }
 
-    public void showProduct() {
+    public static void showProduct() {
         String choseNum;
         do {
             System.out.println("1. Show product import.\n2. Show product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = new Validate().regexRequire(getScanner().nextLine());
+            choseNum = Validate.regexRequire(getScanner().nextLine());
             boolean isNumber= true;
             for (int i = 0; i < choseNum.length(); i++) {
                 if (Character.isLetter(choseNum.charAt(i))) {
@@ -85,11 +85,11 @@ public class ManagerProduct {
             }
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
-                    new ManagerProductImport().displayProductImport();
+                    ManagerProductImport.displayProductImport();
                     break;
                 }
                 case 2: {
-                    new ManagerProductExport().displayProductExport();
+                    ManagerProductExport.displayProductExport();
                     break;
                 }
                 case 3: {
@@ -100,11 +100,11 @@ public class ManagerProduct {
         }while (choseNum != "0");
     }
 
-    public void deleteProduct() {
+    public static void deleteProduct() {
         String choseNum;
         do {
             System.out.println("1. Delete product import.\n2. Delete product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = new Validate().regexRequire(getScanner().nextLine());
+            choseNum = Validate.regexRequire(getScanner().nextLine());
             boolean isNumber= true;
             for (int i = 0; i < choseNum.length(); i++) {
                 if (Character.isLetter(choseNum.charAt(i))) {
@@ -119,11 +119,11 @@ public class ManagerProduct {
             }
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
-                    new ManagerProductImport().deleteProductImport();
+                    ManagerProductImport.deleteProductImport();
                     break;
                 }
                 case 2: {
-                    new ManagerProductExport().deleteProductExport();
+                    ManagerProductExport.deleteProductExport();
                     break;
                 }
                 case 3: {
@@ -134,10 +134,10 @@ public class ManagerProduct {
         }while (Integer.parseInt(choseNum) != 0);
     }
 
-    public void searchProduct() {
+    public static void searchProduct() {
         List<Product> productList = readProductCSV();
         System.out.println("Enter name product, you want to find: ");
-        String nameProduct = new Validate().regexRequire(getScanner().nextLine());
+        String nameProduct = Validate.regexRequire(getScanner().nextLine());
         boolean isHas = false;
         for (Product p : productList) {
             if (p.getNameProduct().toLowerCase().contains(nameProduct.toLowerCase())) {
