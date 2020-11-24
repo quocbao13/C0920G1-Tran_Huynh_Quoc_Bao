@@ -103,4 +103,115 @@ public class ManagerRoom {
             System.out.println("- " + s);
         }
     }
+
+    public void editRoom() {
+        List<Room> roomList = readRoomCSV();
+        displayRoom();
+        System.out.println("Enter name room to upload: ");
+        String nameRoom = getScanner().nextLine();
+        boolean isService = false;
+        for (Room r: roomList) {
+            if (nameRoom.equals(r.getName())) {
+                choseUpload(r);
+                isService = true;
+                break;
+            }
+        }
+        if (!isService) {
+            System.out.println("This name isn't exist");
+        }
+        isYesNo(roomList);
+    }
+
+    private void choseUpload(Room r) {
+        System.out.println("1. Name\n2. Place area\n3. Price\n4. Number people\n5. Rent Day\n6. \nChose property, you want to upload: ");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                System.out.println("Enter new name room: ");
+                r.setName(new Validate().regexName(getScanner().nextLine()));
+                break;
+            }
+            case 2: {
+                System.out.println("Enter new place area room: ");
+                r.setPlaceArea(new Validate().regexArea(getScanner().nextLine()));
+                break;
+            }
+            case 3: {
+                System.out.println("Enter new price room: ");
+                r.setPrice(new Validate().regexPrice(getScanner().nextLine()));
+                break;
+            }
+            case 4: {
+                System.out.println("Enter new number people v: ");
+                r.setMaxPeople(new Validate().regexNumPeople(getScanner().nextLine()));
+                break;
+            }
+            case 5: {
+                System.out.println("Enter new rent day room: ");
+                r.setRentDay(new Validate().getScanner().nextLine());
+                break;
+            }
+            case 6: {
+                System.out.println("1.Massage, 2.Karaoke, 3.Food, 4.Drink, 5.Car Rental. 6.No. Enter a new useful Room: ");
+                r.setFreeService(new Validate().regexService(getScanner().nextLine()));
+            }
+            default: {
+                System.out.println("Not exist. Chose again: ");
+                choseUpload(r);
+            }
+        }
+    }
+
+    private void isYesNo(List<Room> roomList) {
+        System.out.println("1. Yes/Other. No\nDo you sure?");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                String line = "";
+                for (Room room: roomList) {
+                    line += room.getId() + "," + room.getName() + "," + room.getPlaceArea() + ","
+                            + room.getPrice() + "," + room.getMaxPeople() + "," + room.getRentDay() + "," + "\n";
+                }
+                new ReadAndWrite().writeFileInNewFile("src/case_study/furama_resort/Data/Room.csv", line);
+                break;
+            }
+            default: {
+                new MainController().displayMainMenu();
+            }
+        }
+    }
+
+    public void deleteHouse() {
+        List<Room> roomList = readRoomCSV();
+        displayRoom();
+        System.out.println("Enter name room, you want to delete: ");
+        String nameRoom = getScanner().nextLine();
+        boolean isHas = false;
+        for (Room r : roomList) {
+            if (nameRoom.equals(r.getName())) {
+                roomList.remove(r);
+                isHas = true;
+                break;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+        isYesNo(roomList);
+    }
+
+    public void searchRoom() {
+        List<Room> roomList = readRoomCSV();
+        System.out.println("Enter name Room, you want to find: ");
+        String nameRoom = getScanner().nextLine();
+        boolean isHas = false;
+        for (Room r : roomList) {
+            if (r.getName().toLowerCase().contains(nameRoom)) {
+                r.showInfo();
+                isHas = true;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+    }
 }

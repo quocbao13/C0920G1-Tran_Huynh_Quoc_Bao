@@ -10,7 +10,7 @@ public class ManagerService {
                     + "\n2. Add New House."
                     + "\n3. Add New Room."
                     + "\n4. Back to menu."
-                    + "\n5. Exit."
+                    + "\n0. Exit."
                     + "\nEnter number:");
 
             String choseNum = getScanner().nextLine();
@@ -32,7 +32,7 @@ public class ManagerService {
                     new MainController().displayMainMenu();
                     break;
                 }
-                case 5: {
+                case 0: {
                     isStop = false;
                     break;
                 }
@@ -102,7 +102,7 @@ public class ManagerService {
                     + "\n2. Search House."
                     + "\n3. Search Room."
                     + "\n4. Back to menu."
-                    + "\n5. Exit."
+                    + "\n0. Exit."
                     + "\nEnter number:");
 
             String choseNum = getScanner().nextLine();
@@ -113,11 +113,84 @@ public class ManagerService {
                     break;
                 }
                 case 2: {
-                    new ManagerHouse().addNewHouse();
+                    new ManagerHouse().searchHouse();
                     break;
                 }
                 case 3: {
-                    new ManagerRoom().addNewRoom();
+                    new ManagerRoom().searchRoom();
+                    break;
+                }
+                case 4: {
+                    new MainController().displayMainMenu();
+                    break;
+                }
+                case 5: {
+                    isStop = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void editService() {
+        boolean isStop = true;
+        while (isStop) {
+            System.out.println("1. Edit Villa."
+                    + "\n2. Edit House."
+                    + "\n3. Edit Room."
+                    + "\n4. Back to menu."
+                    + "\n0. Exit."
+                    + "\nEnter number:");
+
+            String choseNum = getScanner().nextLine();
+
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    new ManagerVilla().editVilla();
+                    break;
+                }
+                case 2: {
+                    new ManagerHouse().editHouse();
+                    break;
+                }
+                case 3: {
+                    new ManagerRoom().editRoom();
+                    break;
+                }
+                case 4: {
+                    new MainController().displayMainMenu();
+                    break;
+                }
+                case 5: {
+                    isStop = false;
+                    break;
+                }
+            }
+        }
+    }
+    public void deleteService() {
+        boolean isStop = true;
+        while (isStop) {
+            System.out.println("1. Delete Villa."
+                    + "\n2. Delete House."
+                    + "\n3. Delete Room."
+                    + "\n4. Back to menu."
+                    + "\n0. Exit."
+                    + "\nEnter number:");
+
+            String choseNum = getScanner().nextLine();
+
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    new ManagerVilla().deleteVilla();
+                    break;
+                }
+                case 2: {
+                    new ManagerHouse().deleteHouse();
+                    break;
+                }
+                case 3: {
+                    new ManagerRoom().deleteHouse();
                     break;
                 }
                 case 4: {

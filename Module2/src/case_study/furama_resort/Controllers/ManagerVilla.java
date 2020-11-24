@@ -37,11 +37,7 @@ public class ManagerVilla {
         setCountId();
         countId++;
         Villa villa = new Villa();
-        if (countId < 10) {
-            villa.setId("SVVL-000" + countId);
-        }else {
-            villa.setId("SVVL-00" + countId);
-        }
+        villa.setId(String.format("SVVL-%04d", countId));
         System.out.println("Enter name villa: ");
         villa.setName(new Validate().regexName(getScanner().nextLine()));
         System.out.println("Enter place area villa: ");
@@ -207,16 +203,13 @@ public class ManagerVilla {
         String nameVilla = getScanner().nextLine();
         boolean isHas = false;
         for (Villa v : villaList) {
-            if (nameVilla.contains(v.getName())) {
+            if (v.getName().toLowerCase().contains(nameVilla)) {
                 v.showInfo();
                 isHas = true;
-                break;
             }
         }
         if (!isHas) {
             System.out.println("This name isn't exist!!");
         }
-        System.out.println("Enter to next!");
-        getScanner().nextInt();
     }
 }

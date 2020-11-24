@@ -78,12 +78,137 @@ public class ManagerHouse {
     public void displayHouseDuplicate() {
         Set<String> HouseSet = new TreeSet<>();
         List<House> houseList = readHouseCSV();
-        for (House v : houseList){
-            HouseSet.add(v.getName());
+        for (House h : houseList){
+            HouseSet.add(h.getName());
         }
-        System.out.println("Villa not duplicate: ");
+        System.out.println("House not duplicate: ");
         for (String s : HouseSet){
             System.out.println("- " + s);
+        }
+    }
+
+    public void editHouse() {
+        List<House> houseList = readHouseCSV();
+        displayHouse();
+        System.out.println("Enter name house to upload: ");
+        String nameVilla = getScanner().nextLine();
+        boolean isService = false;
+        for (House h: houseList) {
+            if (nameVilla.equals(h.getName())) {
+                choseUpload(h);
+                isService = true;
+                break;
+            }
+        }
+        if (!isService) {
+            System.out.println("This name isn't exist");
+        }
+        isYesNo(houseList);
+    }
+
+    private void choseUpload(House h) {
+        System.out.println("1. Name\n2. Place area\n3. Price\n4. Number people\n5. Rent Day\n6. Stand room"
+                + "\n7. Useful\n8. Floor number\nChose property, you want to upload: ");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                System.out.println("Enter new name house: ");
+                h.setName(new Validate().regexName(getScanner().nextLine()));
+                break;
+            }
+            case 2: {
+                System.out.println("Enter new place area house: ");
+                h.setPlaceArea(new Validate().regexArea(getScanner().nextLine()));
+                break;
+            }
+            case 3: {
+                System.out.println("Enter new price house: ");
+                h.setPrice(new Validate().regexPrice(getScanner().nextLine()));
+                break;
+            }
+            case 4: {
+                System.out.println("Enter new number people house: ");
+                h.setMaxPeople(new Validate().regexNumPeople(getScanner().nextLine()));
+                break;
+            }
+            case 5: {
+                System.out.println("Enter new rent day house: ");
+                h.setRentDay(new Validate().getScanner().nextLine());
+                break;
+            }
+            case 6: {
+                System.out.println("Enter new standard room house: ");
+                h.setStandardRoom(new Validate().regexName(getScanner().nextLine()));
+                break;
+            }
+            case 7: {
+                System.out.println("1.Massage, 2.Karaoke, 3.Food, 4.Drink, 5.Car Rental. 6.No. Enter a new useful house: ");
+                h.setDifferentUseful(new Validate().regexService(getScanner().nextLine()));
+                break;
+            }
+            case 8:{
+                System.out.println("Enter new floor number house: ");
+                h.setNumFloors(new Validate().regexFloor(getScanner().nextLine()));
+                break;
+            }
+            default: {
+                System.out.println("Not exist. Chose again: ");
+                choseUpload(h);
+            }
+        }
+    }
+
+    private void isYesNo(List<House> houseList) {
+        System.out.println("1. Yes/Other. No\nDo you sure?");
+        switch (Integer.parseInt(getScanner().nextLine())) {
+            case 1: {
+                String line = "";
+                for (House house: houseList) {
+                    line += house.getId() + "," + house.getName() + "," + house.getPlaceArea() + ","
+                            + house.getPrice() + "," + house.getMaxPeople() + "," + house.getRentDay() + ","
+                            + house.getStandardRoom() + "," + house.getDifferentUseful() + ","
+                            + house.getNumFloors() + "\n";
+                }
+                new ReadAndWrite().writeFileInNewFile("src/case_study/furama_resort/Data/House.csv", line);
+                break;
+            }
+            default: {
+                new MainController().displayMainMenu();
+            }
+        }
+    }
+
+    public void deleteHouse() {
+        List<House> houseList = readHouseCSV();
+        displayHouse();
+        System.out.println("Enter name house, you want to delete: ");
+        String nameHouse = getScanner().nextLine();
+        boolean isHas = false;
+        for (House h : houseList) {
+            if (nameHouse.equals(h.getName())) {
+                houseList.remove(h);
+                isHas = true;
+                break;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
+        isYesNo(houseList);
+    }
+
+    public void searchHouse() {
+        List<House> houseList = readHouseCSV();
+        System.out.println("Enter name House, you want to find: ");
+        String nameHouse = getScanner().nextLine();
+        boolean isHas = false;
+        for (House h : houseList) {
+            if (h.getName().toLowerCase().contains(nameHouse)) {
+                h.showInfo();
+                isHas = true;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
         }
     }
 }

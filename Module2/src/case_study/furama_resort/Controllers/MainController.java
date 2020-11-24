@@ -22,12 +22,16 @@ public class MainController {
     public void displayMainMenu(){
         boolean isWhile = true;
         while (isWhile) {
-            System.out.println("1. Add New Services."
+            System.out.println("-----------------------------"
+                    + "\n1. Add New Services."
                     + "\n2. Show Services."
                     + "\n3. Add New Customer."
                     + "\n4. Show Information of Customer."
                     + "\n5. Add New Booking."
                     + "\n6. Show Information of Employee."
+                    + "\n7. Edit Services."
+                    + "\n8. Search Services."
+                    + "\n9. Delete Services."
                     + "\n0. Exit."
                     + "\nEnter number:");
             String choseCase = new Validate().regexFloor(getScanner().nextLine());
@@ -58,6 +62,15 @@ public class MainController {
                     break;
                 }
                 case 7: {
+                    new ManagerService().editService();
+                }
+                case 8: {
+                    new ManagerService().searchService();
+                }
+                case 9: {
+                    new ManagerService().deleteService();
+                }
+                case 0: {
                     isWhile = false;
                     break;
                 }
