@@ -68,6 +68,10 @@ public class ManagerProductImport {
 
     public void displayProductImport() {
         List<ProductImport> productImportList = readProductImportCSV();
+        if (productImportList.size() == 0){
+            System.out.println("List is null!");
+            return;
+        }
         for (ProductImport p: productImportList) {
             p.showInfo();
         }

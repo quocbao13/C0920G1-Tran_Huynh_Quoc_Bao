@@ -1,5 +1,6 @@
 package luyen_tap.Controller;
 
+import case_study.furama_resort.Models.Villa;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
 import luyen_tap.Models.Product;
@@ -34,7 +35,7 @@ public class ManagerProduct {
     public void addNewProduct() {
         String choseNum;
         do {
-            System.out.println("1. Add new product import.\n2. Add new product export.\n3. Back to menu.\n0. Exit");
+            System.out.println("1. Add new product import.\n2. Add new product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
             choseNum = new Validate().regexRequire(getScanner().nextLine());
             boolean isNumber= true;
             for (int i = 0; i < choseNum.length(); i++) {
@@ -62,13 +63,47 @@ public class ManagerProduct {
                     break;
                 }
             }
-        }while (Integer.parseInt(choseNum) != 0);
+        }while (choseNum != "0");
+    }
+
+    public void showProduct() {
+        String choseNum;
+        do {
+            System.out.println("1. Show product import.\n2. Show product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
+            choseNum = new Validate().regexRequire(getScanner().nextLine());
+            boolean isNumber= true;
+            for (int i = 0; i < choseNum.length(); i++) {
+                if (Character.isLetter(choseNum.charAt(i))) {
+                    System.out.println("Not a Number");
+                    isNumber = false;
+                    break;
+                }
+            }
+            if (!isNumber){
+                System.out.println("You enter fail. Enter to enter a different number.");
+                continue;
+            }
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    new ManagerProductImport().displayProductImport();
+                    break;
+                }
+                case 2: {
+                    new ManagerProductExport().displayProductExport();
+                    break;
+                }
+                case 3: {
+                    new ManagerController().displayMainMenu();
+                    break;
+                }
+            }
+        }while (choseNum != "0");
     }
 
     public void deleteProduct() {
         String choseNum;
         do {
-            System.out.println("1. Delete product import.\n2. Delete product export.\n3. Back to menu.\n0. Exit");
+            System.out.println("1. Delete product import.\n2. Delete product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
             choseNum = new Validate().regexRequire(getScanner().nextLine());
             boolean isNumber= true;
             for (int i = 0; i < choseNum.length(); i++) {
@@ -97,5 +132,21 @@ public class ManagerProduct {
                 }
             }
         }while (Integer.parseInt(choseNum) != 0);
+    }
+
+    public void searchProduct() {
+        List<Product> productList = readProductCSV();
+        System.out.println("Enter name product, you want to find: ");
+        String nameProduct = new Validate().regexRequire(getScanner().nextLine());
+        boolean isHas = false;
+        for (Product p : productList) {
+            if (p.getNameProduct().toLowerCase().contains(nameProduct.toLowerCase())) {
+                p.showInfo();
+                isHas = true;
+            }
+        }
+        if (!isHas) {
+            System.out.println("This name isn't exist!!");
+        }
     }
 }

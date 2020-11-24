@@ -64,6 +64,10 @@ public class ManagerProductExport {
 
     public void displayProductExport() {
         List<ProductExport> productExportList = readProductExportCSV();
+        if (productExportList.size() == 0){
+            System.out.println("List is null!");
+            return;
+        }
         for (ProductExport p: productExportList) {
             p.showInfo();
         }
