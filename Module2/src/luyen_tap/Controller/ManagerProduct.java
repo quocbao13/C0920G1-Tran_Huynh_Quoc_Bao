@@ -36,19 +36,7 @@ public class ManagerProduct {
         String choseNum;
         do {
             System.out.println("1. Add new product import.\n2. Add new product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = Validate.regexRequire(getScanner().nextLine());
-            boolean isNumber= true;
-            for (int i = 0; i < choseNum.length(); i++) {
-                if (Character.isLetter(choseNum.charAt(i))) {
-                    System.out.println("Not a Number");
-                    isNumber = false;
-                    break;
-                }
-            }
-            if (!isNumber){
-                System.out.println("You enter fail. Enter to enter a different number.");
-                continue;
-            }
+            choseNum = Validate.regexNum(getScanner().nextLine());
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
                     ManagerProductImport.addNewProduct();
@@ -59,7 +47,7 @@ public class ManagerProduct {
                     break;
                 }
                 case 3: {
-                    new ManagerController().displayMainMenu();
+                    ManagerController.displayMainMenu();
                     break;
                 }
             }
