@@ -74,6 +74,30 @@ public class ManagerProductExport {
         }
     }
 
+    public static void editProductExport() {
+        List<ProductExport> productExportList = readProductExportCSV();
+        displayProductExport();
+        System.out.println("Enter id card product, you want to edit: ");
+        String idProduct = getScanner().nextLine();
+        boolean isHas = false;
+        try {
+            for (ProductExport p : productExportList) {
+                if (idProduct.equals(p.getIdProduct())) {
+                    chosePropertyToEdit(p);
+                    isHas = true;
+                    isYesNo(productExportList);
+                    break;
+                }
+            }
+            if (!isHas) {
+                throw new NotFoundProductException("This name isn't exist!!");
+            }
+        } catch (NotFoundProductException e) {
+            e.printStackTrace();
+            ManagerController.displayMainMenu();
+        }
+    }
+
     public static void deleteProductExport() {
         List<ProductExport> productExportList = readProductExportCSV();
         displayProductExport();
@@ -95,7 +119,60 @@ public class ManagerProductExport {
         } catch (NotFoundProductException e) {
             e.printStackTrace();
         }
+    }
 
+    private static void chosePropertyToEdit(ProductExport productExport) {
+        choseHeader();
+        switch (Integer.parseInt(Validate.regexNum(getScanner().nextLine()))) {
+            case 1: {
+                System.out.println("Enter new name product: ");
+                productExport.setNameProduct(Validate.regexRequire(getScanner().nextLine()));
+                break;
+            }
+            case 2: {
+                System.out.println("Enter price product: ");
+                productExport.setPrice(Validate.regexNum(getScanner().nextLine()));
+                break;
+            }
+            case 3: {
+                System.out.println("Enter new number product: ");
+                productExport.setNumber(Validate.regexNum(getScanner().nextLine()));
+                break;
+            }
+            case 4: {
+                System.out.println("Enter new brand product: ");
+                productExport.setBrand(Validate.regexRequire(getScanner().nextLine()));
+                break;
+            }
+            case 5: {
+                System.out.println("Enter price import product: ");
+                productExport.setPriceExport(Validate.regexNum(getScanner().nextLine()));
+                break;
+            }
+            case 6: {
+                System.out.println("Enter address import: ");
+                productExport.setAddressExport(Validate.regexRequire(getScanner().nextLine()));
+                break;
+            }
+            case 7: {
+                ManagerController.displayMainMenu();
+                break;
+            }
+            default: {
+                chosePropertyToEdit(productExport);
+            }
+        }
+    }
+
+    private static void choseHeader() {
+        System.out.println("1. Name product." +
+                "\n2. Price product." +
+                "\n3. Number product." +
+                "\n4. Brand product." +
+                "\n5. Price import product." +
+                "\n6. Address import." +
+                "\n7. Cancel edit." +
+                "\nEnter number: ");
     }
 
     private static void isYesNo(List<ProductExport> productExportList) {

@@ -48,9 +48,9 @@ public class ManagerCustomer {
         System.out.println("Enter gender customer: ");
         customer.setGenderCustomer(getScanner().nextLine());
         System.out.println("Enter id number customer: ");
-        customer.setIdNumberCustomer(getScanner().nextLine());
+        customer.setIdNumberCustomer(new ValidateCustomer().regexIdNumber(getScanner().nextLine()));
         System.out.println("Enter phone customer: ");
-        customer.setPhoneCustomer(getScanner().nextLine());
+        customer.setPhoneCustomer(new ValidateCustomer().regexPhone(getScanner().nextLine()));
         System.out.println("Enter email customer: ");
         customer.setEmailCustomer(new ValidateCustomer().regexEmail(getScanner().nextLine()));
         System.out.println("Enter type customer: ");

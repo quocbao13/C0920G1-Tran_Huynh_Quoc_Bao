@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 public class ValidateCustomer {
     public static final String REGEX_DATE = "^(?:(?:31(\\/)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[9]|[2-9]\\d)\\d{2})$";
     public static final String REGEX_EMAIL = "[\\w]+@[\\w]+(.[\\w]{2,4})+";
+    public static final String REGEX_ID_NUMBER = "[\\d]{9}";
+    public static final String REGEX_PHONE = "0[\\d]{9}";
 
     public Scanner getScanner() {
         return new Scanner(System.in);
@@ -66,6 +68,38 @@ public class ValidateCustomer {
             }catch (NameException n){
                 System.err.println(n);
                 mail = getScanner().nextLine();
+            }
+
+        }
+    }
+
+    public String regexIdNumber(String idNumber) {
+        while (true) {
+            try {
+                if (Pattern.matches(REGEX_ID_NUMBER, idNumber)) {
+                    return idNumber;
+                } else {
+                    throw new NameException("Fail. Enter again: ");
+                }
+            }catch (NameException n){
+                System.err.println(n);
+                idNumber = getScanner().nextLine();
+            }
+
+        }
+    }
+
+    public String regexPhone(String phone) {
+        while (true) {
+            try {
+                if (Pattern.matches(REGEX_PHONE, phone)) {
+                    return phone;
+                } else {
+                    throw new NameException("Fail. Enter again: ");
+                }
+            }catch (NameException n){
+                System.err.println(n);
+                phone = getScanner().nextLine();
             }
 
         }

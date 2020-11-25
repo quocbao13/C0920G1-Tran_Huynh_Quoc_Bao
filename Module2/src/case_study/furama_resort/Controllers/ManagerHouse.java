@@ -90,18 +90,18 @@ public class ManagerHouse {
     public void editHouse() {
         List<House> houseList = readHouseCSV();
         displayHouse();
-        System.out.println("Enter name house to upload: ");
-        String nameVilla = getScanner().nextLine();
+        System.out.println("Enter id house to upload: ");
+        String idVilla = getScanner().nextLine();
         boolean isService = false;
         for (House h: houseList) {
-            if (nameVilla.equals(h.getName())) {
+            if (idVilla.equals(h.getName())) {
                 choseUpload(h);
                 isService = true;
                 break;
             }
         }
         if (!isService) {
-            System.out.println("This name isn't exist");
+            System.out.println("This id isn't exist");
         }
         isYesNo(houseList);
     }
@@ -180,11 +180,11 @@ public class ManagerHouse {
     public void deleteHouse() {
         List<House> houseList = readHouseCSV();
         displayHouse();
-        System.out.println("Enter name house, you want to delete: ");
-        String nameHouse = getScanner().nextLine();
+        System.out.println("Enter id house, you want to delete: ");
+        String idHouse = getScanner().nextLine();
         boolean isHas = false;
         for (House h : houseList) {
-            if (nameHouse.equals(h.getName())) {
+            if (idHouse.equals(h.getId())) {
                 houseList.remove(h);
                 isYesNo(houseList);
                 isHas = true;
@@ -192,7 +192,7 @@ public class ManagerHouse {
             }
         }
         if (!isHas) {
-            System.out.println("This name isn't exist!!");
+            System.out.println("This id isn't exist!!");
         }
     }
 
@@ -202,7 +202,7 @@ public class ManagerHouse {
         String nameHouse = getScanner().nextLine();
         boolean isHas = false;
         for (House h : houseList) {
-            if (h.getName().toLowerCase().contains(nameHouse)) {
+            if (h.getName().toLowerCase().contains(nameHouse.toLowerCase())) {
                 h.showInfo();
                 isHas = true;
             }

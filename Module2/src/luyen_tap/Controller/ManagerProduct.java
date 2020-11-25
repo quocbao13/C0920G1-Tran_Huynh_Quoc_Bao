@@ -1,6 +1,5 @@
 package luyen_tap.Controller;
 
-import case_study.furama_resort.Models.Villa;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
 import luyen_tap.Models.Product;
@@ -61,19 +60,7 @@ public class ManagerProduct {
         String choseNum;
         do {
             System.out.println("1. Show product import.\n2. Show product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = Validate.regexRequire(getScanner().nextLine());
-            boolean isNumber= true;
-            for (int i = 0; i < choseNum.length(); i++) {
-                if (Character.isLetter(choseNum.charAt(i))) {
-                    System.out.println("Not a Number");
-                    isNumber = false;
-                    break;
-                }
-            }
-            if (!isNumber){
-                System.out.println("You enter fail. Enter to enter a different number.");
-                continue;
-            }
+            choseNum = Validate.regexNum(getScanner().nextLine());
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
                     ManagerProductImport.displayProductImport();
@@ -84,7 +71,29 @@ public class ManagerProduct {
                     break;
                 }
                 case 3: {
-                    new ManagerController().displayMainMenu();
+                    ManagerController.displayMainMenu();
+                    break;
+                }
+            }
+        }while (choseNum != "0");
+    }
+
+    public static void editProduct() {
+        String choseNum;
+        do {
+            System.out.println("1. Edit product import.\n2. Edit product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
+            choseNum = Validate.regexNum(getScanner().nextLine());
+            switch (Integer.parseInt(choseNum)) {
+                case 1: {
+                    ManagerProductImport.editProductImport();
+                    break;
+                }
+                case 2: {
+                    ManagerProductExport.editProductExport();
+                    break;
+                }
+                case 3: {
+                    ManagerController.displayMainMenu();
                     break;
                 }
             }
@@ -95,19 +104,7 @@ public class ManagerProduct {
         String choseNum;
         do {
             System.out.println("1. Delete product import.\n2. Delete product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
-            choseNum = Validate.regexRequire(getScanner().nextLine());
-            boolean isNumber= true;
-            for (int i = 0; i < choseNum.length(); i++) {
-                if (Character.isLetter(choseNum.charAt(i))) {
-                    System.out.println("Not a Number");
-                    isNumber = false;
-                    break;
-                }
-            }
-            if (!isNumber){
-                System.out.println("You enter fail. Enter to enter a different number.");
-                continue;
-            }
+            choseNum = Validate.regexNum(getScanner().nextLine());
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
                     ManagerProductImport.deleteProductImport();
@@ -118,7 +115,7 @@ public class ManagerProduct {
                     break;
                 }
                 case 3: {
-                    new ManagerController().displayMainMenu();
+                    ManagerController.displayMainMenu();
                     break;
                 }
             }

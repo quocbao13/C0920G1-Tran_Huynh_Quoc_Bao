@@ -6,7 +6,8 @@ public class ManagerService {
     public void addNewService() {
         boolean isStop = true;
         while (isStop) {
-            System.out.println("1. Add New Villa."
+            System.out.println("--------------------------"
+                    +"\n1. Add New Villa."
                     + "\n2. Add New House."
                     + "\n3. Add New Room."
                     + "\n4. Back to menu."
@@ -47,7 +48,8 @@ public class ManagerService {
     public void displayService() {
         boolean isStop = true;
         while (isStop){
-            System.out.println("1. Show all Villa."
+            System.out.println("--------------------------"
+                    +"\n1. Show all Villa."
                     + "\n2. Show all House."
                     + "\n3. Show all Room."
                     + "\n4. Show All Name Villa Not Duplicate."
@@ -98,7 +100,8 @@ public class ManagerService {
     public void searchService() {
         boolean isStop = true;
         while (isStop) {
-            System.out.println("1. Search Villa."
+            System.out.println("--------------------------"
+                    +"\n1. Search Villa."
                     + "\n2. Search House."
                     + "\n3. Search Room."
                     + "\n4. Back to menu."
@@ -135,7 +138,8 @@ public class ManagerService {
     public void editService() {
         boolean isStop = true;
         while (isStop) {
-            System.out.println("1. Edit Villa."
+            System.out.println("--------------------------"
+                    +"\n1. Edit Villa."
                     + "\n2. Edit House."
                     + "\n3. Edit Room."
                     + "\n4. Back to menu."
@@ -171,7 +175,8 @@ public class ManagerService {
     public void deleteService() {
         boolean isStop = true;
         while (isStop) {
-            System.out.println("1. Delete Villa."
+            System.out.println("--------------------------"
+                    +"\n1. Delete Villa."
                     + "\n2. Delete House."
                     + "\n3. Delete Room."
                     + "\n4. Back to menu."

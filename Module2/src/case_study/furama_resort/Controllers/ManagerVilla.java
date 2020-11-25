@@ -63,7 +63,7 @@ public class ManagerVilla {
         new ReadAndWrite().writeFile("src/case_study/furama_resort/Data/Villa.csv", line);
     }
 
-    public void displayVilla() {
+    public void  displayVilla() {
         System.out.println("Villa: ");
         List<Villa> villaList = readVillaCSV();
         for (Villa v : villaList){
@@ -86,18 +86,18 @@ public class ManagerVilla {
     public void editVilla() {
         List<Villa> villaList = readVillaCSV();
         displayVilla();
-        System.out.println("Enter name villa to upload: ");
-        String nameVilla = getScanner().nextLine();
+        System.out.println("Enter id villa to upload: ");
+        String idVilla = getScanner().nextLine();
         boolean isService = false;
         for (Villa v: villaList) {
-            if (nameVilla.equals(v.getName())) {
+            if (idVilla.equals(v.getId())) {
                 choseUpload(v);
                 isService = true;
                 break;
             }
         }
         if (!isService) {
-            System.out.println("This name isn't exist");
+            System.out.println("This id isn't exist");
         }
         isYesNo(villaList);
     }
@@ -181,11 +181,11 @@ public class ManagerVilla {
     public void deleteVilla() {
         List<Villa> villaList = readVillaCSV();
         displayVilla();
-        System.out.println("Enter name villa, you want to delete: ");
-        String nameVilla = getScanner().nextLine();
+        System.out.println("Enter id villa, you want to delete: ");
+        String idVilla = getScanner().nextLine();
         boolean isHas = false;
         for (Villa v : villaList) {
-            if (nameVilla.equals(v.getName())) {
+            if (idVilla.equals(v.getId())) {
                 villaList.remove(v);
                 isHas = true;
                 isYesNo(villaList);
@@ -193,7 +193,7 @@ public class ManagerVilla {
             }
         }
         if (!isHas) {
-            System.out.println("This name isn't exist!!");
+            System.out.println("This id isn't exist!!");
         }
     }
 
@@ -203,7 +203,7 @@ public class ManagerVilla {
         String nameVilla = getScanner().nextLine();
         boolean isHas = false;
         for (Villa v : villaList) {
-            if (v.getName().toLowerCase().contains(nameVilla)) {
+            if (v.getName().toLowerCase().contains(nameVilla.toLowerCase())) {
                 v.showInfo();
                 isHas = true;
             }

@@ -107,18 +107,18 @@ public class ManagerRoom {
     public void editRoom() {
         List<Room> roomList = readRoomCSV();
         displayRoom();
-        System.out.println("Enter name room to upload: ");
-        String nameRoom = getScanner().nextLine();
+        System.out.println("Enter id room to upload: ");
+        String idRoom = getScanner().nextLine();
         boolean isService = false;
         for (Room r: roomList) {
-            if (nameRoom.equals(r.getName())) {
+            if (idRoom.equals(r.getName())) {
                 choseUpload(r);
                 isService = true;
                 break;
             }
         }
         if (!isService) {
-            System.out.println("This name isn't exist");
+            System.out.println("This id isn't exist");
         }
         isYesNo(roomList);
     }
@@ -183,11 +183,11 @@ public class ManagerRoom {
     public void deleteHouse() {
         List<Room> roomList = readRoomCSV();
         displayRoom();
-        System.out.println("Enter name room, you want to delete: ");
-        String nameRoom = getScanner().nextLine();
+        System.out.println("Enter id room, you want to delete: ");
+        String idRoom = getScanner().nextLine();
         boolean isHas = false;
         for (Room r : roomList) {
-            if (nameRoom.equals(r.getName())) {
+            if (idRoom.equals(r.getName())) {
                 roomList.remove(r);
                 isYesNo(roomList);
                 isHas = true;
@@ -195,7 +195,7 @@ public class ManagerRoom {
             }
         }
         if (!isHas) {
-            System.out.println("This name isn't exist!!");
+            System.out.println("This id isn't exist!!");
         }
     }
 
@@ -205,7 +205,7 @@ public class ManagerRoom {
         String nameRoom = getScanner().nextLine();
         boolean isHas = false;
         for (Room r : roomList) {
-            if (r.getName().toLowerCase().contains(nameRoom)) {
+            if (r.getName().toLowerCase().contains(nameRoom.toLowerCase())) {
                 r.showInfo();
                 isHas = true;
             }

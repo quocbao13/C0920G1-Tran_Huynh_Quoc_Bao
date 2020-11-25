@@ -13,7 +13,9 @@ public class ManagerController {
     public static void displayMainMenu() {
         String choseNum;
         do {
-            System.out.println("1. Add new product.\n2. Delete product.\n3. Show product.\n4. Search product.\n0. Exit.\nEnter number:");
+            System.out.println("1. Add new product.\n2. Delete product." +
+                    "\n3. Show product.\n4. Search product." +
+                    "\n5.Edit product.\n0. Exit.\nEnter number:");
             choseNum = Validate.regexNum(getScanner().nextLine());
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
@@ -30,6 +32,9 @@ public class ManagerController {
                 }
                 case 4: {
                     ManagerProduct.searchProduct();
+                }
+                case 5: {
+                    ManagerProduct.editProduct();
                 }
                 default: {
                     System.out.println("----This number isn't exist!----");

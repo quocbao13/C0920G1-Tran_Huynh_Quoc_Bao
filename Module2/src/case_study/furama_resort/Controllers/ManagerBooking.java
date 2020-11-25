@@ -17,22 +17,22 @@ public class ManagerBooking {
 
     public void choseVillaForCustomer(Customer customer) {
         new ManagerVilla().displayVilla();
-        System.out.println("Enter name service to chose: ");
-        String nameService = getScanner().nextLine();
-        boolean isNameList = false;
+        System.out.println("Enter id service to chose: ");
+        String idService = getScanner().nextLine();
+        boolean isIdList = false;
         List<Villa> villaList = new ManagerVilla().readVillaCSV();
         while (true) {
             new ManagerVilla().displayVilla();
             for (Villa v : villaList) {
-                if (nameService.equals(v.getName())) {
+                if (idService.equals(v.getId())) {
                     customer.setServices(v);
-                    isNameList = true;
+                    isIdList = true;
                     break;
                 }
             }
-            if (!isNameList) {
-                System.out.println(nameService + " - This name don't have. \nEnter name service again: ");
-                nameService = getScanner().nextLine();
+            if (!isIdList) {
+                System.out.println(idService + " - This id don't have. \nEnter id service again: ");
+                idService = getScanner().nextLine();
             } else {
                 break;
             }
@@ -41,22 +41,22 @@ public class ManagerBooking {
 
     public void choseHouseForCustomer(Customer customer) {
         new ManagerHouse().displayHouse();
-        System.out.println("Enter name service to chose: ");
-        String nameService = getScanner().nextLine();
-        boolean isNameList = false;
+        System.out.println("Enter id service to chose: ");
+        String idService = getScanner().nextLine();
+        boolean isIdList = false;
         List<House> houseList = new ManagerHouse().readHouseCSV();
         while (true) {
             new ManagerHouse().displayHouse();
             for (House h : houseList) {
-                if (nameService.equals(h.getName())) {
+                if (idService.equals(h.getName())) {
                     customer.setServices(h);
-                    isNameList = true;
+                    isIdList = true;
                     break;
                 }
             }
-            if (!isNameList) {
-                System.out.println(nameService + " - This name don't have. \nEnter name service again: ");
-                nameService = getScanner().nextLine();
+            if (!isIdList) {
+                System.out.println(idService + " - This name don't have. \nEnter name service again: ");
+                idService = getScanner().nextLine();
             } else {
                 break;
             }
@@ -65,22 +65,22 @@ public class ManagerBooking {
 
     public void choseRoomForCustomer(Customer customer) {
         new ManagerRoom().displayRoom();
-        System.out.println("Enter name service to chose: ");
-        String nameService = getScanner().nextLine();
-        boolean isNameList = false;
+        System.out.println("Enter id service to chose: ");
+        String idService = getScanner().nextLine();
+        boolean isIdList = false;
         List<Room> roomList = new ManagerRoom().readRoomCSV();
         while (true) {
             new ManagerRoom().displayRoom();
             for (Room r : roomList) {
-                if (nameService.equals(r.getName())) {
+                if (idService.equals(r.getName())) {
                     customer.setServices(r);
-                    isNameList = true;
+                    isIdList = true;
                     break;
                 }
             }
-            if (!isNameList) {
-                System.out.println(nameService + " - This name don't have. \nEnter name service again: ");
-                nameService = getScanner().nextLine();
+            if (!isIdList) {
+                System.out.println(idService + " - This id don't have. \nEnter id service again: ");
+                idService = getScanner().nextLine();
             } else {
                 break;
             }
