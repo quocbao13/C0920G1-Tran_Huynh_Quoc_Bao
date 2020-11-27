@@ -1,7 +1,5 @@
 package luyen_tap.Controller;
 
-import case_study.furama_resort.Controllers.MainController;
-import case_study.furama_resort.Models.Villa;
 import luyen_tap.Commons.NotFoundProductException;
 import luyen_tap.Commons.ReadAndWrite;
 import luyen_tap.Commons.Validate;
@@ -90,6 +88,7 @@ public class ManagerProductImport {
                     chosePropertyToEdit(p);
                     isHas = true;
                     isYesNo(productImportList);
+                    isNext(p);
                     break;
                 }
             }
@@ -206,8 +205,23 @@ public class ManagerProductImport {
                 break;
             }
             default: {
-                new MainController().displayMainMenu();
+                ManagerController.displayMainMenu();
             }
+        }
+    }
+
+    public static void isNext(ProductImport productImport){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("1.\tYes\n"+
+                "2.\tNo\n"+
+                "you want to edit different anything");
+        int c = scanner.nextInt();
+        if ( c == 1){
+            chosePropertyToEdit(productImport);
+        }
+        else {
+            ManagerController.displayMainMenu();
         }
     }
 }

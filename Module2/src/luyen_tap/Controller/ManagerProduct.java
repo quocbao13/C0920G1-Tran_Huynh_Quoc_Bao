@@ -81,7 +81,8 @@ public class ManagerProduct {
     public static void editProduct() {
         String choseNum;
         do {
-            System.out.println("1. Edit product import.\n2. Edit product export.\n3. Back to menu.\n0. Exit.\nEnter number:");
+            System.out.println("1. Edit product import.\n2. Edit product export." +
+                    "\n3. Back to menu.\n0. Exit.\nEnter number:");
             choseNum = Validate.regexNum(getScanner().nextLine());
             switch (Integer.parseInt(choseNum)) {
                 case 1: {
