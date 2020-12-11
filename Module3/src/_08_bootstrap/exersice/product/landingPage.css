@@ -1,0 +1,35 @@
+.header{
+    height: 50px;
+}
+.header .logo{
+    width: 138px;
+    margin: 14px 0 0 70px;
+    padding-right: 28px;
+    border-right: black 2px solid;
+}
+.header .navbar-brand{
+    font-size: 18px;
+    font-weight: bolder;
+    margin-top: 0;
+    padding-top: 5px;
+}
+.header .navbar-brand:hover{
+    border-bottom: black 3px solid;
+    padding-top: 5px;
+}
+.header .nav-link{
+    color: black;
+    font-size: 13px;
+    margin-right: 2px;
+}
+.header .nav-link:hover{
+    border-bottom: black 3px solid;
+    padding-top: 8.5px;
+}
+.header .nav-link .fas{
+    padding-left: 10px;
+}
+.content-img img{
+    width: 100%;
+    height: 575px;
+}
