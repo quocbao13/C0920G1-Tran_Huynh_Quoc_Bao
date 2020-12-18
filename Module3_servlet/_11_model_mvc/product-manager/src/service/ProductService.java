@@ -2,16 +2,21 @@ package service;
 
 import model.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductService {
-    public static Map<Integer, Product> productMap= new HashMap<>();
+    public static Map<Integer, Product> productMap;
+
+    static {
+        productMap = new HashMap<>();
+        productMap.put(1, new Product(1, "John", "100", "Hanoi"));
+        productMap.put(2, new Product(2, "Bill", "200", "Danang"));
+        productMap.put(3, new Product(3, "Alex", "200", "Saigon"));
+    }
 
     public List<Product> findAll() {
-        return new ArrayList<>(productMap.values());
+        Collection<Product> c = productMap.values();
+        return new ArrayList<>(c);
     }
 
     public void save(Product product) {

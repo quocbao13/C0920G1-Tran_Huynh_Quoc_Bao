@@ -85,9 +85,7 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("message", "New customer was created");
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
