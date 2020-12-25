@@ -1,0 +1,8 @@
+.logo a{
+    color: black;
+    font-size: 40px;
+    text-decoration: none;
+}
+.sidebar{
+    box-shadow: 10px 0px 10px -10px gray;
+}

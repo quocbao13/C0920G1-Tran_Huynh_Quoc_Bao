@@ -27,9 +27,9 @@
     </h2>
     <form method="get">
         <input name="action" value="search" class="d-none">
-        Name: <input type="text" name="name" placeholder="search ...">
-        Country: <input type="text" name="country" placeholder="search ...">
-        Id: <input type="text" name="id" placeholder="search ...">
+        Name: <input type="text" name="name" value="" placeholder="search ...">
+        Country: <input type="text" name="country" value="" placeholder="search ...">
+        Id: <input type="text" name="id" value="" placeholder="search ...">
         <input type="submit" value="Search">
     </form>
 <div align="center">
@@ -52,13 +52,14 @@
                     <a href="/users?action=edit&id=${user.id}">Edit</a>
 
                     <!-- Button trigger modal -->
-                    <a href="#myModal_${user.id}" role="button" class="btn btn-large btn-primary" data-toggle="modal">Delete</a>
+                    <a href="#myModal_${user.id}" role="button" class="btn btn-large btn-primary"
+                       data-target="#exampleModal" data-toggle="modal">Delete</a>
 
                     <!-- Modal -->
                       </td>
                 </tr>
 
-            <div  id="myModal_${user.id}" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div  id="myModal_${user.id} exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

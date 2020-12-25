@@ -18,10 +18,11 @@
 
 <body class="">
 <div class="wrapper ">
-    <%@ include file="shared/menuLeft.jsp"%>
+    <jsp:include page="shared/menuLeft.jsp"/>
     <div class="main-panel">
         <!-- Navbar -->
-        <%@ include file="shared/header.jsp"%>
+<%--        <%@ include file="shared/header.jsp"%>--%>
+        <jsp:include page="shared/header.jsp" />
         <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
@@ -439,12 +440,8 @@
             </div>
         </div>
         <%-- Footer --%>
-        <%@ include file="shared/footer.jsp"%>
     </div>
 </div>
-<%@ include file="shared/posterRight.jsp"%>
-<!--   Core JS Files   -->
-<%@ include file="shared/scriptSupport.jsp"%>
 </body>
 
 </html>

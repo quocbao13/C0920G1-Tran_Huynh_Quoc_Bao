@@ -1,910 +1,606 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 12/17/2020
-  Time: 9:06 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Material Dashboard by Creative Tim
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
-</head>
+  <title>Title</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Resort Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="assets/client/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="assets/client/css/flexslider.css">
+  <link rel="stylesheet" type="text/css" href="assets/client/css/zoomslider.css">
+  <link rel="stylesheet" type="text/css" href="assets/client/css/style.css">
+  <script type="text/javascript"><%@ include file="/assets/client/js/modernizr-2.6.2.min.js"%></script>
+    <!--/web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <style><%@ include file="/assets/client/css/jquery-ui.css"%></style>
+    <!--//web-fonts-->
+  </head>
+<body>
+<!--/main-header-->
+<!--/banner-section-->
+<div class="w3layouts-top-strip">
+  <div class="top-srip-agileinfo">
+    <div class="w3ls-social-icons text-left">
+      <a class="facebook" href="#"><i class="fab fa-facebook-square"></i></a>
+      <a class="twitter" href="#"><i class="fab fa-twitter-square"></i></a>
+      <a class="pinterest" href="#"><i class="fab fa-pinterest-square"></i></a>
+      <a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a>
 
-<body class="">
-<div class="wrapper ">
-  <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-  -->
-    <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      Creative Tim
-    </a></div>
-    <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="nav-item active  ">
-          <a class="nav-link" href="./dashboard.html">
-            <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./user.html">
-            <i class="material-icons">person</i>
-            <p>User Profile</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./tables.html">
-            <i class="material-icons">content_paste</i>
-            <p>Table List</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./typography.html">
-            <i class="material-icons">library_books</i>
-            <p>Typography</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./icons.html">
-            <i class="material-icons">bubble_chart</i>
-            <p>Icons</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./map.html">
-            <i class="material-icons">location_ons</i>
-            <p>Maps</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./notifications.html">
-            <i class="material-icons">notifications</i>
-            <p>Notifications</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./rtl.html">
-            <i class="material-icons">language</i>
-            <p>RTL Support</p>
-          </a>
-        </li>
-        <li class="nav-item active-pro ">
-          <a class="nav-link" href="./upgrade.html">
-            <i class="material-icons">unarchive</i>
-            <p>Upgrade to PRO</p>
-          </a>
-        </li>
+    </div>
+    <div class="agileits-contact-info text-right">
+      <ul>
+        <li><i class="fas fa-phone-volume" aria-hidden="true"></i> +090 480 088</li>
+        <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@example.com">mail@example.com</a></li>
       </ul>
     </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="main-panel">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-      <div class="container-fluid">
-        <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">Dashboard</a>
+</div>
+<div id="demo-1" data-zs-src='["assets/client/images/4.jpg", "assets/client/images/2.jpg", "assets/client/images/1.jpg","assets/client/images/3.jpg"]' data-zs-overlay="dots">
+  <div class="demo-inner-content">
+    <!--/header-w3l-->
+    <div class="header-w3-agileits" id="home">
+      <div class="inner-header-agile">
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <h1><a  href="index.html"><span>R</span>esort <p class="s-log">Booking</p></a>
+
+            </h1>
+          </div>
+          <!-- navbar-header -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="gallery.html">Pages</a></li>
+              <li><a href="contact.html">Contact</a></li>
+
+
+            </ul>
+
+
+          </div>
+          <div class="clearfix"> </div>
+        </nav>
+        <div class="w3ls_search">
+          <div class="cd-main-header">
+            <ul class="cd-header-buttons">
+              <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+            </ul> <!-- cd-header-buttons -->
+          </div>
+          <div id="cd-search" class="cd-search">
+            <form action="#" method="post">
+              <input name="Search" type="search" placeholder="Search...">
+            </form>
+          </div>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end">
-          <form class="navbar-form">
-            <div class="input-group no-border">
-              <input type="text" value="" class="form-control" placeholder="Search...">
-              <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                <i class="material-icons">search</i>
-                <div class="ripple-container"></div>
-              </button>
-            </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:;">
-                <i class="material-icons">dashboard</i>
-                <p class="d-lg-none d-md-block">
-                  Stats
-                </p>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">notifications</i>
-                <span class="notification">5</span>
-                <p class="d-lg-none d-md-block">
-                  Some Actions
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">person</i>
-                <p class="d-lg-none d-md-block">
-                  Account
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
-              </div>
-            </li>
-          </ul>
+
+      </div>
+
+
+      <!--//header-w3l-->
+      <!--/banner-info-->
+      <div class="baner-info">
+        <h3>Wel<span>Come </span>To   <span>Luxury </span> Hotel</h3>
+        <h4>Book Your Dream Resort Destinations</h4>
+        <p>Enjoy Your Stay In</p>
+      </div>
+      <!--/banner-ingo-->
+
+    </div>
+  </div>
+</div>
+<!--/banner-section-->
+<!--//main-header-->
+<div class="special featured">
+  <div class="container">
+    <div class="ab-w3l-spa">
+      <h3 class="tittle">Welcome to Our Resort!</h3>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. ever since the 1500s.Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores hasellusMaecenas ac hendrerit purus. Lorem ipsum dolor sit amet.Lorem Ipsum is simply dummy text of the printing and typesetting industry
+      </p>
+    </div>
+    <!-- services -->
+    <div class="w3_agileits_services_grids">
+      <div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+        <div class="w3_agileits_services_grid_agile">
+          <div class="w3_agileits_services_grid_1">
+            <img src="assets/client/images/5.jpg" alt="service-img">
+          </div>
+          <h3>Deluxe Room</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         </div>
       </div>
-    </nav>
-    <!-- End Navbar -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-header card-header-warning card-header-icon">
-                <div class="card-icon">
-                  <i class="material-icons">content_copy</i>
-                </div>
-                <p class="card-category">Used Space</p>
-                <h3 class="card-title">49/50
-                  <small>GB</small>
-                </h3>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons text-danger">warning</i>
-                  <a href="javascript:;">Get More Space...</a>
-                </div>
-              </div>
-            </div>
+      <div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+        <div class="w3_agileits_services_grid_agile">
+          <div class="w3_agileits_services_grid_1">
+            <img src="assets/client/images/6.jpg" alt="service-img">
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-header card-header-success card-header-icon">
-                <div class="card-icon">
-                  <i class="material-icons">store</i>
-                </div>
-                <p class="card-category">Revenue</p>
-                <h3 class="card-title">$34,245</h3>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">date_range</i> Last 24 Hours
-                </div>
-              </div>
-            </div>
+          <h3>Luxury Room</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+      <div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+        <div class="w3_agileits_services_grid_agile">
+          <div class="w3_agileits_services_grid_1">
+            <img src="assets/client/images/7.jpg" alt="service-img">
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-header card-header-danger card-header-icon">
-                <div class="card-icon">
-                  <i class="material-icons">info_outline</i>
-                </div>
-                <p class="card-category">Fixed Issues</p>
-                <h3 class="card-title">75</h3>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">local_offer</i> Tracked from Github
-                </div>
-              </div>
-            </div>
+          <h3>Swimming Pool</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+      <div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+        <div class="w3_agileits_services_grid_agile">
+          <div class="w3_agileits_services_grid_1">
+            <img src="assets/client/images/8.jpg" alt="service-img">
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-header card-header-info card-header-icon">
-                <div class="card-icon">
-                  <i class="fa fa-twitter"></i>
-                </div>
-                <p class="card-category">Followers</p>
-                <h3 class="card-title">+245</h3>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">update</i> Just Updated
-                </div>
-              </div>
-            </div>
+          <h3>Spa Care</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <!-- //services -->
+
+    <div class="agileinf-button">    <a class="read" href="single.html">
+      Read More
+    </a>
+    </div>
+
+  </div>
+</div>
+<div class="featured-facility">
+  <!-- welcome -->
+
+  <div class="spa-agile">
+    <h3 class="tittle fea">Featured  Facilities</h3>
+    <div class="col-md-3 spa-grid">
+
+      <i class="fas fa-utensils" aria-hidden="true"></i>
+
+      <h4>Restaurant </h4>
+
+    </div>
+    <div class="col-md-3 spa-grid">
+
+      <i class="fas fa-glasses" aria-hidden="true"></i>
+
+
+      <h4>Bar</h4>
+
+
+    </div>
+    <div class="col-md-3 spa-grid lost">
+
+      <i class="fas fa-wheelchair" aria-hidden="true"></i>
+
+      <h4>Gym</h4>
+
+
+    </div>
+    <div class="col-md-3 spa-grid lost">
+
+      <i class="fa fa-car" aria-hidden="true"></i>
+
+
+      <h4>Pick Up</h4>
+
+
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+
+  <!-- //welcome -->
+</div>
+<!-- about-bottom -->
+<div class="about-bottom">
+  <div class="col-md-6 w3l_about_bottom_left">
+    <div class="video-grid-single-page-agileits">
+      <div data-video="44fbHx7P-t8" id="video"> <img src="assets/client/images/watch.jpg" alt="" class="img-responsive" /> </div>
+    </div>
+
+    <div class="w3l_about_bottom_left_video">
+      <h4>watch our video</h4>
+    </div>
+  </div>
+  <div class="col-md-6 w3l_about_bottom_right one">
+    <h3 class="tittle why">why choose us ?</h3>
+    <p>Lorem Aenean aliquet nec mi et lacinia. Aliquam maximus iaculis mi, sed efficitur orci efficitur nec.</p>
+    <div class="panel-group w3l_panel_group_faq" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title asd">
+            <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Restaurant & Banquets
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body panel_text">
+            Lorem Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card card-chart">
-              <div class="card-header card-header-success">
-                <div class="ct-chart" id="dailySalesChart"></div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Daily Sales</h4>
-                <p class="card-category">
-                  <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">access_time</i> updated 4 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-chart">
-              <div class="card-header card-header-warning">
-                <div class="ct-chart" id="websiteViewsChart"></div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Email Subscriptions</h4>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">access_time</i> campaign sent 2 days ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-chart">
-              <div class="card-header card-header-danger">
-                <div class="ct-chart" id="completedTasksChart"></div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Completed Tasks</h4>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="material-icons">access_time</i> campaign sent 2 days ago
-                </div>
-              </div>
-            </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title asd">
+            <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Transportation Included
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body panel_text">
+            Lorem Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-12">
-            <div class="card">
-              <div class="card-header card-header-tabs card-header-primary">
-                <div class="nav-tabs-navigation">
-                  <div class="nav-tabs-wrapper">
-                    <span class="nav-tabs-title">Tasks:</span>
-                    <ul class="nav nav-tabs" data-tabs="tabs">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="#profile" data-toggle="tab">
-                          <i class="material-icons">bug_report</i> Bugs
-                          <div class="ripple-container"></div>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#messages" data-toggle="tab">
-                          <i class="material-icons">code</i> Website
-                          <div class="ripple-container"></div>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#settings" data-toggle="tab">
-                          <i class="material-icons">cloud</i> Server
-                          <div class="ripple-container"></div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="tab-pane active" id="profile">
-                    <table class="table">
-                      <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="tab-pane" id="messages">
-                    <table class="table">
-                      <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="tab-pane" id="settings">
-                    <table class="table">
-                      <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12">
-            <div class="card">
-              <div class="card-header card-header-warning">
-                <h4 class="card-title">Employees Stats</h4>
-                <p class="card-category">New employees on 15th September, 2016</p>
-              </div>
-              <div class="card-body table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-warning">
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Dakota Rice</td>
-                    <td>$36,738</td>
-                    <td>Niger</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Minerva Hooper</td>
-                    <td>$23,789</td>
-                    <td>Curaçao</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Sage Rodriguez</td>
-                    <td>$56,142</td>
-                    <td>Netherlands</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Philip Chaney</td>
-                    <td>$38,735</td>
-                    <td>Korea, South</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title asd">
+            <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>The best care for our precious visitors
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body panel_text">
+            Lorem Amet quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
           </div>
         </div>
+
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title asd">
+            <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Pool Deluxe Room
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body panel_text">
+            Lorem Amet quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia.
+          </div>
+        </div>
+
       </div>
     </div>
-    <footer class="footer">
-      <div class="container-fluid">
-        <nav class="float-left">
-          <ul>
-            <li>
-              <a href="https://www.creative-tim.com">
-                Creative Tim
-              </a>
-            </li>
-            <li>
-              <a href="https://creative-tim.com/presentation">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="http://blog.creative-tim.com">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="https://www.creative-tim.com/license">
-                Licenses
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright float-right">
-          &copy;
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, made with <i class="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+  </div>
+  <div class="clearfix"> </div>
+</div>
+<!-- //about-bottom -->
+<!-- about-bottom -->
+<div class="about-bottom" id="ab">
+  <div class="col-md-6 w3l_about_bottom_right two">
+    <h3 class="tittle why">Book a Reservation</h3>
+    <div class="book-form">
+
+      <form action="#" method="post">
+        <div class="col-md-6 form-date-w3-agileits">
+          <label><i class="fa fa-user" aria-hidden="true"></i> Name :</label>
+          <input type="text" name="name" placeholder="Your name" required="">
         </div>
-      </div>
-    </footer>
+        <div class="col-md-6 form-date-w3-agileits second-agile">
+          <label><i class="fa fa-envelope" aria-hidden="true"></i> Email :</label>
+          <input type="email" name="email" placeholder="Your email" required="">
+        </div>
+        <div class="col-md-6 form-date-w3-agileits">
+          <label><i class="fa fa-calendar" aria-hidden="true"></i> Arrival Date :</label>
+          <input  id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+
+        </div>
+        <div class="col-md-6 form-time-w3layouts second-agile">
+          <label><i class="fa fa-clock-o" aria-hidden="true"></i> Time :</label>
+          <input type="time">
+        </div>
+        <div class="col-md-6 form-date-w3-agileits">
+          <label><i class="fa fa-calendar" aria-hidden="true"></i> Departure Date :</label>
+          <input  id="datepicker1" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+
+        </div>
+        <div class="col-md-6 form-time-w3layouts second-agile">
+          <label><i class="fa fa-clock-o" aria-hidden="true"></i> Time :</label>
+          <input type="time">
+        </div>
+        <div class="col-md-6 form-left-agileits-w3layouts bottom-w3ls">
+          <label><i class="fa fa-home" aria-hidden="true"></i> Choose a Room :</label>
+          <select class="form-control">
+            <option></option>
+            <option>Standard Double Room</option>
+            <option>Standard Family Room</option>
+            <option>Garden Family Room</option>
+            <option>Deluxe Double Room</option>
+            <option>Executive Junior Suite</option>
+            <option>Maisonette</option>
+          </select>
+        </div>
+        <div class="col-md-6 form-left-agileits-w3layouts second-agile">
+          <label><i class="fa fa-users" aria-hidden="true"></i> No.of People :</label>
+          <select class="form-control">
+            <option></option>
+            <option>1 Person</option>
+            <option>2 People</option>
+            <option>3 People</option>
+            <option>4 People</option>
+            <option>5 People</option>
+            <option>More</option>
+          </select>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="make wow shake" data-wow-duration="1s" data-wow-delay=".5s">
+          <input type="submit" value="Make a Reservation">
+        </div>
+      </form>
+    </div>
+
   </div>
+  <div class="col-md-6 w3l_about_bottom_left">
+
+    <img src="assets/client/images/33.jpg" alt="" class="img-responsive" />
+    <div class="w3l_about_bottom_left_video book-text">
+      <h4>BooK Now</h4>
+    </div>
+  </div>
+
+  <div class="clearfix"> </div>
 </div>
-<div class="fixed-plugin">
-  <div class="dropdown show-dropdown">
-    <a href="#" data-toggle="dropdown">
-      <i class="fa fa-cog fa-2x"> </i>
-    </a>
-    <ul class="dropdown-menu">
-      <li class="header-title"> Sidebar Filters</li>
-      <li class="adjustments-line">
-        <a href="javascript:void(0)" class="switch-trigger active-color">
-          <div class="badge-colors ml-auto mr-auto">
-            <span class="badge filter badge-purple" data-color="purple"></span>
-            <span class="badge filter badge-azure" data-color="azure"></span>
-            <span class="badge filter badge-green" data-color="green"></span>
-            <span class="badge filter badge-warning" data-color="orange"></span>
-            <span class="badge filter badge-danger" data-color="danger"></span>
-            <span class="badge filter badge-rose active" data-color="rose"></span>
+<!-- //about -->
+<!-- /plans -->
+<div class="plans-section">
+  <div class="container">
+    <h3 class="w3l-inner-h-title">Rates and Booking</h3>
+    <div class="priceing-table-main">
+      <c:forEach items="${requestScope['services']}" var="service">
+        <div class="col-md-3 mt-3 price-grid">
+          <div class="price-block agile">
+            <div class="price-gd-top pric-clr1">
+              <h4>${service.getServiceType().getName()}</h4>
+              <h3><span>$</span>${service.getCost()}</h3>
+              <h5>${service.getRentType().getName()}</h5>
+            </div>
+            <div class="price-gd-bottom">
+              <div class="price-list">
+                <h6 class="bed"><i class="fa fa-bed" aria-hidden="true"></i></h6>
+              </div>
+              <div class="price-selet pric-sclr1">
+                <a href="#ab" class="scroll" >Book Now</a>
+              </div>
+            </div>
           </div>
-          <div class="clearfix"></div>
-        </a>
-      </li>
-      <li class="header-title">Images</li>
-      <li class="active">
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="../assets/img/sidebar-1.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="../assets/img/sidebar-2.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="../assets/img/sidebar-3.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="../assets/img/sidebar-4.jpg" alt="">
-        </a>
-      </li>
-      <li class="button-container">
-        <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-      </li>
-      <!-- <li class="header-title">Want more components?</li>
-          <li class="button-container">
-              <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                Get the pro version
-              </a>
-          </li> -->
-      <li class="button-container">
-        <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-          View Documentation
-        </a>
-      </li>
-      <li class="button-container github-star">
-        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-      </li>
-      <li class="header-title">Thank you for 95 shares!</li>
-      <li class="button-container text-center">
-        <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-        <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-        <br>
-        <br>
-      </li>
-    </ul>
+        </div>
+      </c:forEach>
+
+      <div class="clearfix"> </div>
+    </div>
   </div>
 </div>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!-- Plugin for the momentJs  -->
-<script src="../assets/js/plugins/moment.min.js"></script>
-<!--  Plugin for Sweet Alert -->
-<script src="../assets/js/plugins/sweetalert2.js"></script>
-<!-- Forms Validations Plugin -->
-<script src="../assets/js/plugins/jquery.validate.min.js"></script>
-<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-<script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
-<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="../assets/js/plugins/fullcalendar.min.js"></script>
-<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="../assets/js/plugins/jquery-jvectormap.js"></script>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="../assets/js/plugins/nouislider.min.js"></script>
-<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-<!-- Library for adding dinamically elements -->
-<script src="../assets/js/plugins/arrive.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chartist JS -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+<!-- testimonials -->
+<div class="guests-agile">
+  <h3 class="tittle">Our Guests</h3>
+  <div class="w3_agileits_testimonial_grids">
+    <section class="slider">
+      <div class="flexslider">
+        <ul class="slides">
+          <li>
+            <div class="w3_agileits_testimonial_grid">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <img src="assets/client/images/admin.jpg" alt=" " class="img-responsive" />
+
+            </div>
+          </li>
+          <li>
+            <div class="w3_agileits_testimonial_grid">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <img src="assets/client/images/admin2.jpg" alt=" " class="img-responsive" />
+
+            </div>
+          </li>
+          <li>
+            <div class="w3_agileits_testimonial_grid">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <img src="assets/client/images/admin.jpg" alt=" " class="img-responsive" />
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- //flexSlider -->
+  </div>
+</div>
+<!-- //testimonials -->
+
+<!-- Footer -->
+<div class="w3l-footer">
+  <div class="container">
+    <div class="footer-info-agile">
+      <div class="col-md-2 footer-info-grid links">
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="codes.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 footer-info-grid address">
+        <h4>Address</h4>
+        <address>
+          <ul>
+            <li>Mexico United States 3000</li>
+            <li>40019 Honey Street</li>
+            <li>BO,Mexico</li>
+            <li>Telephone : +1 (734) 123-4567</li>
+            <li>Email : <a class="mail" href="mailto:mail@example.com">info(at)example.com</a></li>
+          </ul>
+        </address>
+      </div>
+      <div class="col-md-3 footer-grid">
+        <h4>Instagram</h4>
+        <div class="footer-grid-instagram">
+          <a href="#"><img src="assets/client/images/f1.jpg" alt=" " class="img-responsive"></a>
+        </div>
+        <div class="footer-grid-instagram">
+          <a href="#"><img src="assets/client/images/f2.jpg" alt=" " class="img-responsive"></a>
+        </div>
+        <div class="footer-grid-instagram">
+          <a href="#"><img src="assets/client/images/f3.jpg" alt=" " class="img-responsive"></a>
+        </div>
+        <div class="footer-grid-instagram">
+          <a href="#"><img src="assets/client/images/f4.jpg" alt=" " class="img-responsive"></a>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <div class="col-md-4 footer-info-grid">
+        <div class="connect-social">
+          <h4>Connect with us</h4>
+          <section class="social">
+            <ul>
+              <li><a class="icon fb" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="icon tw" href="#"><i class="fa fa-twitter"></i></a></li>
+
+
+              <li><a class="icon pin" href="#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a class="icon db" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="icon gp" href="#"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+          </section>
+
+        </div>
+
+
+
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="connect-agileits newsletter">
+      <h4>Newsletter</h4>
+      <p>Subscribe to our newsletter and we will inform you about newest projects and promotions.
+      </p>
+      <form action="#" method="post" class="newsletter">
+        <input class="email" type="email" placeholder="Your email address..." required="">
+        <input type="submit" class="submit" value="Subscribe">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="w3agile_footer_copy">
+  <p>© 2017 Resort. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+</div>
+<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<script src="assets/client/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+<!-- Dropdown-Menu-JavaScript -->
 <script>
-  $(document).ready(function() {
-    $().ready(function() {
-      $sidebar = $('.sidebar');
+  $(document).ready(function(){
+    $(".dropdown").hover(
+            function() {
+              $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+              $(this).toggleClass('open');
+            },
+            function() {
+              $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+              $(this).toggleClass('open');
+            }
+    );
+  });
+</script>
+<!-- //Dropdown-Menu-JavaScript -->
 
-      $sidebar_img_container = $sidebar.find('.sidebar-background');
 
-      $full_page = $('.full-page');
+<script src="assets/client/js/jquery.zoomslider.min.js" type="text/javascript"></script>
+<!-- search-jQuery -->
+<script ><%@ include file="/assets/client/js/main.js"%></script>
 
-      $sidebar_responsive = $('body > .navbar-collapse');
-
-      window_width = $(window).width();
-
-      fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-      if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-        if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-          $('.fixed-plugin .dropdown').addClass('open');
-        }
-
+<!--/script-->
+<script src="assets/client/js/simplePlayer.js"></script>
+<script>
+  $("document").ready(function() {
+    $("#video").simplePlayer();
+  });
+</script>
+<!-- flexSlider -->
+<script src="assets/client/js/jquery.flexslider.js" defer></script>
+<script type="text/javascript">
+  $(window).load(function(){
+    $('.flexslider').flexslider({
+      animation: "slide",
+      start: function(slider){
+        $('body').removeClass('loading');
       }
-
-      $('.fixed-plugin a').click(function(event) {
-        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-        if ($(this).hasClass('switch-trigger')) {
-          if (event.stopPropagation) {
-            event.stopPropagation();
-          } else if (window.event) {
-            window.event.cancelBubble = true;
-          }
-        }
-      });
-
-      $('.fixed-plugin .active-color span').click(function() {
-        $full_page_background = $('.full-page-background');
-
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-
-        var new_color = $(this).data('color');
-
-        if ($sidebar.length != 0) {
-          $sidebar.attr('data-color', new_color);
-        }
-
-        if ($full_page.length != 0) {
-          $full_page.attr('filter-color', new_color);
-        }
-
-        if ($sidebar_responsive.length != 0) {
-          $sidebar_responsive.attr('data-color', new_color);
-        }
-      });
-
-      $('.fixed-plugin .background-color .badge').click(function() {
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-
-        var new_color = $(this).data('background-color');
-
-        if ($sidebar.length != 0) {
-          $sidebar.attr('data-background-color', new_color);
-        }
-      });
-
-      $('.fixed-plugin .img-holder').click(function() {
-        $full_page_background = $('.full-page-background');
-
-        $(this).parent('li').siblings().removeClass('active');
-        $(this).parent('li').addClass('active');
-
-
-        var new_image = $(this).find("img").attr('src');
-
-        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-          $sidebar_img_container.fadeOut('fast', function() {
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $sidebar_img_container.fadeIn('fast');
-          });
-        }
-
-        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-          $full_page_background.fadeOut('fast', function() {
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-            $full_page_background.fadeIn('fast');
-          });
-        }
-
-        if ($('.switch-sidebar-image input:checked').length == 0) {
-          var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-          $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-          $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-        }
-
-        if ($sidebar_responsive.length != 0) {
-          $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-        }
-      });
-
-      $('.switch-sidebar-image input').change(function() {
-        $full_page_background = $('.full-page-background');
-
-        $input = $(this);
-
-        if ($input.is(':checked')) {
-          if ($sidebar_img_container.length != 0) {
-            $sidebar_img_container.fadeIn('fast');
-            $sidebar.attr('data-image', '#');
-          }
-
-          if ($full_page_background.length != 0) {
-            $full_page_background.fadeIn('fast');
-            $full_page.attr('data-image', '#');
-          }
-
-          background_image = true;
-        } else {
-          if ($sidebar_img_container.length != 0) {
-            $sidebar.removeAttr('data-image');
-            $sidebar_img_container.fadeOut('fast');
-          }
-
-          if ($full_page_background.length != 0) {
-            $full_page.removeAttr('data-image', '#');
-            $full_page_background.fadeOut('fast');
-          }
-
-          background_image = false;
-        }
-      });
-
-      $('.switch-sidebar-mini input').change(function() {
-        $body = $('body');
-
-        $input = $(this);
-
-        if (md.misc.sidebar_mini_active == true) {
-          $('body').removeClass('sidebar-mini');
-          md.misc.sidebar_mini_active = false;
-
-          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-        } else {
-
-          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-          setTimeout(function() {
-            $('body').addClass('sidebar-mini');
-
-            md.misc.sidebar_mini_active = true;
-          }, 300);
-        }
-
-        // we simulate the window Resize so the charts will get updated in realtime.
-        var simulateWindowResize = setInterval(function() {
-          window.dispatchEvent(new Event('resize'));
-        }, 180);
-
-        // we stop the simulation of Window Resize after the animations are completed
-        setTimeout(function() {
-          clearInterval(simulateWindowResize);
-        }, 1000);
-
-      });
     });
   });
 </script>
+<!--//script for portfolio-->
+<!-- Calendar -->
+
+<script src="assets/client/js/jquery-ui.js"></script>
 <script>
+  $(function() {
+    $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+  });
+</script>
+<!-- //Calendar -->
+<script src="assets/client/js/move-top.js"></script>
+<script src="assets/client/js/easing.js"></script>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".scroll").click(function(event){
+      event.preventDefault();
+      $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+    });
+  });
+</script>
+<script type="text/javascript">
   $(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    md.initDashboardPageCharts();
+    /*
+    var defaults = {
+          containerID: 'toTop', // fading element id
+        containerHoverID: 'toTopHover', // fading element hover id
+        scrollSpeed: 1200,
+        easingType: 'linear'
+     };
+    */
+
+    $().UItoTop({ easingType: 'easeOutQuart' });
 
   });
 </script>
+<!--end-smooth-scrolling-->
+<!--js for bootstrap working-->
+<script src="assets/client/js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
 </body>
-
 </html>

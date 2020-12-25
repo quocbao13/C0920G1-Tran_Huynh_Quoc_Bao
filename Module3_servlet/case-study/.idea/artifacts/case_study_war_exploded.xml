@@ -6,6 +6,13 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="case-study" />
+          <element id="library" level="project" name="css" />
+          <element id="library" level="project" name="datatables" />
+          <element id="library" level="project" name="jquery" />
+          <element id="library" level="project" name="js" />
+          <element id="library" level="project" name="admin" />
+          <element id="library" level="project" name="client" />
+          <element id="library" level="application" name="all" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />

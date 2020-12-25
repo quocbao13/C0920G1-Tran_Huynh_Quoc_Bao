@@ -13,6 +13,10 @@ public class Position {
         this.name = name;
     }
 
+    public Position(int id) {
+        this.id = id;
+    }
+
     public Position(String name) {
         this.name = name;
     }

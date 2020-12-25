@@ -27,9 +27,9 @@
     </h2>
     <form method="get">
         <input name="action" value="search" class="d-none">
-        Name: <input type="text" name="name" placeholder="search ...">
-        Country: <input type="text" name="country" placeholder="search ...">
-        Id: <input type="text" name="id" placeholder="search ...">
+        Name: <input type="text" name="name" value="" placeholder="search ...">
+        Country: <input type="text" name="country" value="" placeholder="search ...">
+        Id: <input type="text" name="id" value="" placeholder="search ...">
         <input type="submit" value="Search">
     </form>
 <div align="center">
