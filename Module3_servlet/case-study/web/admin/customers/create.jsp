@@ -17,72 +17,70 @@
           crossorigin="anonymous" />
 </head>
 <body>
-<div class="wrapper ">
-    <jsp:include page="/admin/shared/menuLeft.jsp"/>
-    <div class="main-panel">
-        <!-- Navbar -->
-        <jsp:include page="/admin/shared/header.jsp"/>
-        <!-- End Navbar -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h1>EDIT CUSTOMER</h1>
-                    </div>
-                    <form class="col-12" method="post">
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-1" for="exampleInputPosition">Customer type:</label>
-                            <select name="customer_type_id" id="exampleInputPosition" class="form-control col-12 float-left">
-                                <option>Chose option ...</option>
-                                <c:forEach var="customerType" items="${requestScope['customerTypes']}">
-                                    <option value="${customerType.getId()}">${customerType.getName()}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputName">Name:</label>
-                            <input type="text" name="customer_name" class="form-control col-12 float-left mt-1"
-                                   id="exampleInputName" placeholder="Enter name...">
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputBirthday">Birthday:</label>
-                            <input type="date" name="customer_birthday" class="form-control col-12 float-left"
-                                   id="exampleInputBirthday" placeholder="Enter birthday...">
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputGender">Gender:</label>
-                            <select name="customer_gender" id="exampleInputGender" class="form-control col-12 float-left">
-                                <option value="0">Male</option>
-                                <option value="1">Female</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputCard">Id card:</label>
-                            <input type="text" name="customer_id_card" class="form-control col-12 float-left"
-                                   id="exampleInputCard" placeholder="Enter id card...">
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputPhone">Phone:</label>
-                            <input type="text" name="customer_phone" class="form-control col-12 float-left"
-                                   id="exampleInputPhone" placeholder="Enter salary...">
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputEmail">Email:</label>
-                            <input type="text" name="customer_email" class="form-control col-12 float-left"
-                                   id="exampleInputEmail" placeholder="Enter email...">
-                        </div>
-                        <div class="form-group col-12">
-                            <label class="col-12 float-left mt-4" for="exampleInputAddress">Address:</label>
-                            <input type="text" name="customer_address" class="form-control col-12 float-left"
-                                   id="exampleInputAddress" placeholder="Enter address...">
-                        </div>
-                        <button type="submit" class="btn btn-primary float-right">Create</button>
-                        <a href="/admin/customers"><button type="button" class="btn btn-info float-right">Back</button></a>
-                    </form>
-                </div>
+<div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">CREATE CUSTOMER</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form class="col-12" method="post" action="/customer?action=create" id="fomrAdd">
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-1" for="exampleInputPosition">Customer type:</label>
+                    <select name="customer_type_id" id="exampleInputPosition" class="form-control col-12 float-left">
+                        <option>Chose option ...</option>
+                        <c:forEach var="customerType" items="${requestScope['customerTypes']}">
+                            <option value="${customerType.getId()}">${customerType.getName()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputName">Name:</label>
+                    <input type="text" name="customer_name" class="form-control col-12 float-left mt-1"
+                           id="exampleInputName" placeholder="Enter name...">
+                </div>
+                <p>
+                    <c:if test='${message!= null}'>
+                        <span style="color: red" class="message">${message}</span>
+                    </c:if>
+                </p>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputBirthday">Birthday:</label>
+                    <input type="date" name="customer_birthday" class="form-control col-12 float-left"
+                           id="exampleInputBirthday" placeholder="Enter birthday...">
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputGender">Gender:</label>
+                    <select name="customer_gender" id="exampleInputGender" class="form-control col-12 float-left">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputCard">Id card:</label>
+                    <input type="text" name="customer_id_card" class="form-control col-12 float-left"
+                           id="exampleInputCard" placeholder="Enter id card...">
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputPhone">Phone:</label>
+                    <input type="text" name="customer_phone" class="form-control col-12 float-left"
+                           id="exampleInputPhone" placeholder="Enter salary...">
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputEmail">Email:</label>
+                    <input type="text" name="customer_email" class="form-control col-12 float-left"
+                           id="exampleInputEmail" placeholder="Enter email...">
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-12 float-left mt-4" for="exampleInputAddress">Address:</label>
+                    <input type="text" name="customer_address" class="form-control col-12 float-left"
+                           id="exampleInputAddress" placeholder="Enter address...">
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Create</button>
+            </form>
         </div>
-        <%-- Footer --%>
     </div>
 </div>
 <script src="../../assets/bootstrap/jquery/jquery-3.5.1.min.js"></script>

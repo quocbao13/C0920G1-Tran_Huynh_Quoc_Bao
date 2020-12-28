@@ -1,7 +1,10 @@
 package Controller;
 
+
+import common.Validate;
 import Model.Customer;
 import Model.CustomerType;
+import Model.User;
 import Repository.CustomerRepository.CustomerRepositoryImpl;
 import Repository.CustomerTypeRepository.CustomerTypeRepositoryImpl;
 
@@ -11,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,22 +39,36 @@ public class CustomerServlet extends HttpServlet {
 
     private void create(HttpServletRequest request, HttpServletResponse response) {
         int typeId = Integer.parseInt(request.getParameter("customer_type_id"));
-        String typename = request.getParameter("customer_type_name");
         String name = request.getParameter("customer_name");
+        String message = Validate.validateCustomerName(name);
         String birthday = request.getParameter("customer_birthday");
         String gender = request.getParameter("customer_gender");
         String idCard = request.getParameter("customer_id_card");
         String phone = request.getParameter("customer_phone");
         String email = request.getParameter("customer_email");
         String address = request.getParameter("customer_address");
-        Customer customer = new Customer( new CustomerType(typeId,typename), name, birthday, gender,
+        Customer customer = new Customer( new CustomerType(typeId), name, birthday, gender,
                 idCard, phone, email, address);
+        System.out.println(message);
         try {
-            customerRepository.insert(customer);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customers/create.jsp");
-            request.setAttribute("message", "Created");
+            if (message == null) {
+                customerRepository.insert(customer);
+                customer = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            List<CustomerType> customerTypes = new CustomerTypeRepositoryImpl().selectAll();
+            List<Customer> customers = customerRepository.selectAll();
+            System.out.println(message);
+            request.setAttribute("customer",customer);
+            request.setAttribute("message", message);
+            request.setAttribute("customers", customers);
+            request.setAttribute("customerTypes", customerTypes);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("customers/list.jsp");
             dispatcher.forward(request, response);
-        } catch (SQLException | ServletException | IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -66,7 +84,7 @@ public class CustomerServlet extends HttpServlet {
         String phone = request.getParameter("customer_phone");
         String email = request.getParameter("customer_email");
         String address = request.getParameter("customer_address");
-        Customer customer = new Customer( new CustomerType(typeId,typename), name, birthday, gender,
+        Customer customer = new Customer(id, new CustomerType(typeId,typename), name, birthday, gender,
                 idCard, phone, email, address);
         try {
             customerRepository.update(customer);
@@ -83,38 +101,37 @@ public class CustomerServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null){
-            action = "";
-        }
-        switch (action) {
-            case "create": showCreate(request, response);
-                break;
-            case "edit": showUpdate(request, response);
-                break;
-            case "delete": delete(request, response);
-                break;
-            default: showList(request, response);
-                break;
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("../login/login.jsp");
+            dispatcher.forward(request, response);
+        }else {
+            String action = request.getParameter("action");
+            if (action == null) {
+                action = "";
+            }
+            switch (action) {
+                case "edit":
+                    showUpdate(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                default:
+                    showList(request, response);
+                    break;
+            }
         }
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<CustomerType> customerTypes = new CustomerTypeRepositoryImpl().selectAll();
         List<Customer> customers = customerRepository.selectAll();
         request.setAttribute("customers", customers);
+        request.setAttribute("customerTypes", customerTypes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customers/list.jsp");
         dispatcher.forward(request, response);
-    }
-
-    private void showCreate(HttpServletRequest request, HttpServletResponse response) {
-        List<CustomerType> customerTypes = new CustomerTypeRepositoryImpl().selectAll();
-        request.setAttribute("customerTypes", customerTypes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customers/create.jsp");
-        try {
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void showUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

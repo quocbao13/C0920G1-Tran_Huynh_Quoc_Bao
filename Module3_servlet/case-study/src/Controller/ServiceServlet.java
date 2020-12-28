@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.CustomerType;
-import Model.RentType;
-import Model.Service;
-import Model.ServiceType;
+import Model.*;
 import Repository.CustomerTypeRepository.CustomerTypeRepositoryImpl;
 import Repository.RentTypeRepository.RentTypeRepositoryImpl;
 import Repository.ServiceRepository.ServiceRepositoryImpl;
@@ -15,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -93,19 +91,30 @@ public class ServiceServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null){
-            action = "";
-        }
-        switch (action) {
-            case "create": showCreate(request, response);
-                break;
-            case "edit": showUpdate(request, response);
-                break;
-            case "delete": delete(request, response);
-                break;
-            default: showList(request, response);
-                break;
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("../login/login.jsp");
+            dispatcher.forward(request, response);
+        }else {
+            String action = request.getParameter("action");
+            if (action == null) {
+                action = "";
+            }
+            switch (action) {
+                case "create":
+                    showCreate(request, response);
+                    break;
+                case "edit":
+                    showUpdate(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                default:
+                    showList(request, response);
+                    break;
+            }
         }
     }
 

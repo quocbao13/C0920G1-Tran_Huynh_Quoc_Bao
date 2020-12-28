@@ -18,6 +18,7 @@ public class UserRepositoryImpl implements UserRepository{
     private static final String SELECT_ALL = "select * from user";
     private static final String DELETE_SQL = "delete from user where username = ?;";
     private static final String UPDATE_SQL = "update user set password = ? where username = ?;";
+    private static final String sql = "select * from user where username = ? and password = ?";
 
     @Override
     public void insert(User user) throws SQLException {
@@ -58,5 +59,24 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public boolean update(User user) throws SQLException {
         return false;
+    }
+
+    public static User checkLogin(String username, String password) {
+        User user = null;
+
+        try (Connection connection = new ConnectionRepository().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            ResultSet result = preparedStatement.executeQuery();
+            if (result.next()) {
+                user = new User(username, password);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }

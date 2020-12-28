@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -59,6 +60,7 @@ public class ContractServlet extends HttpServlet {
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
         String contract_start_date = request.getParameter("contract_start_date");
         String contract_end_date = request.getParameter("contract_end_date");
         String contract_deposit = request.getParameter("contract_deposit");
@@ -66,7 +68,7 @@ public class ContractServlet extends HttpServlet {
         int employee_id = Integer.parseInt(request.getParameter("employee_id"));
         int customer_id = Integer.parseInt(request.getParameter("customer_id"));
         int service_id = Integer.parseInt(request.getParameter("service_id"));
-        Contract contract = new Contract(contract_start_date, contract_end_date, contract_deposit, contract_total_money,
+        Contract contract = new Contract(id, contract_start_date, contract_end_date, contract_deposit, contract_total_money,
                 new Employee(employee_id),
                 new Customer(customer_id),
                 new Service(service_id));
@@ -85,19 +87,30 @@ public class ContractServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null){
-            action = "";
-        }
-        switch (action) {
-            case "create": showCreate(request, response);
-                break;
-            case "edit": showUpdate(request, response);
-                break;
-            case "delete": delete(request, response);
-                break;
-            default: showList(request, response);
-                break;
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("../login/login.jsp");
+            dispatcher.forward(request, response);
+        }else {
+            String action = request.getParameter("action");
+            if (action == null) {
+                action = "";
+            }
+            switch (action) {
+                case "create":
+                    showCreate(request, response);
+                    break;
+                case "edit":
+                    showUpdate(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                default:
+                    showList(request, response);
+                    break;
+            }
         }
     }
 

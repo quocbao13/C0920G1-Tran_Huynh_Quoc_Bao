@@ -10,6 +10,10 @@ public class CustomerType {
         this.id = id;
         this.name = name;
     }
+    public CustomerType(int id) {
+        this.id = id;
+    }
+
 
     public CustomerType(String name) {
         this.name = name;

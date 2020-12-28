@@ -39,8 +39,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="agileits-contact-info text-right">
       <ul>
-        <li><i class="fas fa-phone-volume" aria-hidden="true"></i> +090 480 088</li>
-        <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@example.com">mail@example.com</a></li>
+        <c:if test="${user != null}">
+          <li>${user.getName()}</li>
+          <a href="/logout"><li>Logout</li></a>
+        </c:if>
+        <c:if test="${user == null}">
+          <li></li>
+          <a href="/login"><li>Login</li></a>
+          <a href="/register"><li>Register</li></a>
+        </c:if>
+
       </ul>
     </div>
     <div class="clearfix"></div>
