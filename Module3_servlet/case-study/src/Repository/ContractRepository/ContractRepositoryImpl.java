@@ -107,7 +107,7 @@ public class ContractRepositoryImpl implements ContractRepository {
                 String customer_address = resultSet.getString("customer_address");
                 int customer_id = resultSet.getInt("customer_id");
 
-                String service_id = resultSet.getString("service_id");
+                int service_id = resultSet.getInt("service_id");
                 String service_name = resultSet.getString("service_name");
                 int area = resultSet.getInt("service_area");
                 String cost = resultSet.getString("service_cost");
@@ -122,14 +122,14 @@ public class ContractRepositoryImpl implements ContractRepository {
                 String poolArea = resultSet.getString("pool_area");
                 int numberOfFloor = resultSet.getInt("number_of_floors");
                 contract = new Contract(contract_start_date,contract_end_date,contract_deposit,contract_total_money,
-                        new Employee(name, birthday, idCard, salary, phone, email, address,
+                        new Employee(employee_id, name, birthday, idCard, salary, phone, email, address,
                                 new Position(position_id, position_name),
                                 new EducationLevel(educationLevel_id, educationLevel_name),
                                 new Division(division_id, division_name),
                                 new User(username, password)),
-                        new Customer(new CustomerType(typeId,typename), customer_name, customer_birthday,
+                        new Customer(customer_id, new CustomerType(typeId,typename), customer_name, customer_birthday,
                                 customer_gender, customer_id_card, customer_phone, customer_email, customer_address),
-                        new Service(service_name, area, cost, maxPeople,
+                        new Service(service_id, service_name, area, cost, maxPeople,
                                 new RentType(rentTypeId, rentTypeName,cost),
                                 new ServiceType(serviceTypeId, serviceTypeName), standardRoom, descriptionOtherConvenience,
                                 poolArea, numberOfFloor)
@@ -185,7 +185,7 @@ public class ContractRepositoryImpl implements ContractRepository {
                 String customer_address = resultSet.getString("customer_address");
                 int customer_id = resultSet.getInt("customer_id");
 
-                String service_id = resultSet.getString("service_id");
+                int service_id = resultSet.getInt("service_id");
                 String service_name = resultSet.getString("service_name");
                 int area = resultSet.getInt("service_area");
                 String cost = resultSet.getString("service_cost");
@@ -199,16 +199,16 @@ public class ContractRepositoryImpl implements ContractRepository {
                 String descriptionOtherConvenience = resultSet.getString("description_other_convenience");
                 String poolArea = resultSet.getString("pool_area");
                 int numberOfFloor = resultSet.getInt("number_of_floors");
-                contracts.add(new Contract(contract_start_date,contract_end_date,contract_deposit,contract_total_money,
-                        new Employee(name, birthday, idCard, salary, phone, email, address,
+                contracts.add(new Contract(id, contract_start_date,contract_end_date,contract_deposit,contract_total_money,
+                        new Employee(employee_id, name, birthday, idCard, salary, phone, email, address,
                                 new Position(position_id, position_name),
                                 new EducationLevel(educationLevel_id, educationLevel_name),
                                 new Division(division_id, division_name),
                                 new User(username, password)),
-                        new Customer(new CustomerType(typeId,typename), customer_name, customer_birthday,
+                        new Customer(customer_id, new CustomerType(typeId,typename), customer_name, customer_birthday,
                                 customer_gender, customer_id_card, customer_phone, customer_email, customer_address),
-                        new Service(service_name, area, cost, maxPeople,
-                                new RentType(rentTypeId, rentTypeName,cost),
+                        new Service(service_id, service_name, area, cost, maxPeople,
+                                new RentType(rentTypeId, rentTypeName,rentTypeCost),
                                 new ServiceType(serviceTypeId, serviceTypeName), standardRoom, descriptionOtherConvenience,
                                 poolArea, numberOfFloor)));
             }

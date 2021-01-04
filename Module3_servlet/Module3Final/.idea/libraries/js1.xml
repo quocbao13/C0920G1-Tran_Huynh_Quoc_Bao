@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="js1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/datatables/js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

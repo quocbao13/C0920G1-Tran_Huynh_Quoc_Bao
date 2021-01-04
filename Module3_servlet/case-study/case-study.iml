@@ -31,5 +31,6 @@
     <orderEntry type="library" name="client" level="project" />
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="commons-lang3-3.11-javadoc" level="project" />
+    <orderEntry type="library" name="datepicker" level="project" />
   </component>
 </module>

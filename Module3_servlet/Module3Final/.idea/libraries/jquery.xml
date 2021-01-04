@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jquery">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/bootstrap/jquery" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

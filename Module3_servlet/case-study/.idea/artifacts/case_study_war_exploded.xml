@@ -13,6 +13,7 @@
           <element id="library" level="project" name="admin" />
           <element id="library" level="project" name="client" />
           <element id="library" level="application" name="all" />
+          <element id="library" level="project" name="datepicker" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />

@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Module3Final:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Module3Final_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Module3Final/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Module3Final" />
+          <element id="library" level="project" name="css" />
+          <element id="library" level="project" name="css1" />
+          <element id="library" level="project" name="jquery" />
+          <element id="library" level="project" name="js" />
+          <element id="library" level="project" name="js1" />
+          <element id="library" level="project" name="css2" />
+          <element id="library" level="project" name="js2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.22" />
+          <element id="library" level="project" name="servlet-api-2.5-6.0.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

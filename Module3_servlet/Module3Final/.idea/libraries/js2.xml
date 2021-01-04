@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="js2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib/datepicker/js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -45,13 +45,15 @@ public class CustomerServlet extends HttpServlet {
         String gender = request.getParameter("customer_gender");
         String idCard = request.getParameter("customer_id_card");
         String phone = request.getParameter("customer_phone");
+        String messagePhone = Validate.validateCustomerPhone(phone);
         String email = request.getParameter("customer_email");
+        String messageMail = Validate.validateCustomerEmail(email);
         String address = request.getParameter("customer_address");
         Customer customer = new Customer( new CustomerType(typeId), name, birthday, gender,
                 idCard, phone, email, address);
         System.out.println(message);
         try {
-            if (message == null) {
+            if (message == null && messagePhone == null && messageMail == null) {
                 customerRepository.insert(customer);
                 customer = null;
             }

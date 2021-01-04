@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="datepicker">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/web/assets/datepicker" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
