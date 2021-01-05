@@ -36,7 +36,7 @@ public class CustomerController {
             @RequestParam String name
     ) {
         Customer customer = new Customer(id, name);
-        customerService.save(customer);
+        customerService.update(customer);
         return "redirect:/customers";
     }
 }

@@ -34,4 +34,12 @@ public class CustomerService {
     public void save(Customer customer) {
         customerList.add(customer);
     }
+
+    public void update(Customer customer) {
+        for (Customer c : customerList) {
+            if (c.getId() == customer.getId()) {
+                c.setName(customer.getName());
+            }
+        }
+    }
 }
