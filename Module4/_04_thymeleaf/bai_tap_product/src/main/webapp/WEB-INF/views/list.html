@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a role="button" th:href="@{/create}">Create</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th>+</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Img</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product,status:${products}">
+        <td scope="row" th:text="${status.count}"></td>
+        <td th:text="${product.getNameProduct()}"></td>
+        <td th:text="${product.getPriceProduct()}"></td>
+        <td><img width="50px" height="50px" th:src="@{/img/{im}(im = ${product.getImgProduct()})}"/></td>
+        <td th:text="${product.getQuantity()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

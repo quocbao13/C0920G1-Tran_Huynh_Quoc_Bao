@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:object="${product}" th:action="@{/save}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{idProduct}"/>
+        <div>
+            <label>Name product: </label>
+            <input type="text" th:field="*{nameProduct}">
+        </div>
+        <div>
+            <label>Price product: </label>
+            <input type="text" th:field="*{priceProduct}">
+        </div>
+        <div>
+            <label>Img product: </label>
+            <input type="file" th:field="*{imgProduct}">
+        </div>
+        <div>
+            <label>Quantity product: </label>
+            <input type="text" th:field="*{quantity}">
+        </div>
+        <input type="submit" value="create">
+    </form>
+</body>
+</html>
