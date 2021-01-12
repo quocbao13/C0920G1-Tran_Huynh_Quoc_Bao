@@ -12,12 +12,24 @@ public class Blog {
     private String content;
     private String description;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
+
     public Blog() {
     }
 
     public Blog(String content, String description) {
         this.content = content;
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Long getId() {
