@@ -3,9 +3,9 @@ package com.example.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.Validation;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -14,17 +14,20 @@ public class User {
     @Id
     private Long id;
 
+    @NotEmpty
     @Size(min = 5, max = 45)
     private String lastName;
+    @NotEmpty
     @Size(min = 5, max = 45)
     private String firstName;
+    @NotEmpty
     @Size(min = 10, max = 11)
     private int phone;
-
+    @NotEmpty
     @Min(value = 18)
     private int age;
-
-    @Email()
+    @NotEmpty
+    @Email
     private String email;
 
     public User() {
