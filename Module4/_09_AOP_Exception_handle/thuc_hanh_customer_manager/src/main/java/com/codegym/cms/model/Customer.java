@@ -9,10 +9,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
     @Column(unique = true)
-    private String email;
+    private String firstName;
+
+    private String lastName;
 
     @ManyToOne
     @JoinColumn(name = "province_id")
@@ -20,7 +20,7 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String firstName, String lastName, String email) {
+    public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

@@ -4,7 +4,9 @@ import com.codegym.cms.model.Customer;
 import com.codegym.cms.model.Province;
 import com.codegym.cms.repository.CustomerRepository;
 import com.codegym.cms.service.CustomerService;
+import com.codegym.cms.service.exception.DuplicateNameException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,6 +17,7 @@ public class CustomerServiecImpl implements CustomerService {
 
     @Override
     public Page<Customer> findAll(Pageable pageable) {
+
         return customerRepository.findAll(pageable);
     }
 
@@ -28,8 +31,12 @@ public class CustomerServiecImpl implements CustomerService {
     }
 
     @Override
-    public void save(Customer customer) {
-        customerRepository.save(customer);
+    public Customer save(Customer customer) throws DuplicateNameException {
+        try {
+            return customerRepository.save(customer);
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicateNameException();
+        }
     }
 
     @Override

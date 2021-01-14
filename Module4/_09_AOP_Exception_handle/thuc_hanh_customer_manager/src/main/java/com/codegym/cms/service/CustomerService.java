@@ -2,6 +2,7 @@ package com.codegym.cms.service;
 
 import com.codegym.cms.model.Customer;
 import com.codegym.cms.model.Province;
+import com.codegym.cms.service.exception.DuplicateNameException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,7 +11,7 @@ public interface CustomerService {
 
     Customer findById(Long id) throws Exception;
 
-    void save(Customer customer);
+    Customer save(Customer customer) throws DuplicateNameException;
 
     void remove(Long id);
 
