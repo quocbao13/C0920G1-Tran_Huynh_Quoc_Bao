@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-    <form th:action="@{/blog/delete}" method="post" th:object="${blog}">
-        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="${blog.id}">
         <div>
-            Content: <p th:text="*{content}"></p>
+            Content: <p th:text="${blog.content}"></p>
             Do you sure to delete?
         </div>
-        <input type="submit" class="btn btn-danger" value="Delete">
-    </form>
+        <button id="clickDelete" type="button" class="btn btn-danger"
+                th:onclick="'javascript:actionDelete(\''+ ${blog.id} + '\');'">Delete</button>
 
-    <script src="/bootstrap/jquery/jquery-3.5.1.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/bootstrap/js/popper.min.js"></script>
+<script th:src="@{/bootstrap/jquery/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/bootstrap/js/popper.min.js}"></script>
+<script>
+
+</script>
 </body>
 </html>

@@ -79,6 +79,19 @@
             }
         })
     }
+    $(document).ready(function () {
+        $("#inputSearch").on("keyup", function () {
+            var search = document.getElementById("inputSearch").value;
+            $.ajax({
+                type: "GET",
+                url: "/blog/search?search=" + search,
+                dataType: "application/json",
+                success: function (data) {
+                    $("#searchTable").html(data);
+                }
+            })
+        })
+    })
 </script>
 </body>
 </html>

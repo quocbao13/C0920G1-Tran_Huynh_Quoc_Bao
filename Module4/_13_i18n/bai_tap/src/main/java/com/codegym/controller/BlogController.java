@@ -60,16 +60,15 @@ public class BlogController {
         return "blogs/delete";
     }
 
-    @PostMapping(value = "/actionDelete/{id}")
-        public String delete(@PathVariable("id") Long id, Pageable pageable, Model model) {
-            blogService.delete(id);
-        Page<Blog> blogList = blogService.findAll(pageable);
-        model.addAttribute("blogList", blogList);
-        return "blogs/search";
+    @PostMapping(value = "/delete")
+    public String delete(@ModelAttribute Blog blog) {
+        blogService.delete(blog.getId());
+        return "redirect:/blog/";
     }
 
-    @GetMapping(value = "/search")
-    public String searchByContent(@RequestParam(value = "search", required = false) String search, Model model, Pageable pageable) {
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Page<Blog> searchByContent(@RequestParam(value = "search", required = false) String search, Model model, Pageable pageable) {
         Page<Blog> blogList;
         if (search != null && !search.equals("")) {
             blogList = blogService.findByContentContaining(search, pageable);
@@ -77,6 +76,6 @@ public class BlogController {
             blogList = blogService.findAll(pageable);
         }
         model.addAttribute("blogList", blogList);
-        return "blogs/search";
+        return blogList;
     }
 }

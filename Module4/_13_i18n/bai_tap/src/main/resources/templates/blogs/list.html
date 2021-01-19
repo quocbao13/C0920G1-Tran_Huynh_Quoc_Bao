@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>List Blog</title>
     <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/datatables/css/dataTables.bootstrap4.min.css}">
 </head>
 <body>
 <!-- Button trigger modal -->
@@ -15,15 +16,15 @@
     <label>Search: </label>
     <input type="text" id="inputSearch" name="search">
 </form>
-
+<a href="?lang=en">English</a>|<a href="?lang=vi">VietNam</a>
 <!-- Show list-->
-<table class="table table-bordered table-striped table-hover" id="searchTable">
+<table class="table table-bordered table-striped table-hover" id="myTable">
     <thead class="thead-inverse">
         <tr>
-            <th>Id</th>
-            <th>Content</th>
-            <th>Description</th>
-            <th>Action</th>
+            <th th:text="#{language.id}"></th>
+            <th th:text="#{language.content}"></th>
+            <th th:text="#{language.description}"></th>
+            <th th:text="#{language.action}"></th>
         </tr>
     </thead>
     <tbody>
@@ -66,6 +67,8 @@
 <script th:src="@{/bootstrap/jquery/jquery-3.5.1.min.js}"></script>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/bootstrap/js/popper.min.js}"></script>
+<script th:src="@{/bootstrap/datatables/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/bootstrap/datatables/js/dataTables.bootstrap4.min.js}"></script>
 <script>
     $("#btnModalCreate").click(function () {
         $.ajax({
@@ -106,28 +109,16 @@
             $.ajax({
                 type: "GET",
                 url: "/blog/search?search=" + search,
-                dataType: "HTML",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                },
                 success: function (data) {
-                    $("#searchTable").html(data);
+
                 }
             })
         })
-    });
-    function actionDelete(id){
-        $.ajax({
-            type: "POST",
-            url: "/blog/actionDelete/" + id,
-            dataType: "HTML",
-            success: function (data) {
-                var messageDelete = "Delete!!!";
-                $("#modelId").modal('hide');
-                $("#searchTable").html(data);
-                $(".modal-body").html(messageDelete);
-                $("#modelId").modal('show');
-            }
-
-        })
-    }
+    })
 </script>
 </body>
 </html>
