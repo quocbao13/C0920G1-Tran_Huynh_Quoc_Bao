@@ -66,9 +66,8 @@ public class BlogController {
         return "redirect:/blog/";
     }
 
-    @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Page<Blog> searchByContent(@RequestParam(value = "search", required = false) String search, Model model, Pageable pageable) {
+    @GetMapping(value = "/search")
+    public String searchByContent(@RequestParam(value = "search", required = false) String search, Model model, Pageable pageable) {
         Page<Blog> blogList;
         if (search != null && !search.equals("")) {
             blogList = blogService.findByContentContaining(search, pageable);
@@ -76,6 +75,6 @@ public class BlogController {
             blogList = blogService.findAll(pageable);
         }
         model.addAttribute("blogList", blogList);
-        return blogList;
+        return "blogs/search";
     }
 }
