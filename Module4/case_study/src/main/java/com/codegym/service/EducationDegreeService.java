@@ -1,9 +1,9 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.Education_degree;
+import com.codegym.model.EducationDegree;
 
 import java.util.List;
 
 public interface EducationDegreeService {
-    List<Education_degree> findAll();
+    List<EducationDegree> findAll();
 }

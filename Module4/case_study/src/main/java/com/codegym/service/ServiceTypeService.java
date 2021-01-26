@@ -1,7 +1,6 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.CustomerType;
-import vn.codegym.Model.ServiceType;
+import com.codegym.model.ServiceType;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface ServiceTypeService {
 
     void update(ServiceType serviceType);
 
-    void delete(int id);
+    void delete(Long id);
 
-    ServiceType findById(int id);
+    ServiceType findById(Long id);
 }

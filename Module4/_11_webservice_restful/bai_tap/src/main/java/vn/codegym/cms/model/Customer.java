@@ -1,4 +1,4 @@
-package com.codegym.cms.model;
+package vn.codegym.cms.model;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,16 +6,17 @@ import java.util.List;
 @Entity
 public class Position {
     @Id
-    private int positionId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long positionId;
     private String positionName;
     @OneToMany(mappedBy = "position")
     private List<Employee> employees;
 
-    public int getPositionId() {
+    public Long getPositionId() {
         return positionId;
     }
 
-    public void setPositionId(int positionId) {
+    public void setPositionId(Long positionId) {
         this.positionId = positionId;
     }
 

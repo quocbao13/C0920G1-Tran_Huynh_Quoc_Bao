@@ -5,22 +5,22 @@ import java.util.List;
 
 @Entity
 @Table
-public class Education_degree {
+public class EducationDegree {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int educationDegreeId;
+    private Long educationDegreeId;
     private String educationDegreeName;
     @OneToMany(mappedBy = "education_degree")
     private List<Employee> employees;
 
-    public Education_degree() {
+    public EducationDegree() {
     }
 
-    public int getEducationDegreeId() {
+    public Long getEducationDegreeId() {
         return educationDegreeId;
     }
 
-    public void setEducationDegreeId(int educationDegreeId) {
+    public void setEducationDegreeId(Long educationDegreeId) {
         this.educationDegreeId = educationDegreeId;
     }
 

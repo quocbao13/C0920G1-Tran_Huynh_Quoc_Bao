@@ -1,12 +1,13 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Division;
+import com.codegym.repository.DivisionRepository;
+import com.codegym.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Division;
-import vn.codegym.Service.DivisionService;
-import vn.codegym.repository.DivisionRepository;
 
 import java.util.List;
+
 @Service
 public class DivisionServiceImpl implements DivisionService {
     @Autowired

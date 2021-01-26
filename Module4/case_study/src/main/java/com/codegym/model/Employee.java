@@ -1,13 +1,13 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Employee {
     @Id
-    private String employeeId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long employeeId;
     private String employeeName;
     private String employeeBirthday;
     private String employeeIdCard;
@@ -22,7 +22,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "education_degree_id" , nullable=false)
-    private Education_degree education_degree;
+    private EducationDegree education_degree;
 
     @ManyToOne
     @JoinColumn(name = "division_id" ,nullable=false)
@@ -37,11 +37,11 @@ public class Employee {
     private List<Contract> contracts;
 
 
-    public String getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -109,11 +109,11 @@ public class Employee {
         this.position = position;
     }
 
-    public Education_degree getEducation_degree() {
+    public EducationDegree getEducation_degree() {
         return education_degree;
     }
 
-    public void setEducation_degree(Education_degree education_degree) {
+    public void setEducation_degree(EducationDegree education_degree) {
         this.education_degree = education_degree;
     }
 

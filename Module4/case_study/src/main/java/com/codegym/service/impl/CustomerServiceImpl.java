@@ -1,12 +1,12 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Customer;
+import com.codegym.repository.CustomerRepository;
+import com.codegym.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Customer;
-import vn.codegym.Service.CustomerService;
-import vn.codegym.repository.Customer.CustomerRepository;
 
 import java.util.List;
 
@@ -37,19 +37,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         this.customerRepository.deleteById(id);
     }
 
 
     @Override
-    public Customer findById(String id) {
+    public Customer findById(Long id) {
         return customerRepository.findById(id).orElse(null);
     }
 
     @Override
     public Page<Customer> findAllByCustomer_nameContaining(Pageable pageable, String nameSearch) {
-        return this.customerRepository.findAllByCustomerNameContaining(pageable,nameSearch);
+        return null;
     }
 
 

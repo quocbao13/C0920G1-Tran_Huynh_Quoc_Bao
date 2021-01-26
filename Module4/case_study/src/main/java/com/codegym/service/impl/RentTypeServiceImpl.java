@@ -1,10 +1,10 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.RentType;
+import com.codegym.repository.RentTypeRepository;
+import com.codegym.service.RentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.RentType;
-import vn.codegym.Service.RentTypeService;
-import vn.codegym.repository.Service.RentTypeRepository;
 
 import java.util.List;
 
@@ -29,12 +29,12 @@ public class RentTypeServiceImpl implements RentTypeService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         rentTypeRepository.deleteById(id);
     }
 
     @Override
-    public RentType findById(int id) {
+    public RentType findById(Long id) {
         return rentTypeRepository.findById(id).orElse(null);
     }
 }

@@ -1,7 +1,8 @@
-package vn.codegym.Service;
+package com.codegym.service;
+
+import com.codegym.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import vn.codegym.Model.Customer;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ public interface CustomerService {
     void save(Customer customer);
 
     void update(Customer customer);
-    void delete(String id);
-    Customer findById(String id);
+    void delete(Long id);
+    Customer findById(Long id);
 
-    Page<Customer> findAllByCustomer_nameContaining(Pageable pageable,String nameSearch);
+    Page<Customer> findAllByCustomer_nameContaining(Pageable pageable, String nameSearch);
 
 }

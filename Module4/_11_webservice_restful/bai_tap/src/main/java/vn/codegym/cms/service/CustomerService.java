@@ -1,6 +1,6 @@
-package com.codegym.cms.service;
+package vn.codegym.cms.service;
 
-import com.codegym.cms.model.Customer;
+import vn.codegym.cms.model.Customer;
 
 import java.util.List;
 

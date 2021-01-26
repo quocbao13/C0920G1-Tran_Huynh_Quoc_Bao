@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -7,7 +7,8 @@ import java.util.List;
 @Table
 public class Division {
     @Id
-    private int divisionId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long divisionId;
     private String divisionName;
     @OneToMany(mappedBy = "division", fetch = FetchType.LAZY)
     private List<Employee> employees;
@@ -15,11 +16,11 @@ public class Division {
     public Division() {
     }
 
-    public int getDivisionId() {
+    public Long getDivisionId() {
         return divisionId;
     }
 
-    public void setDivisionId(int divisionId) {
+    public void setDivisionId(Long divisionId) {
         this.divisionId = divisionId;
     }
 

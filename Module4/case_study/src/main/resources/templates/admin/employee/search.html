@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee:${employeeList}">
+        <td th:text="${employee.employeeId}"></td>
+        <td th:text="${employee.employeeName}"></td>
+        <td th:text="${employee.employeeBirthday}"></td>
+        <td>
+            <button type="button" class="btn btn-success" id="btnModalEdit"
+                    th:onclick="'javascript:showEdit(\''+ ${employee.employeeId} + '\');'">
+                Edit
+            </button>
+            <button type="button" class="btn btn-danger" id="btnModalDelete"
+                    th:onclick="'javascript:showDelete(\''+ ${employee.employeeId} + '\');'">
+                Delete
+            </button>
+        </td>
+    </tr>
+    </tbody>
 </body>
 </html>

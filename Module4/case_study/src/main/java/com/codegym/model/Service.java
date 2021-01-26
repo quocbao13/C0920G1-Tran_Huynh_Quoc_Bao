@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class Service {
     @Id
-    private String serviceId;
+    private Long serviceId;
     private String serviceName;
     private String serviceArea;
     private String serviceCost;
@@ -27,12 +27,12 @@ public class Service {
     public Service() {
     }
 
-    public String getServiceId() {
+    public Long getServiceId() {
         return serviceId;
     }
 
 
-    public void setServiceId(String serviceId) {
+    public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
     }
 

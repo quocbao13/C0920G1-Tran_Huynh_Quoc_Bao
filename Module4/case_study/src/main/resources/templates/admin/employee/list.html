@@ -1,10 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{/admin/share/layout::head('Layout Admin')}">
 </head>
+
 <body>
-$END$
+
+<div class="col-12">
+
+    <div id="mySidenav" class="sidenav" th:include="~{/admin/share/menu::menu}"></div>
+
+    <div id="main">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" th:include="~{/admin/share/header::menu_header}"></nav>
+        <div class="col-12 mt-2">
+            <!-- Button trigger modal -->
+            <button style="cursor:pointer" class="btn btn-info" id="btnOpenMenu" onclick="openNav()">&#9776; OPEN MENU</button>
+            <button type="button" class="btn btn-primary" id="btnModalCreate">
+                Create
+            </button>
+            <form class="mt-2" th:action="@{/admin/employee/search}" method="get">
+                <label>Search By Name: </label>
+                <input type="text" id="inputSearch" name="search">
+            </form>
+            <table class="table table-bordered table-striped table-hover" id="searchTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee:${employeeList}">
+                    <td th:text="${employee.employeeId}"></td>
+                    <td th:text="${employee.employeeName}"></td>
+                    <td th:text="${employee.employeeBirthday}"></td>
+                    <td>
+                        <button type="button" class="btn btn-info" id="btnModalDetail"
+                                th:onclick="'javascript:showDetail(\''+ ${employee.employeeId} + '\');'">
+                            Detail
+                        </button>
+                        <button type="button" class="btn btn-success" id="btnModalEdit"
+                                th:onclick="'javascript:showEdit(\''+ ${employee.employeeId} + '\');'">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-danger" id="btnModalDelete"
+                                th:onclick="'javascript:showDelete(\''+ ${employee.employeeId} + '\');'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/bootstrap/jquery/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/bootstrap/js/popper.min.js}"></script>
+<script>
+    $("#btnModalCreate").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/admin/employee/create",
+            dataType: "HTML",
+            success: function (data) {
+                $(".modal-body").html(data);
+                $("#modelId").modal('show');
+            }
+        })
+    });
+    function showEdit(id) {
+        $.ajax({
+            type: "GET",
+            url: "/admin/employee/edit/"+id,
+            dataType: "HTML",
+            success: function (data) {
+                $(".modal-body").html(data);
+                $("#modelId").modal('show');
+            }
+        })
+    }
+    function showDetail(id) {
+        $.ajax({
+            type: "GET",
+            url: "/admin/employee/detail/"+id,
+            dataType: "HTML",
+            success: function (data) {
+                $(".modal-body").html(data);
+                $("#modelId").modal('show');
+            }
+        })
+    }
+    function showDelete(id) {
+        $.ajax({
+            type: "GET",
+            url: "/admin/employee/delete/"+id,
+            dataType: "HTML",
+            success: function (data) {
+                $(".modal-body").html(data);
+                $("#modelId").modal('show');
+            }
+        })
+    }
+    $(document).ready(function () {
+        $("#inputSearch").on("keyup", function () {
+            var search = document.getElementById("inputSearch").value;
+            $.ajax({
+                type: "GET",
+                url: "/admin/employee/search?search=" + search,
+                dataType: "HTML",
+                success: function (data) {
+                    $("#searchTable").html(data);
+                }
+            })
+        })
+    });
+    function actionDelete(id){
+        $.ajax({
+            type: "GET",
+            url: "/admin/employee/actionDelete/" + id,
+            dataType: "HTML",
+            success: function (data) {
+                var messageDelete = "Deleted!!!";
+                setTimeout(function() {
+                    $("#modelId").modal('hide');
+                }, 16000);
+                $("#searchTable").html(data);
+                $(".modal-body").html(messageDelete);
+                $("#modelId").modal('show');
+            }
+
+        })
+    }
+</script>
 </body>
 </html>

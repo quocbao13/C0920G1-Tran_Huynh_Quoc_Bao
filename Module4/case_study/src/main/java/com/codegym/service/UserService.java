@@ -1,9 +1,10 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.User;
+import com.codegym.model.User;
 
 import java.util.List;
 
 public interface UserService {
     List<User> findAll();
+    User findByUserName(String username);
 }

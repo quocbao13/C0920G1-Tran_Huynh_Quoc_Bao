@@ -1,7 +1,8 @@
-package com.codegym.cms.repository.impl;
+package vn.codegym.cms.repository.impl;
 
-import com.codegym.cms.model.Customer;
-import com.codegym.cms.repository.CustomerRepository;
+import org.springframework.stereotype.Repository;
+import vn.codegym.cms.model.Customer;
+import vn.codegym.cms.repository.CustomerRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -10,6 +11,7 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
 @Transactional
 public class CustomerRepositoryImpl implements CustomerRepository {
 

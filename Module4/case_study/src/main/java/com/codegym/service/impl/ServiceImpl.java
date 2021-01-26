@@ -1,11 +1,11 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Service;
+import com.codegym.repository.ServiceRepository;
+import com.codegym.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import vn.codegym.Model.Service;
-import vn.codegym.Service.ServiceService;
-import vn.codegym.repository.Service.ServiceRepository;
 
 import java.util.List;
 
@@ -36,17 +36,17 @@ public class ServiceImpl implements ServiceService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         this.serviceRepository.deleteById(id);
     }
 
     @Override
-    public Service findById(String id) {
+    public Service findById(Long id) {
         return serviceRepository.findById(id).orElse(null);
     }
 
     @Override
     public Page<Service> findAllByCustomer_nameContaining(Pageable pageable, String nameSearch) {
-        return this.serviceRepository.findAllByServiceNameContaining(pageable,nameSearch);
+        return null;
     }
 }

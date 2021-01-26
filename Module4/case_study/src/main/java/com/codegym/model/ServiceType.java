@@ -1,14 +1,13 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class ServiceType {
     @Id
-    private int service_type_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long service_type_id;
     private String service_type_name;
 
     @OneToMany(mappedBy = "serviceType")
@@ -17,11 +16,11 @@ public class ServiceType {
     public ServiceType() {
     }
 
-    public int getService_type_id() {
+    public Long getService_type_id() {
         return service_type_id;
     }
 
-    public void setService_type_id(int service_type_id) {
+    public void setService_type_id(Long service_type_id) {
         this.service_type_id = service_type_id;
     }
 

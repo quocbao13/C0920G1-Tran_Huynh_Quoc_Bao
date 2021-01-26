@@ -119,7 +119,7 @@
             url: "/blog/actionDelete/" + id,
             dataType: "HTML",
             success: function (data) {
-                var messageDelete = "Delete!!!";
+                var messageDelete = "Deleted!!!";
                 $("#modelId").modal('hide');
                 $("#searchTable").html(data);
                 $(".modal-body").html(messageDelete);

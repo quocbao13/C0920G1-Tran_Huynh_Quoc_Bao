@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

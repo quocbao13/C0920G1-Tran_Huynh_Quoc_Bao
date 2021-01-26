@@ -1,4 +1,7 @@
 package com.codegym.repository;
 
-public interface AttachServiceRepository {
+import com.codegym.model.AttachService;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AttachServiceRepository extends JpaRepository<AttachService, Long> {
 }

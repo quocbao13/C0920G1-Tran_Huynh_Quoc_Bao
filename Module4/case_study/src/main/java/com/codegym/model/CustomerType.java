@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 @Entity
 public class CustomerType {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerTypeId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long customerTypeId;
 
     private String customerTypeName;
 
@@ -18,11 +18,11 @@ public class CustomerType {
     }
 
 
-    public int getCustomerTypeId() {
+    public Long getCustomerTypeId() {
         return customerTypeId;
     }
 
-    public void setCustomerTypeId(int customerTypeId) {
+    public void setCustomerTypeId(Long customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
 

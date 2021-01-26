@@ -1,11 +1,12 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 
 @Entity
 public class ContractDetail {
     @Id
-    private String contract_detail_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long contract_detail_id;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "contract_id" ,  nullable = false)
     private Contract contract;
@@ -16,11 +17,11 @@ public class ContractDetail {
     public ContractDetail() {
     }
 
-    public String getContract_detail_id() {
+    public Long getContract_detail_id() {
         return contract_detail_id;
     }
 
-    public void setContract_detail_id(String contract_detail_id) {
+    public void setContract_detail_id(Long contract_detail_id) {
         this.contract_detail_id = contract_detail_id;
     }
 

@@ -1,12 +1,12 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Employee;
+import com.codegym.repository.EmployeeRepository;
+import com.codegym.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Employee;
-import vn.codegym.Service.EmployeeService;
-import vn.codegym.repository.EmployeeRepository;
 
 import java.util.List;
 
@@ -36,17 +36,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         employeeRepository.deleteById(id);
     }
 
     @Override
-    public Employee findById(String id) {
+    public Employee findById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Page<Employee> findAllByEmployeeNameContaining(Pageable pageable, String nameSearch) {
-        return this.employeeRepository.findAllByEmployeeNameContaining(pageable, nameSearch);
+    public Page<Employee> findAllByEmployeeNameContaining(String nameSearch, Pageable pageable) {
+        return employeeRepository.findByEmployeeNameContaining(nameSearch, pageable);
     }
 }

@@ -1,14 +1,13 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class RentType {
     @Id
-    private int ren_type_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ren_type_id;
     private String ren_type_name;
     private String ren_type_cost;
     @OneToMany(mappedBy = "rentType")
@@ -17,11 +16,11 @@ public class RentType {
     public RentType() {
     }
 
-    public int getRen_type_id() {
+    public Long getRen_type_id() {
         return ren_type_id;
     }
 
-    public void setRen_type_id(int ren_type_id) {
+    public void setRen_type_id(Long ren_type_id) {
         this.ren_type_id = ren_type_id;
     }
 

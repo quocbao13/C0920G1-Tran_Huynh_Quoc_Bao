@@ -1,13 +1,13 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.ServiceType;
+import com.codegym.repository.ServiceTypeRepository;
+import com.codegym.service.ServiceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.ServiceType;
-import vn.codegym.Service.ServiceTypeService;
-import vn.codegym.repository.Service.ServiceRepository;
-import vn.codegym.repository.Service.ServiceTypeRepository;
 
 import java.util.List;
+
 @Service
 public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Autowired
@@ -28,12 +28,12 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         serviceTypeRepository.deleteById(id);
     }
 
     @Override
-    public ServiceType findById(int id) {
+    public ServiceType findById(Long id) {
         return serviceTypeRepository.findById(id).orElse(null);
     }
 }

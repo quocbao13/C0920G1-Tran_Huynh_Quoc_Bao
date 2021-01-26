@@ -31,13 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/admin")
                     .permitAll()
                 .and()
-                    .authorizeRequests().antMatchers("/register").permitAll()
-                    .antMatchers("/").hasRole("USER")
-                    .antMatchers("/blog/create").hasRole("MEMBER")
-                    .antMatchers("/blog/*").hasRole("ADMIN")
+                    .authorizeRequests().antMatchers("/register", "/","/bootstrap/**").permitAll()
+//                    .antMatchers("/").hasRole("USER")
+//                    .antMatchers("/blog/create").hasRole("MEMBER")
+//                    .antMatchers("/blog/*").hasRole("ADMIN")
                     .anyRequest().authenticated();
     }
 

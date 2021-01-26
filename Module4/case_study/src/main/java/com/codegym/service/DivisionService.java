@@ -1,6 +1,6 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.Division;
+import com.codegym.model.Division;
 
 import java.util.List;
 

@@ -1,12 +1,13 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Position;
+import com.codegym.repository.PositionRepository;
+import com.codegym.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Position;
-import vn.codegym.Service.PositionService;
-import vn.codegym.repository.PositionRepository;
 
 import java.util.List;
+
 @Service
 public class PositionServiceImpl implements PositionService {
     @Autowired
@@ -27,7 +28,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         positionRepository.deleteById(id);
     }
 

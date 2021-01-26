@@ -1,4 +1,4 @@
-package com.codegym.cms.repository;
+package vn.codegym.cms.repository;
 
 import java.util.List;
 

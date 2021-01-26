@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{/admin/share/layout::head('Layout Admin')}">
 </head>
+
 <body>
-$END$
+
+<div class="col-12">
+
+    <div id="mySidenav" class="sidenav" th:include="~{/admin/share/menu::menu}"></div>
+
+    <div id="main">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" th:include="~{/admin/share/header::menu_header}"></nav>
+        <button style="cursor:pointer" class="btn btn-info" id="btnOpenMenu" onclick="openNav()">&#9776; OPEN MENU</button>
+    </div>
+</div>
+
+<script th:src="@{/bootstrap/jquery/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/bootstrap/js/popper.min.js}"></script>
 </body>
 </html>

@@ -1,12 +1,14 @@
-package com.codegym.cms.service.impl;
+package vn.codegym.cms.service.impl;
 
-import com.codegym.cms.model.Customer;
-import com.codegym.cms.repository.CustomerRepository;
-import com.codegym.cms.service.CustomerService;
+import org.springframework.stereotype.Service;
+import vn.codegym.cms.model.Customer;
+import vn.codegym.cms.repository.CustomerRepository;
+import vn.codegym.cms.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+@Service
 public class CustomerServiecImpl implements CustomerService{
 
     @Autowired

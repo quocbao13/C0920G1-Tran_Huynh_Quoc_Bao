@@ -1,7 +1,6 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.CustomerType;
-import vn.codegym.Model.RentType;
+import com.codegym.model.RentType;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface RentTypeService  {
 
     void update(RentType RentType);
 
-    void delete(int id);
+    void delete(Long id);
 
-    RentType findById(int id);
+    RentType findById(Long id);
 }

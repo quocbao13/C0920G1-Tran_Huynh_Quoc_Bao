@@ -1,14 +1,10 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.CustomerType;
+import com.codegym.repository.CustomerTypeRepository;
+import com.codegym.service.CustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Customer;
-import vn.codegym.Model.CustomerType;
-import vn.codegym.Service.CustomerService;
-import vn.codegym.Service.CustomerTypeService;
-import vn.codegym.repository.Customer.CustomerTypeRepository;
 
 import java.util.List;
 
@@ -33,12 +29,12 @@ public class CustomerTypeServiceImpl implements CustomerTypeService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         customerTypeRepository.deleteById(id);
     }
 
     @Override
-    public CustomerType findById(int id) {
+    public CustomerType findById(Long id) {
         return customerTypeRepository.findById(id).orElse(null);
     }
 }

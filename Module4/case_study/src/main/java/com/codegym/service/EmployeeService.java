@@ -1,9 +1,8 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
+import com.codegym.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import vn.codegym.Model.Customer;
-import vn.codegym.Model.Employee;
 
 import java.util.List;
 
@@ -15,8 +14,9 @@ public interface EmployeeService {
 
     void update(Employee employee);
 
-    void delete(String id);
+    void delete(Long id);
 
-    Employee findById(String id);
-    Page<Employee> findAllByEmployeeNameContaining(Pageable pageable, String nameSearch);
+    Employee findById(Long id);
+
+    Page<Employee> findAllByEmployeeNameContaining(String nameSearch,Pageable pageable);
 }

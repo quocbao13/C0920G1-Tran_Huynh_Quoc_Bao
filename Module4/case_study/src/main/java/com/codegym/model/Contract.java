@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.List;
 @Entity
 public class Contract {
     @Id
-    private String contractId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long contractId;
     private String contractStartDate;
     private String contractEndDate;
     private String contractDeposit;
@@ -27,11 +28,11 @@ public class Contract {
     public Contract() {
     }
 
-    public String getContractId() {
+    public Long getContractId() {
         return contractId;
     }
 
-    public void setContractId(String contract_id) {
+    public void setContractId(Long contract_id) {
         this.contractId = contract_id;
     }
 

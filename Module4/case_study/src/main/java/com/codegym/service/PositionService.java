@@ -1,6 +1,6 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import vn.codegym.Model.Position;
+import com.codegym.model.Position;
 
 import java.util.List;
 
@@ -11,6 +11,6 @@ public interface PositionService {
 
     void update(Position position);
 
-    void delete(int id);
+    void delete(Long id);
 
 }

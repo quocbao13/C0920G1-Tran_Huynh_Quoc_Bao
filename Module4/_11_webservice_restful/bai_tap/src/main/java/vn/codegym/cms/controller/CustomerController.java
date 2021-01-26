@@ -1,9 +1,9 @@
-package com.codegym.cms.controller;
+package vn.codegym.cms.controller;
 
 import java.util.List;
 
-import com.codegym.cms.model.Customer;
-import com.codegym.cms.service.CustomerService;
+import vn.codegym.cms.model.Customer;
+import vn.codegym.cms.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

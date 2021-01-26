@@ -1,14 +1,13 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class AttachService {
     @Id
-    private String attachServiceId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long attachServiceId;
     private String attachServiceName;
     private String attachServiceCost;
     private String attachServiceUnit;
@@ -20,11 +19,11 @@ public class AttachService {
     public AttachService() {
     }
 
-    public String getAttachServiceId() {
+    public Long getAttachServiceId() {
         return attachServiceId;
     }
 
-    public void setAttachServiceId(String attachServiceId) {
+    public void setAttachServiceId(Long attachServiceId) {
         this.attachServiceId = attachServiceId;
     }
 

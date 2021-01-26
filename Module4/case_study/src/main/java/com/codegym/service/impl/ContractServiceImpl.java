@@ -1,12 +1,12 @@
-package vn.codegym.Service.Impl;
+package com.codegym.service.impl;
 
+import com.codegym.model.Contract;
+import com.codegym.repository.ContractRepository;
+import com.codegym.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vn.codegym.Model.Contract;
-import vn.codegym.Service.ContractService;
-import vn.codegym.repository.ContractRepository;
 
 @Service
 public class ContractServiceImpl implements ContractService {
@@ -24,7 +24,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         contractRepository.deleteById(id);
     }
 
@@ -34,12 +34,8 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract findById(String id) {
+    public Contract findById(Long id) {
         return contractRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public Page<Contract> findAllByContractIdContaining(Pageable pageable, String nameSearch) {
-        return this.contractRepository.findAllByContractIdContaining(pageable, nameSearch);
-    }
 }

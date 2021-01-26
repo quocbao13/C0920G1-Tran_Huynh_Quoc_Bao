@@ -1,9 +1,6 @@
-package vn.codegym.Service;
+package com.codegym.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import vn.codegym.Model.CustomerType;
-import vn.codegym.Model.Service;
+import com.codegym.model.CustomerType;
 
 import java.util.List;
 
@@ -14,7 +11,7 @@ public interface CustomerTypeService {
 
     void update(CustomerType customerType);
 
-    void delete(int id);
+    void delete(Long id);
 
-    CustomerType findById(int id);
+    CustomerType findById(Long id);
 }

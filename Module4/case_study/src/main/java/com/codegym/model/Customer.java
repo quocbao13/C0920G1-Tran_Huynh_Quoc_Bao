@@ -1,4 +1,4 @@
-package vn.codegym.Model;
+package com.codegym.model;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.lang.NonNull;
@@ -13,10 +13,9 @@ import java.util.List;
 @Entity(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(generator = "my_generator")
-    @GenericGenerator(name = "my_generator", strategy = "vn.codegym.common.MyGenerator")
+    @GeneratedValue(generator = "my_generator", strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
-    private String customerId;
+    private Long customerId;
     @ManyToOne
     @JoinColumn(name = "customer_type_id", nullable = false)
     private CustomerType customerType;
@@ -54,11 +53,11 @@ public class Customer {
 //        this.customerAddress = customerAddress;
 //    }
 
-    public String getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
 
