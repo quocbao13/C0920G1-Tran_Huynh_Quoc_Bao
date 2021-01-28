@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="~{/admin/share/layout::head('Layout Admin')}">
+<head th:include="~{/admin/share/layout::head('Service List')}">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
             <button type="button" class="btn btn-primary" id="btnModalCreate">
                 Create
             </button>
-            <form class="mt-2" th:action="@{/admin/employee/search}" method="get">
+            <form class="mt-2" th:action="@{/admin/service/search}" method="get">
                 <label>Search By Name: </label>
                 <input type="text" id="inputSearch" name="search">
             </form>
@@ -26,34 +26,30 @@
                 <tr >
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Birthday</th>
-                    <th>Position</th>
-                    <th>Division</th>
-                    <th>Education Degree</th>
-                    <th>User</th>
+                    <th>Cost</th>
+                    <th>Service Type</th>
+                    <th>Rent Type</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee:${employeeList}">
-                    <td th:text="${employee.employeeId}"></td>
-                    <td th:text="${employee.employeeName}"></td>
-                    <td th:text="${employee.employeeBirthday}"></td>
-                    <td th:text="${employee.position.positionName}"></td>
-                    <td th:text="${employee.division.divisionName}"></td>
-                    <td th:text="${employee.education_degree.educationDegreeName}"></td>
-                    <td th:text="${employee.user.username}"></td>
+                <tr th:each="ser:${serviceList}">
+                    <td th:text="${ser.serviceId}"></td>
+                    <td th:text="${ser.serviceName}"></td>
+                    <td th:text="${ser.serviceCost}"></td>
+                    <td th:text="${ser.serviceType.service_type_name}"></td>
+                    <td th:text="${ser.rentType.ren_type_name}"></td>
                     <td>
                         <button type="button" class="btn btn-info" id="btnModalDetail"
-                                th:onclick="'javascript:showDetail(\''+ ${employee.employeeId} + '\');'">
+                                th:onclick="'javascript:showDetail(\''+ ${ser.serviceId} + '\');'">
                             Detail
                         </button>
                         <button type="button" class="btn btn-success" id="btnModalEdit"
-                                th:onclick="'javascript:showEdit(\''+ ${employee.employeeId} + '\');'">
+                                th:onclick="'javascript:showEdit(\''+ ${ser.serviceId} + '\');'">
                             Edit
                         </button>
                         <button type="button" class="btn btn-danger" id="btnModalDelete"
-                                th:onclick="'javascript:showDelete(\''+ ${employee.employeeId} + '\');'">
+                                th:onclick="'javascript:showDelete(\''+ ${ser.serviceId} + '\');'">
                             Delete
                         </button>
                     </td>
@@ -82,7 +78,7 @@
     $("#btnModalCreate").click(function () {
         $.ajax({
             type: "GET",
-            url: "/admin/employee/create",
+            url: "/admin/service/create",
             dataType: "HTML",
             success: function (data) {
                 $(".modal-body").html(data);
@@ -95,7 +91,7 @@
     function showEdit(id) {
         $.ajax({
             type: "GET",
-            url: "/admin/employee/edit/"+id,
+            url: "/admin/service/edit/"+id,
             dataType: "HTML",
             success: function (data) {
                 $(".modal-body").html(data);
@@ -106,7 +102,7 @@
     function showDetail(id) {
         $.ajax({
             type: "GET",
-            url: "/admin/employee/detail/"+id,
+            url: "/admin/service/detail/"+id,
             dataType: "HTML",
             success: function (data) {
                 $(".modal-body").html(data);
@@ -117,7 +113,7 @@
     function showDelete(id) {
         $.ajax({
             type: "GET",
-            url: "/admin/employee/delete/"+id,
+            url: "/admin/service/delete/"+id,
             dataType: "HTML",
             success: function (data) {
                 $(".modal-body").html(data);
@@ -130,7 +126,7 @@
             var search = document.getElementById("inputSearch").value;
             $.ajax({
                 type: "GET",
-                url: "/admin/employee/search?search=" + search,
+                url: "/admin/service/search?search=" + search,
                 dataType: "HTML",
                 success: function (data) {
                     $("#searchTable").html(data);
@@ -141,7 +137,7 @@
     function actionDelete(id){
         $.ajax({
             type: "GET",
-            url: "/admin/employee/actionDelete/" + id,
+            url: "/admin/service/actionDelete/" + id,
             dataType: "HTML",
             success: function (data) {
                 var messageDelete = "Deleted!!!";

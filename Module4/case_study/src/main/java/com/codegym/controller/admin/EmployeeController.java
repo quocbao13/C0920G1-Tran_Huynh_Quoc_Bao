@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,7 +49,7 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Employee employee) {
+    public String create( @ModelAttribute Employee employee ) {
         User user = userService.findByUserName(employee.getUser().getUsername());
         employee.setUser(user);
         employeeService.save(employee);

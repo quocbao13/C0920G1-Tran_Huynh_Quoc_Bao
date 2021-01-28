@@ -13,24 +13,21 @@ import java.util.List;
 @Entity(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(generator = "my_generator", strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
     private Long customerId;
     @ManyToOne
     @JoinColumn(name = "customer_type_id", nullable = false)
     private CustomerType customerType;
 
-    @NotBlank(message = "Name cannot be left blank")
     private String customerName;
 
     private String customerBirthday;
 
     private String customerGender;
-    @Size(min = 9, max = 9, message = "Identity card must be 9 numbers")
     private String customerIdCard;
 
     private String customerPhone;
-    @Email(message = "The email you entered is incorrect, enter the form abc@abc.abc")
     private String customerEmail;
 
     private String customerAddress;

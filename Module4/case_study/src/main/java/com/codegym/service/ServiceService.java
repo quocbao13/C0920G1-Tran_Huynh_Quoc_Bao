@@ -16,5 +16,5 @@ public interface ServiceService {
     void delete(Long id);
     Service findById(Long id);
 
-    Page<Service> findAllByCustomer_nameContaining(Pageable pageable, String nameSearch);
+    Page<Service> findAllByServiceNameContaining(Pageable pageable, String nameSearch);
 }

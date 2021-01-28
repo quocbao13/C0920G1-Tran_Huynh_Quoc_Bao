@@ -9,8 +9,9 @@
         <a href="javascript:void(0)"  class="closebtn " onclick="closeNav()">&times;</a>
         <a th:href="@{/admin}">Home</a>
         <a th:href="@{/admin/employee}">Employee</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a th:href="@{/admin/customer}">Customer</a>
+        <a th:href="@{/admin/service}">Service</a>
+        <a th:href="@{/admin/contract}">Contract</a>
         <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";

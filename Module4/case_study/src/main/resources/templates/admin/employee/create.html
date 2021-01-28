@@ -15,14 +15,17 @@
         <div class="form-group mt-3">
             <label class="col-12" for="name">Employee Name</label>
             <input id="name" class="form-control col-12" type="text" th:field="*{employeeName}">
+            <td th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}">Name Error</td>
         </div>
         <div class="form-group">
             <label class="col-12" for="birthday">Employee Birthday</label>
             <input id="birthday" class="form-control col-12" type="text" th:field="*{employeeBirthday}">
+            <td th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}">Name Error</td>
         </div>
         <div class="form-group">
             <label class="col-12" for="idCard">Employee Id Card</label>
             <input id="idCard" class="form-control col-12" type="text" th:field="*{employeeIdCard}">
+            <td th:if="${#fields.hasErrors('employeeIdCard')}" th:errors="*{employeeIdCard}">Name Error</td>
         </div>
         <div class="form-group">
             <label class="col-12" for="salary">Employee Salary</label>

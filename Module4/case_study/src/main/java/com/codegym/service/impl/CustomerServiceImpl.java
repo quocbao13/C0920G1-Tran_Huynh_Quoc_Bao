@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Page<Customer> findAllByCustomer_nameContaining(Pageable pageable, String nameSearch) {
-        return null;
+        return customerRepository.findByCustomerNameContaining(pageable, nameSearch);
     }
 
 

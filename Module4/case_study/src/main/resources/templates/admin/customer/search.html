@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered table-striped table-hover" id="searchTable">
+    <thead>
+    <tr >
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Customer Type</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cus:${customerList}">
+        <td th:text="${cus.customerId}"></td>
+        <td th:text="${cus.customerName}"></td>
+        <td th:text="${cus.customerBirthday}"></td>
+        <td th:text="${cus.customerType.customerTypeName}"></td>
+        <td>
+            <button type="button" class="btn btn-info" id="btnModalDetail"
+                    th:onclick="'javascript:showDetail(\''+ ${cus.customerId} + '\');'">
+                Detail
+            </button>
+            <button type="button" class="btn btn-success" id="btnModalEdit"
+                    th:onclick="'javascript:showEdit(\''+ ${cus.customerId} + '\');'">
+                Edit
+            </button>
+            <button type="button" class="btn btn-danger" id="btnModalDelete"
+                    th:onclick="'javascript:showDelete(\''+ ${cus.customerId} + '\');'">
+                Delete
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal-header">
+    <h5 th:text="${titleModal}" class="modal-title"></h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form th:action="@{/admin/service/create}" method="post" th:object="${service}">
+    <div class="form-group mt-3">
+        <label class="col-12" for="name">Service Name</label>
+        <input id="name" class="form-control col-12" type="text" th:field="*{serviceName}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="birthday">Service Area</label>
+        <input id="birthday" class="form-control col-12" type="text" th:field="*{serviceArea}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="idCard">Service Cost</label>
+        <input id="idCard" class="form-control col-12" type="text" th:field="*{serviceCost}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="salary">Service Max People</label>
+        <input id="salary" class="form-control col-12" type="text" th:field="*{serviceMaxPeople}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="rentType">Rent Type</label>
+        <select th:field="*{rentType}"  class="form-control col-12" id="rentType">
+            <option th:each="rt : ${rentTypeList}" th:value="${rt.ren_type_id}" th:text="${rt.ren_type_name}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="division">Service Type</label>
+        <select th:field="*{serviceType}"  class="form-control col-12" id="division">
+            <option th:each="st : ${serviceTypeList}" th:value="${st.service_type_id}" th:text="${st.service_type_name}"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="col-12" for="email">Standard Room</label>
+        <input id="email" class="form-control col-12" type="text" th:field="*{standardRoom}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="description">Description</label>
+        <input id="description" class="form-control col-12" type="text" th:field="*{descriptionOtherConvenience}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="pool">Pool Area</label>
+        <input id="pool" class="form-control col-12" type="text" th:field="*{poolArea}">
+    </div>
+    <div class="form-group">
+        <label class="col-12" for="floor">Number Of Floor</label>
+        <input id="floor" class="form-control col-12" type="text" th:field="*{numberOfFloors}">
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">
+            Create
+        </button>
+    </div>
+</form>
+</body>
+</html>

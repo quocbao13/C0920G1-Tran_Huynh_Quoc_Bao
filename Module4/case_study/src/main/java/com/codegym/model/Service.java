@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 public class Service {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long serviceId;
     private String serviceName;
     private String serviceArea;

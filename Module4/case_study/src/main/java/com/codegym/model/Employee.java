@@ -1,6 +1,11 @@
 package com.codegym.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -8,12 +13,24 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long employeeId;
+    @Pattern(regexp = "^([A-Z][a-z]*( [A-Z][a-z]*)*)", message = "Wrong format. Ex: Tran Bao")
     private String employeeName;
+    @Pattern(regexp = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))" +
+            "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|" +
+            "[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|" +
+            "(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$", message = "Wrong format. Ex: 25/12/2021")
     private String employeeBirthday;
+    @Pattern(regexp = "[0-9]{9}", message = "Wrong format. Ex: 2092xxxxx")
     private String employeeIdCard;
+    @Pattern(regexp = "([1-9][0-9]{2,})", message = "Wrong format. Ex: 123,1300,66000")
     private String employeeSalary;
+    @Pattern(regexp = "((07)|(09)|(03)|(06))[0-9]{8}")
     private String employeePhone;
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]" +
+            "*[a-z0-9])?\\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\\b"
+            , message = "Wrong format. Ex: trxx.bxx@gmail.com")
     private String employeeEmail;
+    @Pattern(regexp = "\\d{1,5}\\s\\w.\\s(\\b\\w*\\b\\s){1,2}\\w*", message = "Wrong format. Ex: 2xx Nguyen Van A")
     private String employeeAddress;
 
     @ManyToOne
