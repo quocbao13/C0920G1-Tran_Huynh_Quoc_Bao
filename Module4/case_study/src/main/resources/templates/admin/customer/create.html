@@ -13,31 +13,31 @@
 </div>
 <form th:action="@{/admin/customer/create}" method="post" th:object="${customer}">
     <div class="form-group mt-3">
-        <label class="col-12" for="name">Customer Name</label>
+        <label class="col-12" for="name">Name</label>
         <input id="name" class="form-control col-12" type="text" th:field="*{customerName}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="birthday">Customer Birthday</label>
+        <label class="col-12" for="birthday">Birthday</label>
         <input id="birthday" class="form-control col-12" type="text" th:field="*{customerBirthday}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="idCard">Customer Gender</label>
+        <label class="col-12" for="idCard">Gender</label>
         <input id="idCard" class="form-control col-12" type="text" th:field="*{customerGender}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="salary">Customer Id Card</label>
+        <label class="col-12" for="salary">Id Card</label>
         <input id="salary" class="form-control col-12" type="text" th:field="*{customerIdCard}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="phone">Customer Phone</label>
+        <label class="col-12" for="phone">Phone</label>
         <input id="phone" class="form-control col-12" type="text" th:field="*{customerPhone}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="email">Customer Email</label>
+        <label class="col-12" for="email">Email</label>
         <input id="email" class="form-control col-12" type="text" th:field="*{customerEmail}">
     </div>
     <div class="form-group">
-        <label class="col-12" for="address">Customer Address</label>
+        <label class="col-12" for="address">Address</label>
         <input id="address" class="form-control col-12" type="text" th:field="*{customerAddress}">
     </div>
     <div class="form-group">

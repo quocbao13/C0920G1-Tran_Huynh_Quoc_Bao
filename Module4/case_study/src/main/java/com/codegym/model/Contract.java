@@ -1,6 +1,8 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -8,9 +10,17 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long contractId;
+
+    @NotEmpty(message = "Start date is not null")
     private String contractStartDate;
+
+    @NotEmpty(message = "End date is not null")
     private String contractEndDate;
+
+    @NotEmpty(message = "Deposit is not null")
     private String contractDeposit;
+
+    @NotEmpty(message = "Tatol money is not null")
     private String contractTotalMoney;
 
     @ManyToOne(cascade = CascadeType.MERGE)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<form method="post" th:action="@{/create}" th:object="${question}" enctype="multipart/form-data">
+    <div>
+        <label>Title:</label>
+        <input type="text" th:field="*{title}">
+        <label style="color: red" th:if="${#fields.hasErrors('title')}"
+               th:errors="*{title}"></label>
+    </div>
+    <div>
+        <label>Question:</label>
+        <input type="text" th:field="*{question_create}">
+        <label style="color: red" th:if="${#fields.hasErrors('question_create')}"
+               th:errors="*{question_create}"></label>
+    </div>
+    <div>
+        <label>Type:</label>
+        <select th:field="*{questionType}">
+            <option th:each="ct : ${questionTypeList}" th:text="${ct.name}" th:value="${ct.questionTypeId}"></option>
+        </select>
+    </div>
+    <div>
+        <label>Date:</label>
+        <input type="date" th:field="*{date_create}">
+    </div>
+
+    <button type="submit">Create</button>
+</form>
+</body>
+</html>

@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label class="col-12" for="service">Service</label>
                     <select th:field="*{service}" style="height: 35px;"  class="form-control col-12" id="service">
-                        <option th:each="cv : ${serviceList}" th:value="${cv.serviceId}" th:text="${cv.serviceName}"></option>
+                        <option th:each="cv : ${serviceList}" th:value="${cv.serviceId}" th:text="${cv.serviceName + ' - ' + cv.serviceCost}"></option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -99,7 +99,18 @@
                     <label class="col-12" for="phone">Deposit</label>
                     <input id="phone" class="form-control col-12" type="text" th:field="*{contractDeposit}">
                 </div>
+                <label style="color: red" th:if="${#fields.hasErrors('contractDeposit')}"
+                       th:errors="*{contractDeposit}"></label>
+                <div class="form-group">
+                    <label class="col-12" for="email">Total Money</label>
+                    <input id="email" class="form-control col-12" type="text" th:field="*{contractTotalMoney}">
+                </div>
+                <label style="color: red" th:if="${#fields.hasErrors('contractTotalMoney')}"
+                       th:errors="*{contractTotalMoney}"></label>
                 <div class="form-group text-right">
+                    <a role="button" th:href="@{/admin/contract}" class="btn btn-info">
+                        Back
+                    </a>
                     <button type="submit" class="btn btn-primary">
                         Create
                     </button>

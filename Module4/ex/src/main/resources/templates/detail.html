@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+    <div>
+        <label>Title:</label>
+        <p th:text="${question.title}"></p>
+    </div>
+    <div>
+        <p th:text="${question.question_create}"></p>
+    </div>
+    <div>
+        <p th:text="${question.questionType.name}"></p>
+    </div>
+    <div>
+        <p th:text="${question.date_create}"></p>
+    </div>
+    <div>
+        <p th:text="${question.user_create}"></p>
+    </div>
+    <div>
+        <p th:text="${question.status}"></p>
+    </div>
+
+</form>
+</body>
+</html>

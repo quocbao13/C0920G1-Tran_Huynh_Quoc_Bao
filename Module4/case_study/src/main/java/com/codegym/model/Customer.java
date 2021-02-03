@@ -16,6 +16,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
     private Long customerId;
+
     @ManyToOne
     @JoinColumn(name = "customer_type_id", nullable = false)
     private CustomerType customerType;

@@ -32,7 +32,7 @@ public class CustomerController {
     public String showCreate(Model model) {
         model.addAttribute("customer", new Customer());
         model.addAttribute("customerTypeList", customerTypeService.findAll());
-        model.addAttribute("titleModal", "Create");
+        model.addAttribute("titleModal", "Create Customer");
         return "admin/customer/create";
     }
 
@@ -47,7 +47,7 @@ public class CustomerController {
         Customer customer = customerService.findById(id);
         model.addAttribute("customer", customer);
         model.addAttribute("customerTypeList", customerTypeService.findAll());
-        model.addAttribute("titleModal", "Edit");
+        model.addAttribute("titleModal", "Edit Customer");
         return "admin/customer/edit";
     }
 
@@ -61,7 +61,7 @@ public class CustomerController {
     public String showDelete(Model model, @PathVariable Long id) {
         Customer customer = customerService.findById(id);
         model.addAttribute("customer", customer);
-        model.addAttribute("titleModal", "Delete");
+        model.addAttribute("titleModal", "Delete Customer");
         return "admin/customer/delete";
     }
 
@@ -84,7 +84,7 @@ public class CustomerController {
     public String showInfo(@PathVariable("id") Long id, Model model) {
         Customer customer = customerService.findById(id);
         model.addAttribute("customer", customer);
-        model.addAttribute("titleModal", "Detail");
+        model.addAttribute("titleModal", "Detail Customer");
         return "admin/customer/detail";
     }
 }

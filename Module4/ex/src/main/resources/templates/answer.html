@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<form method="post" th:action="@{/answer}" th:object="${question}" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label>Title:</label>
+        <input type="text" th:text="*{title}">
+        <input type="hidden" th:field="*{title}">
+    </div>
+    <div>
+        <label>Question:</label>
+        <input type="text" th:text="*{question_create}">
+        <input type="hidden" th:field="*{question_create}">
+    </div>
+    <div>
+        <label>Type:</label>
+        <input type="text" th:text="*{questionType.name}">
+        <input type="hidden" th:field="*{questionType}">
+    </div>
+    <div>
+        <label>Date:</label>
+        <input type="text" th:text="*{date_create}">
+        <input type="hidden" th:field="*{date_create}">
+    </div>
+    <div>
+        <label>User create:</label>
+        <input type="text" th:field="*{user_create}">
+    </div>
+    <div>
+        <label>Status:</label>
+        <input type="text" readonly th:field="*{status}">
+    </div>
+
+
+    <button type="submit">Answer</button>
+</form>
+</body>
+</html>

@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -47,7 +49,13 @@ public class ContractController {
     }
 
     @PostMapping(value = "/create")
-    public String create(@ModelAttribute Contract contract, Principal principal) {
+    public String create(@Validated @ModelAttribute Contract contract, BindingResult bindingResult, Principal principal, Model model) {
+        if (bindingResult.hasFieldErrors()){
+            model.addAttribute("contract", contract);
+            model.addAttribute("customerList", customerService.findAll());
+            model.addAttribute("serviceList", serviceService.findAll());
+            return "admin/contract/create";
+        }
         String userName = principal.getName();
         User user = userService.findByUserName(userName);
         Employee employee = user.getEmployees().get(0);
