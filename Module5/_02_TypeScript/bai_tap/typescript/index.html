@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+
+    <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+
+</head>
+
+<body>
+    <input type="text" name="nameSearch" id="nameSearch" value="">
+    <input type="submit" value="search" onclick="main()">
+<div class="app">
+    <ul class="list"></ul>
+</div>
+<script src="index.js"></script>
+</body>
+
+</html>
