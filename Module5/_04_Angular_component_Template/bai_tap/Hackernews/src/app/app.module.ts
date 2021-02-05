@@ -2,14 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { LikesComponent } from './likes/likes.component';
 import { MenuComponent } from './menu/menu.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import { FirstPageComponent } from './first-page/first-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
-  { path: '', component: AppComponent }
+  { path: 'firstPage', component: FirstPageComponent }
 ];
 
 @NgModule({
@@ -17,12 +19,14 @@ const routes: Routes = [
     AppComponent,
     LikesComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    FirstPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
