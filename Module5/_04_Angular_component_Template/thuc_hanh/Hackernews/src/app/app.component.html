@@ -1,0 +1,10 @@
+// template
+<h2>Today's article</h2>
+<hr>
+<div *ngFor="let art of articles">
+  <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+  <app-likes></app-likes>
+</div>
+<textarea [(ngModel)]="title" cols="70" placeholder="Enter title ..."></textarea>
+<textarea [(ngModel)]="url" cols="70" placeholder="Enter url ..."></textarea>
+<button (click)="addArticle()">Add</button>
