@@ -1,0 +1,53 @@
+<form [formGroup]="customerFormEdit"  (ngSubmit)="editInfoCustomer()" >
+  <div class="form-group">
+    <label for="idCustomerType">Customer type</label>
+<!--    <select class="form-control" id="idCustomerType" formControlName="idCustomerType">-->
+<!--      <option value="1">Diamond</option>-->
+<!--      <option value="2">Platinium</option>-->
+<!--      <option value="3">Gold</option>-->
+<!--      <option value="4">Silver</option>-->
+<!--      <option value="5">Member</option>-->
+<!--    </select>-->
+    <input class="form-control" id="idCustomerType" formControlName="idCustomerType"/>
+    <p *ngIf="customerFormEdit.get('idCustomerType').hasError('required')
+      && customerFormEdit.get('idCustomerType').dirty" style="color: red">Required customer type!</p>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" id="name" formControlName="name"/>
+    <p *ngIf="customerFormEdit.get('name').hasError('required')
+      && customerFormEdit.get('name').dirty" style="color: red">Required name!</p>
+  </div>
+  <div class="form-group">
+    <label for="dayOfBirth">Day Of Birth</label>
+    <input class="form-control" id="dayOfBirth" formControlName="dayOfBirth"/>
+    <p *ngIf="customerFormEdit.get('dayOfBirth').hasError('required')
+      && customerFormEdit.get('dayOfBirth').dirty" style="color: red">Required day of birth!</p>
+  </div>
+  <div class="form-group">
+    <label for="idCard">Id Card</label>
+    <input class="form-control" id="idCard" formControlName="idCard"/>
+    <p *ngIf="customerFormEdit.get('idCard').hasError('required')
+      && customerFormEdit.get('idCard').dirty" style="color: red">Required id card!</p>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input class="form-control" id="phone" formControlName="phone"/>
+    <p *ngIf="customerFormEdit.get('phone').hasError('required')
+      && customerFormEdit.get('phone').dirty" style="color: red">Required phone!</p>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control" id="email" formControlName="email"/>
+    <p *ngIf="customerFormEdit.get('email').hasError('required')
+      && customerFormEdit.get('email').dirty" style="color: red">Required email!</p>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input class="form-control" id="address" formControlName="address"/>
+    <p *ngIf="customerFormEdit.get('address').hasError('required')
+      && customerFormEdit.get('address').dirty" style="color: red">Required address!</p>
+  </div>
+  <input type="submit" value="Edit" [disabled]="customerFormEdit.invalid" class="btn btn-primary">
+  <a [routerLink]="['/customer']" role="button" class="btn btn-warning">Back</a>
+</form>

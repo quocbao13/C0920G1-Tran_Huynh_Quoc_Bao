@@ -10,12 +10,12 @@ interface IRatingUnit {
   templateUrl: './rating-bar.component.html',
   styleUrls: ['./rating-bar.component.css']
 })
-export class RatingBarComponent implements OnInit {
+export class RatingBarComponent implements OnInit, OnChanges {
 
   @Input()
-  max = 5;
+  max = 10;
   @Input()
-  ratingValue = 5;
+  ratingValue = 10;
   @Input()
   showRatingValue = true;
 

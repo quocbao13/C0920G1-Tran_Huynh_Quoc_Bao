@@ -1,0 +1,34 @@
+{
+  "customer": [
+    {
+      "idCustomerType": "4",
+      "name": "Bao Tran",
+      "dayOfBirth": "09/24/1997",
+      "idCard": "123123",
+      "phone": "0705653090",
+      "email": "tranbao.hht.3090@gmail.com",
+      "address": "215/22 Nguyen Duy Trinh",
+      "id": 1
+    },
+    {
+      "idCustomerType": "2",
+      "name": "A2aa5",
+      "dayOfBirth": "09/24/1997",
+      "idCard": "123123",
+      "phone": "0923456345",
+      "email": "a@gmail.com",
+      "address": "asd123",
+      "id": 2
+    },
+    {
+      "idCustomerType": "2",
+      "name": "Block",
+      "dayOfBirth": "09/24/1997",
+      "idCard": "123123",
+      "phone": "0124893743",
+      "email": "a@gmail.com",
+      "address": "asd123",
+      "id": 3
+    }
+  ]
+}
