@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Customer} from './customer';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -16,14 +15,7 @@ export class CustomerService {
   ) { }
 
   getCustomer(): Observable<Customer[]>{
-    return this.http.get<Customer[]>(this.API_URL)
-      // .pipe(
-      //   // khi thanh cong
-      //   tap(x => console.log('oke')),
-      //   // Khi that bai
-      //   catchError(err => of([]))
-    // )
-    ;
+    return this.http.get<Customer[]>(this.API_URL);
   }
 
   getCustomerById(id: number): Observable<Customer>{
@@ -38,11 +30,16 @@ export class CustomerService {
     return this.http.patch<Customer>(`${this.API_URL}/${customer.id}`, customer);
   }
 
-  deleteCustomer(id: number): void {
-    this.http.delete<Customer>(`${this.API_URL}/${id}`).subscribe();
+  deleteCustomer(id: number): Observable<Customer> {
+    return this.http.delete<Customer>(`${this.API_URL}/${id}`);
   }
 
-  findByName(nameSearch: string): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.API_URL + '?name_like=' + nameSearch);
+  findByName(nameSearch: string, idSearch: string, customerType: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.API_URL + '?name_like=' + nameSearch + '&id_like='
+      + idSearch + '&customerType.name=' + customerType);
+  }
+
+  sortByName(orderSort: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.API_URL + '?_sort=name&_order=' + orderSort);
   }
 }

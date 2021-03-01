@@ -9,11 +9,13 @@ import {RouterModule} from '@angular/router';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import {NgxSortableModule} from 'ngx-sortable';
 
 
 
 @NgModule({
-  declarations: [CustomerComponent, CustomerCreateComponent, CustomerListComponent, CustomerEditComponent],
+  declarations: [CustomerComponent, CustomerCreateComponent, CustomerListComponent, CustomerEditComponent, CustomerDetailComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -21,7 +23,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         CustomerRoutingModule,
         HttpClientModule,
         RouterModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxSortableModule
     ]
 })
 export class CustomerModule { }

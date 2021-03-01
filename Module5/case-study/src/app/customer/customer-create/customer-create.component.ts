@@ -3,6 +3,8 @@ import {CustomerService} from '../customer.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Customer} from '../customer';
+import {CustomerType} from '../../customer-type/customer-type';
+import {CustomerTypeService} from '../../customer-type/customer-type.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -13,17 +15,23 @@ export class CustomerCreateComponent implements OnInit {
 
   customerForm: FormGroup;
   customer: Customer;
+  customerTypes: CustomerType[];
 
   constructor(
     private customerService: CustomerService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private customerTypeService: CustomerTypeService
   ) {
   }
 
   ngOnInit(): void {
+    this.customerTypeService.getCustomer().subscribe(value => {
+      this.customerTypes = value;
+      console.log(this.customerTypes);
+    });
     this.customerForm = this.fb.group({
-      idCustomerType: ['', [Validators.required]],
+      customerType: ['', [Validators.required]],
       name: ['', [Validators.required]],
       dayOfBirth: ['', [Validators.required]],
       idCard: ['', [Validators.required]],
@@ -36,7 +44,7 @@ export class CustomerCreateComponent implements OnInit {
   createCustomer(): void {
     console.log(this.customerForm.value);
     this.customerService.createCustomer(this.customerForm.value).subscribe(value => {
-    }).unsubscribe();
+    });
     this.router.navigate(['/customer']);
   }
 

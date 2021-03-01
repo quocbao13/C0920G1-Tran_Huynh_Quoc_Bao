@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../customer';
 import {CustomerService} from '../customer.service';
+import {CustomerType} from '../../customer-type/customer-type';
+import {CustomerTypeService} from '../../customer-type/customer-type.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -10,8 +12,14 @@ import {CustomerService} from '../customer.service';
 export class CustomerListComponent implements OnInit {
 
   customers: Customer[] = [];
+  customerTypes: CustomerType[] = [];
+  idCus: number;
   p = 1;
-  constructor(private customerService: CustomerService) {
+  checkClick = true;
+  nameSearch = '';
+  idSearch = '';
+  customerType = '';
+  constructor(private customerService: CustomerService, private  customerTypeService: CustomerTypeService) {
   }
 
   ngOnInit(): void {
@@ -19,16 +27,42 @@ export class CustomerListComponent implements OnInit {
       .subscribe((value) => {
         this.customers = value;
       });
+    this.customerTypeService.getCustomer()
+      .subscribe(value => {
+        this.customerTypes = value;
+      });
   }
 
-  delete(id: number): void{
-    this.customerService.deleteCustomer(id);
-    this.ngOnInit();
+  showDelete(id: number): void{
+    this.idCus = id;
   }
 
-  searchName(nameSearch: string): void{
-    this.customerService.findByName(nameSearch).subscribe(value => {
+  delete(): void{
+    this.customerService.deleteCustomer(this.idCus).subscribe(value => {
+      this.ngOnInit();
+    });
+  }
+
+  search(): void{
+    console.log(this.customerType)
+    this.customerService.findByName(this.nameSearch, this.idSearch, this.customerType).subscribe(value => {
       this.customers = value;
     });
+  }
+
+  sortName(): void{
+    const asc = 'asc';
+    const desc = 'desc';
+    if (this.checkClick){
+      this.customerService.sortByName(asc).subscribe(value => {
+        this.customers = value;
+      });
+      this.checkClick = false;
+    } else {
+      this.customerService.sortByName(desc).subscribe(value => {
+        this.customers = value;
+      });
+      this.checkClick = true;
+    }
   }
 }
