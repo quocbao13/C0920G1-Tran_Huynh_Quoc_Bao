@@ -44,7 +44,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   search(): void{
-    console.log(this.customerType)
+    console.log(this.customerType);
     this.customerService.findByName(this.nameSearch, this.idSearch, this.customerType).subscribe(value => {
       this.customers = value;
     });

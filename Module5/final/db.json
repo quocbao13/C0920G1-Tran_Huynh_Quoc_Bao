@@ -1,0 +1,44 @@
+{
+  "banking": [
+    {
+      "id": 2,
+      "customer": {
+        "id": 1,
+        "name": "Ngoc Anh"
+      },
+      "dayOpen": "2020/03/30",
+      "dayStart": "2020/04/30",
+      "time": "3",
+      "money": "1450000",
+      "moneyFree": "20",
+      "sale": "15"
+    },
+    {
+      "id": 3,
+      "customer": {
+        "id": 3,
+        "name": "Tuan"
+      },
+      "dayOpen": "2021/01/20",
+      "dayStart": "2021/02/30",
+      "time": "1",
+      "money": "2000000",
+      "moneyFree": "25",
+      "sale": "20"
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "name": "Ngoc Anh Pro"
+    },
+    {
+      "id": 2,
+      "name": "Chien"
+    },
+    {
+      "id": 3,
+      "name": "Tuan"
+    }
+  ]
+}

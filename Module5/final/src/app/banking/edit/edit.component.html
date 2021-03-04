@@ -1,0 +1,57 @@
+<h3 class="col-12 text-center">CUSTOMER EDIT</h3>
+<form [formGroup]="bankingForm"  (ngSubmit)="editInfoBanking()" >
+  <div class="form-group">
+    <label for="id">id</label>
+    <input class="form-control" id="id" formControlName="id" readonly/>
+  </div>
+  <div class="form-group">
+    <label for="customerType">Customer id</label>
+    <input class="form-control" id="customerType" [value]="bankingForm.controls.customer.value.id" readonly/>
+  </div>
+  <div class="form-group">
+    <label for="customer">Customer Name</label>
+    <input class="form-control" id="customer" (change)="changeNameCustomer($event.target.value)"
+           [value]="bankingForm.controls.customer.value.name" required/>
+  </div>
+  <div class="form-group">
+    <label for="name">Day open</label>
+    <input class="form-control" id="name" formControlName="dayOpen"/>
+    <p *ngIf="bankingForm.get('dayOpen').hasError('required')
+      && bankingForm.get('dayOpen').dirty" style="color: red">Required day open!</p>
+  </div>
+  <div class="form-group">
+    <label for="dayOfBirth">Day start</label>
+    <input class="form-control" id="dayOfBirth" formControlName="dayStart"/>
+    <p *ngIf="bankingForm.get('dayStart').hasError('required')
+      && bankingForm.get('dayStart').dirty" style="color: red">Required day start!</p>
+  </div>
+  <div class="form-group">
+    <label for="idCard">Time</label>
+    <input class="form-control" id="idCard" formControlName="time"/>
+    <p *ngIf="bankingForm.get('time').hasError('required')
+      && bankingForm.get('time').dirty" style="color: red">Required time!</p>
+    <p *ngIf="bankingForm.get('time').hasError('pattern')" style="color: red">
+      3 month or 6 month or 1 year or 5 year or Not time (0)</p>
+  </div>
+  <div class="form-group">
+    <label for="phone">Money</label>
+    <input class="form-control" id="phone" formControlName="money"/>
+    <p *ngIf="bankingForm.get('money').hasError('required')
+      && bankingForm.get('money').dirty" style="color: red">Required money!</p>
+    <p *ngIf="bankingForm.get('money').hasError('min')" style="color: red">Min is 1.000.000!</p>
+  </div>
+  <div class="form-group">
+    <label for="email">Money free</label>
+    <input class="form-control" id="email" formControlName="moneyFree"/>
+    <p *ngIf="bankingForm.get('moneyFree').hasError('required')
+      && bankingForm.get('moneyFree').dirty" style="color: red">Required money free!</p>
+  </div>
+  <div class="form-group">
+    <label for="address">Sale</label>
+    <input class="form-control" id="address" formControlName="sale"/>
+    <p *ngIf="bankingForm.get('sale').hasError('required')
+      && bankingForm.get('sale').dirty" style="color: red">Required sale!</p>
+  </div>
+  <input type="submit" value="Edit" [disabled]="bankingForm.invalid" class="btn btn-primary">
+  <a [routerLink]="['/banking']" role="button" class="btn btn-warning">Back</a>
+</form>
